@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-from pathlib import Path
+from pathlib import Path, os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,7 +30,8 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+INSTALLED_APPS = [    
+    'home.apps.HomeConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -80,6 +81,17 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'three',
+#         'USER': 'root',
+#         'PASSWORD': 'three',
+#         'HOST': 'three.mysql',
+#         'PORT': '3306',
+#     }
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -118,3 +130,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = 'login'
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'gsportfan21@gmail.com'
+# EMAIL_HOST_PASSWORD = ',`H{(UPs3rz?w/`v'

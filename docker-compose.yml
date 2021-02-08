@@ -1,0 +1,75 @@
+version: '3.5'
+services:
+  three.nginx:
+    container_name: three.nginx
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - .:/srv/web/three
+    networks:
+      three_network:
+          ipv4_address: 172.29.0.3
+
+  three.python:
+    container_name: three.python
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    # command: bash -c "python manage.py migrate &&
+    #                   python manage.py runserver 0.0.0.0:8000"
+    tty: true
+    environment:
+      - ENV=DEV 
+    ports:
+      - "8000:8000"
+    expose:
+      - "8000"
+    volumes:
+      - .:/srv/web/three
+    networks:
+      three_network:
+          ipv4_address: 172.29.0.2
+
+  three.mysql:
+    container_name: three.mysql
+    image: mysql:5.7
+    command: [mysqld, --character-set-server=utf8mb4, --collation-server=utf8mb4_unicode_ci]
+    environment:
+      - MYSQL_ROOT_PASSWORD=three
+      - MYSQL_DATABASE=three
+      - MYSQL_ROOT_HOST=%
+    ports:
+      - "3306:3306"
+    volumes:
+      - datavolume:/var/run/mysqld
+    networks:
+      three_network:
+          ipv4_address: 172.29.0.4
+  
+  three.redis:
+    container_name: three.redis
+    image: redis:6.0.6
+    expose:
+      - "6379"
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis:/data
+    networks:
+      three_network:
+          ipv4_address: 172.29.0.6
+
+volumes:
+  datavolume: {}
+  redis: {}
+
+networks:
+  three_network:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.29.0.0/16
