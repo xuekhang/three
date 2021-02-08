@@ -2,7 +2,6 @@
 {% block content %}
 
 <div class="col-sm text-center">
-  <h1>SCATEGOY</h1>
 </div>
 
 <form>
@@ -19,8 +18,8 @@
       <label class="form-check-label" for="exampleCheck1">Check me out</label>
     </div> -->
   <div class="col-md-12 text-center">
-    <button type="submit" class="btn btn-primary">Create Game</button>
-    <button type="submit" class="btn btn-primary">Join Game</button>
+    <a type="button" class="btn btn-primary" href="{% url 'config' %}">Create Game</a>
+    <a type="button" class="btn btn-primary" href="{% url 'board' %}">Join Game</a>
   </div>
 </form>
 
