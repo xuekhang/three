@@ -1,0 +1,16 @@
+body {
+    color: #333333;
+    padding-top: 62px;
+    /* background-color: #121212; */
+  }
+
+
+.btn-primary{
+      background-color: #013220 !important;
+  }
+
+@media (min-width: 400px) {
+    .container{
+        max-width: 400px;
+    }
+}
