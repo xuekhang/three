@@ -1,11 +1,20 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+import random
 
 # Create your views here.
 def home(request):
-    return render(request, 'game/home.html', {'title':'home'})
+    context = {'title':'home'}
+    myList = [1,2,3]
+
+    if 1==random.choice(myList):
+        return HttpResponse('<h1> hello world </h1>')
+
+    return render(request, 'game/home.html', context)
 
 def config(request):
-    return render(request, 'game/config.html', {'title':'config'})
+    context = {'title':'config'}
+    return render(request, 'game/config.html', context)
 
 def board(request):
     return render(request, 'game/board.html', {'title':'board'})
