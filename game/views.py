@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import random
+import logging
 
 # Create your views here.
 def home(request):
     context = {'title':'home'}
-    myList = [1,2,3]
+    myList = [1,2]
 
     if 1==random.choice(myList):
         return HttpResponse('<h1> hello world </h1>')
