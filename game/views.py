@@ -8,7 +8,7 @@ def home(request):
     context = {'title':'home'}
     myList = [1,2]
 
-    if 1==random.choice(myList):
+    if request.method == 'POST':
         return HttpResponse('<h1> hello world </h1>')
 
     return render(request, 'game/home.html', context)
