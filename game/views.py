@@ -9,7 +9,7 @@ def home(request):
     myList = [1,2]
 
     if request.method == 'POST':
-        return HttpResponse('<h1> hello world </h1>')
+        return render(request, 'game/config.html', context)
 
     return render(request, 'game/home.html', context)
 
