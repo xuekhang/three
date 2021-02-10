@@ -4,7 +4,8 @@
   <div class="col-sm text-center">
   </div>
 
-  <form>
+  <form method="POST">
+    {% csrf_token %}
     <div class="form-group">
       <label for="playerName">Player Name</label>
       <input type="text" class="form-control" id="playerName">
@@ -18,7 +19,7 @@
       <label class="form-check-label" for="exampleCheck1">Check me out</label>
     </div> -->
     <div class="col-md-12 text-center">
-      <button type="submit" class="btn btn-primary" href="{% url 'config' %}">Create Game</button>
+      <button type="submit" class="btn btn-primary" href="{% url 'config' %}" >Create Game</button>
       <a type="button" class="btn btn-primary" href="{% url 'board' %}">Join Game</a>
     </div>
   </form>
