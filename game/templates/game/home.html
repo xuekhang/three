@@ -3,7 +3,6 @@
 <div class="container-home" style="margin: auto;">
   <div class="col-sm text-center">
   </div>
-
   <form method="POST">
     {% csrf_token %}
     <div class="form-group">
@@ -14,10 +13,6 @@
       <label for="gameCode">Game Code</label>
       <input type="text" class="form-control" id="gameCode">
     </div>
-    <!-- <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div> -->
     <div class="col-md-12 text-center">
       <button type="submit" class="btn btn-primary" href="{% url 'config' %}" >Create Game</button>
       <a type="button" class="btn btn-primary" href="{% url 'board' %}">Join Game</a>
