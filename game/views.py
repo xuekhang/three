@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import ConfigForm
 import random
@@ -13,7 +13,7 @@ def home(request):
         'title':'home'}   
 
     if request.method == 'POST':
-        return render(request, 'game/config.html', context)
+        return redirect('config')
     else:
         form = ConfigForm()
 
