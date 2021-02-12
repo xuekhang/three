@@ -1,9 +1,28 @@
 {% extends "game/base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
 
 <div class="">
 
 </div>
 <div>this is the config page</div>
+<form method="POST">
+    {% csrf_token %}
+    <fieldset class="form-group">
+      <!-- <legend class="border-bottom mb-4">test</legend> -->
+      {{ form|crispy }}
+  </fieldset>
+    <!-- <div class="form-group">
+      <label for="playerName">Player Name</label>
+      <input type="text" class="form-control" id="playerName">
+    </div>
+    <div class="form-group">
+      <label for="gameCode">Game Code</label>
+      <input type="text" class="form-control" id="gameCode">
+    </div> -->
+    <div class="col-md-12 text-center">
+      <button type="submit" class="btn btn-primary" href="{% url 'config' %}" >Create Game</button>
+    </div>
+  </form>
 
 {% endblock content%}

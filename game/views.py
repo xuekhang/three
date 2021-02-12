@@ -23,7 +23,12 @@ def home(request):
     return render(request, 'game/home.html', context)
 
 def config(request):
-    context = {'title':'config'}
+    
+    form = ConfigForm()
+
+    context = {
+        'title':'config',
+        'form':form}
     return render(request, 'game/config.html', context)
 
 def board(request):
