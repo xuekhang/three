@@ -3,34 +3,44 @@
 {% block content %}
 
 <div class="container-home" style="margin: auto;">
-<form method="POST">
+
+  <form method="POST">
     {% csrf_token %}
-  <div class="fieldWrapper">
-    {{ form.game.errors }}
-    <label for="{{form.game.id_for_label}}">Game Code</label>
-    <div>{{ form.game }} </div>
-  </div>
-  <div class="fieldWrapper">
-    {{ form.num_of_players.errors }}
-    <label for="{{form.num_of_players.id_for_label}}">Number of Players</label>
-    <div>{{ form.num_of_players }} </div>
-  </div>
-  <div class="fieldWrapper">
-    {{ form.num_of_rounds.errors }}
-    <label for="{{form.num_of_rounds.id_for_label}}">Number of Rounds</label>
-    <div>{{ form.num_of_rounds }} </div>
-  </div>
-<div>
-  <label for="">Letters to Include: </label>
-  {% for value, text in form.letters.field.choices %}
-    <input id="letters{{ forloop.counter0 }}" name="{{ form.letters.name }}" type="checkbox" value="{{ value }}"{% if value in checked_letters %} checked="checked"{% endif %}>
-    <label>{{ text }}</label>
-{% endfor %}
-</div>
+    <!-- <fieldset class="form-group">      
+      {{ form|crispy }}
+    </fieldset> -->
+    <fieldset class="form-group">
+    <div class="fieldWrapper">
+      {{ form.game.errors }}
+      <label for="{{form.game.id_for_label}}">Game Code</label>
+      <div>{{ form.game }} </div>
+    </div>
+    <div class="fieldWrapper">
+      {{ form.num_of_players.errors }}
+      <label for="{{form.num_of_players.id_for_label}}">Number of Players</label>
+      <div>{{ form.num_of_players }} </div>
+    </div>
+    <div class="fieldWrapper">
+      {{ form.num_of_rounds.errors }}
+      <label for="{{form.num_of_rounds.id_for_label}}">Number of Rounds</label>
+      <div>{{ form.num_of_rounds }} </div>
+    </div>
+
+    <div>
+      <label for="">Letters to Include: </label>
+      {% for value, text in form.letters.field.choices %}
+
+      <input id="letters{{ forloop.counter0 }}" name="{{ form.letters.name }}" type="checkbox" 
+        value="{{ value }}" {% if value in checked_letters %} checked="checked" {% endif %}>
+      <label>{{ text }}</label>
+
+      {% endfor %}
+    </div>
+
     <br>
     <div class="col-md-12 text-center">
-      <button type="submit" class="btn btn-primary" href="{% url 'config' %}" >Create Game</button>
-    </div>
+      <button type="submit" class="btn btn-primary" href="{% url 'config' %}">Create Game</button>
+    </div></fieldset>
   </form>
 </div>
 
