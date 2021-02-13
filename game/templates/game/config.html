@@ -3,16 +3,11 @@
 {% block content %}
 
 <div class="container-home" style="margin: auto;">
-<!-- <div>this is the config page</div> -->
 <form method="POST">
     {% csrf_token %}
-    <!-- <fieldset class="form-group">
-      
-      {{ form|crispy }}
-  </fieldset> -->
   <div class="fieldWrapper">
     {{ form.game.errors }}
-    <label for="{{form.game.id_for_label}}">Game</label>
+    <label for="{{form.game.id_for_label}}">Game Code</label>
     <div>{{ form.game }} </div>
   </div>
   <div class="fieldWrapper">
@@ -25,21 +20,13 @@
     <label for="{{form.num_of_rounds.id_for_label}}">Number of Rounds</label>
     <div>{{ form.num_of_rounds }} </div>
   </div>
-  <!-- <div class="fieldWrapper">
-    {{ form.letters.errors }}
-    <label for="{{form.letters.id_for_label}}">Number of Players</label>
-    <div>{{ form.letters }} </div>
-  </div> -->
 <div>
   <label for="">Letters to Include: </label>
   {% for value, text in form.letters.field.choices %}
-
     <input id="letters{{ forloop.counter0 }}" name="{{ form.letters.name }}" type="checkbox" value="{{ value }}"{% if value in checked_letters %} checked="checked"{% endif %}>
     <label>{{ text }}</label>
-
 {% endfor %}
 </div>
-
     <br>
     <div class="col-md-12 text-center">
       <button type="submit" class="btn btn-primary" href="{% url 'config' %}" >Create Game</button>
