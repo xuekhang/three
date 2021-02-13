@@ -15,13 +15,6 @@ class Player(models.Model):
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
 
-
-class Car(models.Model):
-    name = models.CharField(max_length=20)
-    color= models.CharField(max_length=2)
-    def __str__(self):
-        return self.name + '    ' + self.color
-
 class Book(models.Model):
     BOOK_CHOICES = (
         ('A','A'),

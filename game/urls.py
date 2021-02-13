@@ -9,6 +9,5 @@ from . import views
 urlpatterns = [
     path('', views.home, name='home'),
     path('config/', views.config, name='config'),
-    path('board/', views.board, name='board'),
-    path('car/', views.car, name='car')
+    path('board/', views.board, name='board')
 ]

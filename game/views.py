@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import ConfigForm, CarAdminForm
+from .forms import ConfigForm
 import random
 import logging
 
@@ -33,11 +33,3 @@ def config(request):
 
 def board(request):
     return render(request, 'game/board.html', {'title':'board'})
-
-def car(request):
-    form = CarAdminForm()
-    context = {
-        'title':'car test',
-        'form': form
-    }
-    return render(request, 'game/car.html', context)
