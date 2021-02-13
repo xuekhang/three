@@ -3,16 +3,18 @@
 {% block content %}
 
 <div class="container-home" style="margin: auto;">
- 
-
-
-<div>this is the config page</div>
+<!-- <div>this is the config page</div> -->
 <form method="POST">
     {% csrf_token %}
     <!-- <fieldset class="form-group">
       
       {{ form|crispy }}
   </fieldset> -->
+  <div class="fieldWrapper">
+    {{ form.game.errors }}
+    <label for="{{form.game.id_for_label}}">Game</label>
+    <div>{{ form.game }} </div>
+  </div>
   <div class="fieldWrapper">
     {{ form.num_of_players.errors }}
     <label for="{{form.num_of_players.id_for_label}}">Number of Players</label>

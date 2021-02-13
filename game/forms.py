@@ -7,5 +7,5 @@ class ConfigForm(forms.ModelForm):
     # letter = forms.MultipleChoiceField(choices= LETTERS)
     class Meta:
         model = Config
-        fields = ['num_of_players','num_of_rounds','letters']
+        fields = ['num_of_players','num_of_rounds','letters','game']
 

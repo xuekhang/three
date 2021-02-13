@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib import messages
 from .forms import ConfigForm
 import random
 import logging
@@ -23,7 +24,12 @@ def home(request):
     return render(request, 'game/home.html', context)
 
 def config(request):
-    
+    if request.method == 'POST':
+        form = ConfigForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'Game created')
+            return redirect('home')
     form = ConfigForm()
 
     context = {
