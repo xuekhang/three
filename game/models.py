@@ -9,11 +9,21 @@ class Game(models.Model):
         return self.code
 
 class Config(models.Model):
+    letter_choices = (
+        ('A','A'), ('B','B'), ('C','C'), ('D','D'),
+        ('D','D'), ('E','E'), ('F','F'), ('G','G'),
+        ('H','H'), ('I','I'), ('J','J'), ('K','K'),
+        ('L','L'), ('M','M'), ('N','N'), ('O','O'),
+        ('P','P'), ('Q','Q'), ('R','R'), ('S','S'),
+        ('T','T'), ('U','U'), ('V','V'), ('W','W'),
+        ('X','X'), ('Y','Y'), ('Z','Z')
+    )
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
-    num_of_player = models.IntegerField()
-    letter = models.CharField(max_length=1)
+    num_of_players = models.IntegerField()
+    num_of_rounds = models.IntegerField()
+    letters = MultiSelectField(choices=letter_choices)
     def __str__(self):
-        return self.game.code + '   ' + str(self.num_of_player)
+        return self.game.code + '   ' + str(self.num_of_players)
 
 class Player(models.Model):
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
