@@ -48,12 +48,11 @@ def config(request):
     Game.objects.create(code=new_game_code)
     # game = Game.objects.get(code=new_game_code)
     default_letters = ['A','B']
-    form = ConfigForm({'num_of_players':6})
+    form = ConfigForm(initial={'num_of_rounds':6})
     context = {
         'title':'config',
         'form':form,
-        'game_code': new_game_code,
-        'default_letters': default_letters}
+        'game_code': new_game_code}
     return render(request, 'game/config.html', context)
 
 def board(request, game_code):
