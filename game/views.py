@@ -48,7 +48,8 @@ def config(request):
     context = {
         'title':'config',
         'form':form,
-        'game_code': new_game_code}
+        'game_code': new_game_code
+        }
     return render(request, 'game/config.html', context)
 
 def board(request, game_code=''):
