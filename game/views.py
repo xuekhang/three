@@ -47,12 +47,13 @@ def config(request):
     new_game_code = get_random_string(length=6).upper()
     Game.objects.create(code=new_game_code)
     # game = Game.objects.get(code=new_game_code)
-    default_letters = 'A'
-    form = ConfigForm({'letters':default_letters})
+    default_letters = ['A','B']
+    form = ConfigForm()
     context = {
         'title':'config',
         'form':form,
-        'game_code': new_game_code}
+        'game_code': new_game_code,
+        'default_letters': default_letters}
     return render(request, 'game/config.html', context)
 
 def board(request, game_code):

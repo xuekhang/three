@@ -34,8 +34,12 @@
         <label for="">Letters to Include: </label>
         {% for value, text in form.letters.field.choices %}
 
-        <input id="letters{{ forloop.counter0 }}" name="{{ form.letters.name }}" type="checkbox" 
-        value="{{ value }}" {% if value in checked_letters %} checked="checked" {% endif %}>
+        <input id="letters{{ forloop.counter0 }}" name="{{ form.letters.name }}" type="checkbox" value="{{ value }}" 
+        {% with 'A B C D E F G H I J K L M N O P R S T W' as list %}
+        {% if value in list.split %} 
+        checked="checked" 
+        {% endif %}
+        {% endwith %}        >
         <label>{{ text }}</label>
 
         {% endfor %}
