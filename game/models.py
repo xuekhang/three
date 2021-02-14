@@ -26,9 +26,10 @@ class Config(models.Model):
     def __str__(self):
         return self.game_code.code + '   ' + str(self.num_of_players)
 
-class Player(models.Model):
-    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+class Player(models.Model):    
     name = models.CharField(max_length=100)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    is_host = models.BooleanField()
     def __str__(self):
         return self.name
 class Category(models.Model):
