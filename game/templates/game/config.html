@@ -29,7 +29,11 @@
         <label for="{{form.num_of_rounds.id_for_label}}">Number of Rounds</label>
         <div>{{ form.num_of_rounds }} </div>
       </div>
-
+      <div class="fieldWrapper">
+        {{ form.num_of_cat_per_round.errors }}
+        <label for="{{form.num_of_cat_per_round.id_for_label}}">Number of Rounds</label>
+        <div>{{ form.num_of_cat_per_round }} </div>
+      </div>
       <div>
         <label for="">Letters to Include: </label>
         {% for value, text in form.letters.field.choices %}
@@ -47,7 +51,7 @@
 
       <br>
       <div class="col-md-12 text-center">
-        <button type="submit" class="btn btn-primary" href="{% url 'config' %}">Create Game</button>
+        <button type="submit" class="btn btn-primary" >Create Game</button>
       </div>
     </fieldset>
   </form>

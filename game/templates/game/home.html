@@ -7,16 +7,16 @@
   <form method="POST">
     {% csrf_token %}
     <div class="form-group">
-      <label for="playerName">Player Name</label>
-      <input type="text" class="form-control" id="playerName">
+      <label for="player_name">Player Name</label>
+      <input type="text" class="form-control" id="player_name">
     </div>
     <div class="form-group">
-      <label for="gameCode">Game Code</label>
-      <input type="text" class="form-control" id="gameCode">
+      <label for="game_code">Game Code</label>
+      <input type="text" class="form-control" id="game_code">
     </div>
     <div class="col-md-12 text-center">
       <button type="submit" class="btn btn-primary" href="{% url 'config' %}" >Create Game</button>
-      <a type="button" class="btn btn-primary" href="{% url 'board' 1 %}">Join Game</a>
+      <a type="button" class="btn btn-primary" href="{% url 'board' %}">Join Game</a>
     </div>
   </form>
 </div>

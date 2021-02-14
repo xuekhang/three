@@ -21,6 +21,7 @@ class Config(models.Model):
     game_code = models.OneToOneField(Game, on_delete=models.CASCADE)
     num_of_players = models.IntegerField()
     num_of_rounds = models.IntegerField()
+    num_of_cat_per_round = models.IntegerField()
     letters = MultiSelectField(choices=letter_choices)
     def __str__(self):
         return self.game.code + '   ' + str(self.num_of_players)

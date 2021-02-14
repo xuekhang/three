@@ -42,7 +42,8 @@ def config(request):
     Game.objects.create(code=new_game_code)
     form = ConfigForm(initial={
         'num_of_players' : 6, 
-        'num_of_rounds' : 4
+        'num_of_rounds' : 4,
+        'num_of_cat_per_round' : 10
         })
     context = {
         'title':'config',
@@ -50,13 +51,19 @@ def config(request):
         'game_code': new_game_code}
     return render(request, 'game/config.html', context)
 
-def board(request, game_code):
+def board(request, game_code=''):
+    # if game_code=='':
+    #     game_code = request.GET.get('game_code')
+    #     redirect('board', game_code)
     try:
-        game = Game.objects.get(code=game_code)
+        Game.objects.get(code=game_code)        
     except:
         return redirect('home')
-    context = {
-        'title':'board',
-        'game_code': game_code
-    }
+    if game_code != '':
+        game = Game.objects.get(code=game_code)
+        context = {
+            'title':'board',
+            'game_code': game_code
+        }
+    
     return render(request, 'game/board.html', context)

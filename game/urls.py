@@ -9,5 +9,6 @@ from . import views
 urlpatterns = [
     path('', views.home, name='home'),
     path('config/', views.config, name='config'),
+    path('board/', views.board, name='board'),    
     path('board/<game_code>/', views.board, name='board')
 ]

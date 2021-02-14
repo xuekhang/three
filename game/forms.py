@@ -7,5 +7,5 @@ class ConfigForm(forms.ModelForm):
 
     class Meta:
         model = Config
-        fields = ['num_of_players','num_of_rounds','letters']
+        fields = ['num_of_players','num_of_rounds','num_of_cat_per_round','letters']
 
