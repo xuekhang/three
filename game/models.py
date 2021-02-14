@@ -24,19 +24,14 @@ class Config(models.Model):
     num_of_cat_per_round = models.IntegerField()
     letters = MultiSelectField(choices=letter_choices)
     def __str__(self):
-        return self.game.code + '   ' + str(self.num_of_players)
+        return self.game_code.code + '   ' + str(self.num_of_players)
 
 class Player(models.Model):
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     def __str__(self):
         return self.name
-
-class Book(models.Model):
-    BOOK_CHOICES = (
-        ('A','A'),
-        ('B','B'),
-        ('C','C'),
-        ('D','D')
-    )
-    title = MultiSelectField(choices=BOOK_CHOICES)
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
