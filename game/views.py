@@ -9,6 +9,8 @@ from django.utils.crypto import get_random_string
 import random
 import logging
 
+logger = logging.getLogger(__name__)
+
 # Create your views here.
 def home(request):
     
@@ -32,6 +34,8 @@ def config(request):
         form = ConfigForm(request.POST)
         game_code = request.POST.get('game_code')
         game = Game.objects.get(code=game_code)
+        test = request.POST.get('letters')
+        logger.info(test)
 
         if form.is_valid():
             obj = form.save(commit=False)
@@ -43,7 +47,8 @@ def config(request):
     new_game_code = get_random_string(length=6).upper()
     Game.objects.create(code=new_game_code)
     # game = Game.objects.get(code=new_game_code)
-    form = ConfigForm()
+    default_letters = 'A'
+    form = ConfigForm({'letters':default_letters})
     context = {
         'title':'config',
         'form':form,
