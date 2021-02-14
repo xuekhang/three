@@ -1,22 +1,33 @@
-body {
+/* body {
     color: #333333;
     padding-top: 62px;
-    /* background-color: #121212; */
   }
 
 
-.btn-primary{
-      background-color: #013220 !important;
-  }
 
-.navlink-center{
+
+
+ */
+ 
+ .navbar{
+   height: 50px;
+ }
+ .navlink-center{
   float: none;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
+ .btn-primary{
+      background-color: #013220 !important;
+      border-color: #013220;
+  }
 
+  .btn-primary:focus{
+    box-shadow: #013220;
+    outline: #013220;
+  }
 @media (min-width: 400px) {
     .container-home{
         max-width: 400px;

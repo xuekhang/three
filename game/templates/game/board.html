@@ -1,10 +1,36 @@
 {% extends "game/base.html" %}
 {% block content %}
 
-<div class="col-sm text-center">
-
+<div class="container-home" style="margin: auto;">
+    <div>Lets Play</div>
+    <div>Game Room Code: {{ game_code }}</div>
+    <div style="background-color: blue;">blue</div>
 </div>
-<div>Lets Play</div>
-<div>Game Room Code: {{ game_code }}</div>
 
+
+<div class="container">
+    <div class="row">
+        <div class="col-4" style="background-color: fuchsia;">
+            <div class="row">letter</div>
+            <div class="row">time</div>
+            <div class="row">edit settings</div>
+        </div>
+        <div class="col-8" style="background-color: gold;">
+            <h4>Categories</h4>
+            <ol>
+                <li>test</li>
+                <li>test</li>
+                <li>test</li>
+                <li>test</li>
+                <li>test</li>
+                <li>test</li>
+                <li>test</li>
+                <li>test</li>
+                <li>test</li>
+                <li>test</li>
+            </ol>
+        </div>
+
+    </div>
+</div>
 {% endblock content%}
