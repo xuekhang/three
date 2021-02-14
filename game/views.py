@@ -40,7 +40,7 @@ def config(request):
             messages.success(request, f'Game created')
             return redirect('board', game_code)
     
-    new_game_code = get_random_string(length=6)
+    new_game_code = get_random_string(length=6).upper()
     Game.objects.create(code=new_game_code)
     # game = Game.objects.get(code=new_game_code)
     form = ConfigForm()
