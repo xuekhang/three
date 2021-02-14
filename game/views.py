@@ -48,7 +48,7 @@ def config(request):
     Game.objects.create(code=new_game_code)
     # game = Game.objects.get(code=new_game_code)
     default_letters = ['A','B']
-    form = ConfigForm()
+    form = ConfigForm({'num_of_players':6})
     context = {
         'title':'config',
         'form':form,
