@@ -9,16 +9,11 @@ from django.utils.crypto import get_random_string
 import random
 import logging
 
-logger = logging.getLogger(__name__)
-
 # Create your views here.
-def home(request):
-    
+def home(request):    
     myList = [1,2]
-
     context = {
         'title':'home'}   
-
     if request.method == 'POST':
         return redirect('config')
     else:
@@ -35,7 +30,6 @@ def config(request):
         game_code = request.POST.get('game_code')
         game = Game.objects.get(code=game_code)
         test = request.POST.get('letters')
-        logger.info(test)
 
         if form.is_valid():
             obj = form.save(commit=False)
@@ -46,9 +40,10 @@ def config(request):
     
     new_game_code = get_random_string(length=6).upper()
     Game.objects.create(code=new_game_code)
-    # game = Game.objects.get(code=new_game_code)
-    default_letters = ['A','B']
-    form = ConfigForm(initial={'num_of_rounds':6})
+    form = ConfigForm(initial={
+        'num_of_players' : 6, 
+        'num_of_rounds' : 4
+        })
     context = {
         'title':'config',
         'form':form,
@@ -56,6 +51,12 @@ def config(request):
     return render(request, 'game/config.html', context)
 
 def board(request, game_code):
+    try:
+        game = Game.objects.get(code=game_code)
+    except:
+        return redirect('home')
+    # if game is None:
+    #     return redirect('home')
     context = {
         'title':'board',
         'game_code': game_code
