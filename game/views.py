@@ -55,8 +55,6 @@ def board(request, game_code):
         game = Game.objects.get(code=game_code)
     except:
         return redirect('home')
-    # if game is None:
-    #     return redirect('home')
     context = {
         'title':'board',
         'game_code': game_code
