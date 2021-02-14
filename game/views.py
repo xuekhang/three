@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
+from django.urls import reverse
+from urllib.parse import urlencode
 from .forms import ConfigForm
 from .models import Game, Config, Player
 from django.utils.crypto import get_random_string
@@ -31,7 +33,7 @@ def config(request):
         if form.is_valid():
             form.save()
             messages.success(request, f'Game created')
-            return redirect('home')
+            return redirect('board')
     
     new_game_code = get_random_string(length=6)
     Game.objects.create(code=new_game_code)
@@ -42,5 +44,9 @@ def config(request):
         'form':form}
     return render(request, 'game/config.html', context)
 
-def board(request):
-    return render(request, 'game/board.html', {'title':'board'})
+def board(request, game_code):
+    context = {
+        'title':'board',
+        'game_code': game_code
+    }
+    return render(request, 'game/board.html', context)
