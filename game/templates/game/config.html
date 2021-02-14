@@ -10,38 +10,42 @@
       {{ form|crispy }}
     </fieldset> -->
     <fieldset class="form-group">
-    <div class="fieldWrapper" >
-      {{ form.game_code.errors }}
-      <label for="{{form.game_code.id_for_label}}">Game Code</label>
-      <div>{{ form.game_code }} </div>
-    </div>
-    <div class="fieldWrapper">
-      {{ form.num_of_players.errors }}
-      <label for="{{form.num_of_players.id_for_label}}">Number of Players</label>
-      <div>{{ form.num_of_players }} </div>
-    </div>
-    <div class="fieldWrapper">
-      {{ form.num_of_rounds.errors }}
-      <label for="{{form.num_of_rounds.id_for_label}}">Number of Rounds</label>
-      <div>{{ form.num_of_rounds }} </div>
-    </div>
+      <div class="fieldWrapper">
+        <label for="game_code">Game Code</label>
+        <input type="text" id="game_code_id" name="game_code" readonly value="{{game_code}}" style="border-style: hidden;">
+      </div>
+      <!-- <div class="fieldWrapper">
+        {{ form.game_code.errors }}
+        <label for="{{form.game_code.id_for_label}}">Game Code</label>
+        <div>{{ form.game_code }} </div>
+      </div> -->
+      <div class="fieldWrapper">
+        {{ form.num_of_players.errors }}
+        <label for="{{form.num_of_players.id_for_label}}">Number of Players</label>
+        <div>{{ form.num_of_players }} </div>
+      </div>
+      <div class="fieldWrapper">
+        {{ form.num_of_rounds.errors }}
+        <label for="{{form.num_of_rounds.id_for_label}}">Number of Rounds</label>
+        <div>{{ form.num_of_rounds }} </div>
+      </div>
 
-    <div>
-      <label for="">Letters to Include: </label>
-      {% for value, text in form.letters.field.choices %}
+      <div>
+        <label for="">Letters to Include: </label>
+        {% for value, text in form.letters.field.choices %}
 
-      <input id="letters{{ forloop.counter0 }}" name="{{ form.letters.name }}" type="checkbox" 
+        <input id="letters{{ forloop.counter0 }}" name="{{ form.letters.name }}" type="checkbox" 
         value="{{ value }}" {% if value in checked_letters %} checked="checked" {% endif %}>
-      <label>{{ text }}</label>
+        <label>{{ text }}</label>
 
-      {% endfor %}
-    </div>
+        {% endfor %}
+      </div>
 
-    <br>
-    <div class="col-md-12 text-center">
-      <button type="submit" class="btn btn-primary" href="{% url 'config' %}">Create Game</button>
-    </div>
-  </fieldset>
+      <br>
+      <div class="col-md-12 text-center">
+        <button type="submit" class="btn btn-primary" href="{% url 'config' %}">Create Game</button>
+      </div>
+    </fieldset>
   </form>
 </div>
 

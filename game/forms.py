@@ -10,7 +10,7 @@ class ConfigForm(forms.ModelForm):
     #     self.fields['game_code'].widget.attrs['disabled'] = True
     class Meta:
         model = Config
-        fields = ['num_of_players','num_of_rounds','letters','game_code']
+        fields = ['num_of_players','num_of_rounds','letters']
         # widgets   = {
         #     'game_code' : forms.Textarea(attrs={'cols': 80, 'rows': 20}),
 

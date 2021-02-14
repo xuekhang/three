@@ -30,18 +30,24 @@ def home(request):
 def config(request):
     if request.method == 'POST':
         form = ConfigForm(request.POST)
+        game_code = request.POST.get('game_code')
+        game = Game.objects.get(code=game_code)
+
         if form.is_valid():
-            form.save()
+            obj = form.save(commit=False)
+            obj.game_code = game
+            obj.save()
             messages.success(request, f'Game created')
-            return redirect('board')
+            return redirect('board', game_code)
     
     new_game_code = get_random_string(length=6)
     Game.objects.create(code=new_game_code)
-    game = Game.objects.get(code=new_game_code)
-    form = ConfigForm({'game_code':game})
+    # game = Game.objects.get(code=new_game_code)
+    form = ConfigForm()
     context = {
         'title':'config',
-        'form':form}
+        'form':form,
+        'game_code': new_game_code}
     return render(request, 'game/config.html', context)
 
 def board(request, game_code):
