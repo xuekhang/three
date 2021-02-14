@@ -10,10 +10,10 @@
       {{ form|crispy }}
     </fieldset> -->
     <fieldset class="form-group">
-    <div class="fieldWrapper">
-      {{ form.game.errors }}
-      <label for="{{form.game.id_for_label}}">Game Code</label>
-      <div>{{ form.game }} </div>
+    <div class="fieldWrapper" >
+      {{ form.game_code.errors }}
+      <label for="{{form.game_code.id_for_label}}">Game Code</label>
+      <div>{{ form.game_code }} </div>
     </div>
     <div class="fieldWrapper">
       {{ form.num_of_players.errors }}

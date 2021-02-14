@@ -18,7 +18,7 @@ class Config(models.Model):
         ('T','T'), ('U','U'), ('V','V'), ('W','W'),
         ('X','X'), ('Y','Y'), ('Z','Z')
     )
-    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    game_code = models.OneToOneField(Game, on_delete=models.CASCADE)
     num_of_players = models.IntegerField()
     num_of_rounds = models.IntegerField()
     letters = MultiSelectField(choices=letter_choices)
