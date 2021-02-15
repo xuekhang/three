@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.urls import reverse
 from urllib.parse import urlencode
 from .forms import ConfigForm
-from .models import Game, Config, Player
+from .models import Game, Config, Player, Category
 from django.utils.crypto import get_random_string
 import random
 import logging
@@ -62,9 +62,16 @@ def board(request, game_code=''):
         return redirect('home')
     if game_code != '':
         game = Game.objects.get(code=game_code)
+        # all_categories = Category.objects.all()
+        # x = [1,2,3,4]
+        # random.shuffle(x)
+        all_categories = sorted(Category.objects.all(), key=lambda x: random.random())
+        categories = all_categories[:10]
+
         context = {
             'title':'board',
-            'game_code': game_code
+            'game_code': game_code,
+            'categories': categories
         }
     
     return render(request, 'game/board.html', context)

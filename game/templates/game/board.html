@@ -18,16 +18,11 @@
         <div class="col-8" style="background-color: gold;">
             <h4>Categories</h4>
             <ol>
-                <li>test</li>
-                <li>test</li>
-                <li>test</li>
-                <li>test</li>
-                <li>test</li>
-                <li>test</li>
-                <li>test</li>
-                <li>test</li>
-                <li>test</li>
-                <li>test</li>
+                {% for category in categories%}
+
+                <li>{{category}}</li>
+
+                {% endfor %}
             </ol>
         </div>
 
