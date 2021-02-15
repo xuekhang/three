@@ -78,6 +78,7 @@ def board(request, game_code=''):
     try:
         Game.objects.get(code=game_code)        
     except:
+        messages.error(request, f'Game code does not exist')
         return redirect('home')
     if game_code != '':
         game = Game.objects.get(code=game_code)
