@@ -40,3 +40,17 @@ class GlobalCategory(models.Model):
 class LocalCategory(models.Model):
     game = models.OneToOneField(Game, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
+
+class Round(models.Model):
+    number = models.IntegerField()
+    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    def __str__(self):
+        return str(self.game) + ' Round ' + str(self.number)
+
+class CategoryInRound(models.Model):
+    name = models.CharField(max_length=100)
+    round = models.ForeignKey(Round, on_delete=models.CASCADE)
+    def __str__(self):
+        return str(self.round) + ' Cat: ' +self.name

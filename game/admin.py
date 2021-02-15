@@ -4,7 +4,9 @@ from .models import (
     Game, 
     Player,
     GlobalCategory,
-    LocalCategory)
+    LocalCategory,
+    Round,
+    CategoryInRound)
 
 # Register your models here.
 admin.site.register(Config)
@@ -13,3 +15,5 @@ admin.site.register(Player)
 
 admin.site.register(GlobalCategory)
 admin.site.register(LocalCategory)
+admin.site.register(Round)
+admin.site.register(CategoryInRound)
