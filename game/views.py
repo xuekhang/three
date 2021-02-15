@@ -4,7 +4,14 @@ from django.contrib import messages
 from django.urls import reverse
 from urllib.parse import urlencode
 from .forms import ConfigForm
-from .models import Game, Config, Player, GlobalCategory
+from .models import (
+    Game, 
+    Config, 
+    Player, 
+    GlobalCategory, 
+    Round, 
+    CategoryInRound
+    )
 from django.utils.crypto import get_random_string
 import random
 import logging
@@ -33,6 +40,13 @@ def config(request):
         form = ConfigForm(request.POST)
         game_code = request.POST.get('game_code')
         game = Game.objects.get(code=game_code)
+
+        # todo: create the rounds
+        num_of_rounds = int(request.POST.get('num_of_rounds'))
+        for x in range(1,num_of_rounds+1):
+            round = Round(game=game, number=x)
+            round.save()
+        # todo: create the categories per round
 
         if form.is_valid():
             obj = form.save(commit=False)
