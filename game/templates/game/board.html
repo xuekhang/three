@@ -26,13 +26,29 @@
         </div>
         <div class="col-8" style="border-style: solid; margin: 5px;">
             <h4>Categories</h4>
-            <ol>
-                {% for category in categories%}
-
-                <li>{{category}}</li>
-
-                {% endfor %}
-            </ol>
+            <form action="POST">
+                <ol>
+                    {% for category in categories%}
+                    <li>
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="text-left">
+                                    {{category}}
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <div>
+                                    <input type="text" size="45">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ol>
+                <div class="col-md-12 text-right">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
         </div>
 
     </div>
