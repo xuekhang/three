@@ -26,6 +26,7 @@ def home(request):
         if game_code != '':
             return redirect('board', game_code)
         else:
+            messages.error(request, 'Game code does not exist')
             return redirect('home')
     else:
         form = ConfigForm()
