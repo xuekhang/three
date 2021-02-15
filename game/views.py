@@ -8,7 +8,8 @@ from .models import (
     Game, 
     Config, 
     Player, 
-    GlobalCategory, 
+    GlobalCategory,
+    LocalCategory,
     Round, 
     CategoryInRound
     )
@@ -43,11 +44,33 @@ def config(request):
         game = Game.objects.get(code=game_code)
 
         # todo: create the rounds
+        
+        all_letters = str(Config.objects.values_list('letters',flat=True)[0])
+        letters = list(all_letters.split(","))
+
+        all_categories = []
+        global_categories = GlobalCategory.objects.all()
+        for category in global_categories:
+            all_categories.append(category.name)
+        local_categories = LocalCategory.objects.filter(game=game)
+        for category in local_categories:
+            all_categories.append(category.name)
+
         num_of_rounds = int(request.POST.get('num_of_rounds'))
-        for x in range(1,num_of_rounds+1):
-            round = Round(game=game, number=x)
+        num_of_cat_per_round = int(request.POST.get('num_of_cat_per_round'))
+        for i in range(1, num_of_rounds+1):            
+            round = Round(
+                game = game, 
+                number = i, 
+                letter = random.choice(letters)
+                )
             round.save()
-        # todo: create the categories per round
+            for j in range(1, num_of_cat_per_round+1):
+                categoryInRound = CategoryInRound(
+                    name = random.choice(all_categories),
+                    round = round
+                    )
+                categoryInRound.save()
 
         if form.is_valid():
             obj = form.save(commit=False)
@@ -85,9 +108,8 @@ def board(request, game_code=''):
         game = Game.objects.get(code=game_code)
         all_categories = sorted(GlobalCategory.objects.all(), key=lambda x: random.random())
         categories = all_categories[:10]
-        all_letters = Config.objects.values_list('letters',flat=True)[0]
-        test = str(all_letters)
-        letters = list(test.split(","))
+        all_letters = str(Config.objects.values_list('letters',flat=True)[0])
+        letters = list(all_letters.split(","))
 
         context = {
             'title':'board',
