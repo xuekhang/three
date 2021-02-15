@@ -1,14 +1,12 @@
-/* body {
+body {
     color: #333333;
-    padding-top: 62px;
+    /* padding-top: 62px; */
   }
 
-
-
-
-
- */
- 
+ /* .div{
+   padding: 10px !important;
+   margin: 10px !important;
+ } */
  .navbar{
    height: 50px;
  }
@@ -22,6 +20,15 @@
  .btn-primary{
       background-color: #013220 !important;
       border-color: #013220;
+      margin: 2px;
+      border: none;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
   }
 
   .btn-primary:focus{

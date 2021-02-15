@@ -15,7 +15,8 @@ def home(request):
     context = {
         'title':'home'}   
     if request.method == 'POST':
-        return redirect('config')
+        game_code = request.POST.get('game_code')
+        return redirect('board', game_code)
     else:
         form = ConfigForm()
 
@@ -56,6 +57,8 @@ def board(request, game_code=''):
     # if game_code=='':
     #     game_code = request.GET.get('game_code')
     #     redirect('board', game_code)
+    # if request.method == 'POST':
+    #     redirect('www.google.com')
     try:
         Game.objects.get(code=game_code)        
     except:

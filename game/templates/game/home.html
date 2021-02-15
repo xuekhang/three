@@ -8,15 +8,21 @@
     {% csrf_token %}
     <div class="form-group">
       <label for="player_name">Player Name</label>
-      <input type="text" class="form-control" id="player_name">
+      <input type="text" class="form-control" id="player_name" name="player_name">
     </div>
-    <div class="form-group">
+    <div class="fieldWrapper">
       <label for="game_code">Game Code</label>
-      <input type="text" class="form-control" id="game_code">
+      <input type="text" class="form-control" id="game_code" name="game_code">
     </div>
+    <!-- <fieldset class="form-group">
+      <div class="fieldWrapper">
+        <label for="game_code">Game Code</label>
+        <input type="text" id="game_code_id" name="game_code" style="border-style: hidden;">
+      </div>
+    </fieldset> -->
     <div class="col-md-12 text-center">
-      <button type="submit" class="btn btn-primary" href="{% url 'config' %}" >Create Game</button>
-      <a type="button" class="btn btn-primary" href="{% url 'board' %}">Join Game</a>
+      <a type="button" class="btn btn-primary" href="{% url 'config' %}" >Create Game</a>
+      <button type="submit" class="btn btn-primary" href="{% url 'board' %}">Join Game</button>
     </div>
   </form>
 </div>
