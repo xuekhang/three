@@ -18,13 +18,13 @@ class Config(models.Model):
         ('T','T'), ('U','U'), ('V','V'), ('W','W'),
         ('X','X'), ('Y','Y'), ('Z','Z')
     )
-    game_code = models.OneToOneField(Game, on_delete=models.CASCADE)
+    game = models.OneToOneField(Game, on_delete=models.CASCADE)
     num_of_players = models.IntegerField()
     num_of_rounds = models.IntegerField()
     num_of_cat_per_round = models.IntegerField()
     letters = MultiSelectField(choices=letter_choices)
     def __str__(self):
-        return self.game_code.code + '   ' + str(self.num_of_players)
+        return self.game.code + '   ' + str(self.num_of_players)
 
 class Player(models.Model):    
     name = models.CharField(max_length=100)
@@ -32,7 +32,11 @@ class Player(models.Model):
     is_host = models.BooleanField()
     def __str__(self):
         return self.name
-class Category(models.Model):
+class Global_Category(models.Model):
     name = models.CharField(max_length=100)
     def __str__(self):
         return self.name
+
+class Local_Category(models.Model):
+    game = models.OneToOneField(Game, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)

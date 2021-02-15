@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.urls import reverse
 from urllib.parse import urlencode
 from .forms import ConfigForm
-from .models import Game, Config, Player, Category
+from .models import Game, Config, Player, Global_Category
 from django.utils.crypto import get_random_string
 import random
 import logging
@@ -33,11 +33,10 @@ def config(request):
         form = ConfigForm(request.POST)
         game_code = request.POST.get('game_code')
         game = Game.objects.get(code=game_code)
-        test = request.POST.get('letters')
 
         if form.is_valid():
             obj = form.save(commit=False)
-            obj.game_code = game
+            obj.game = game
             obj.save()
             messages.success(request, f'Game created')
             return redirect('board', game_code)
@@ -68,7 +67,7 @@ def board(request, game_code=''):
         return redirect('home')
     if game_code != '':
         game = Game.objects.get(code=game_code)
-        all_categories = sorted(Category.objects.all(), key=lambda x: random.random())
+        all_categories = sorted(Global_Category.objects.all(), key=lambda x: random.random())
         categories = all_categories[:10]
         all_letters = Config.objects.values_list('letters',flat=True)[0]
         test = str(all_letters)

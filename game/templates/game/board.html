@@ -6,9 +6,16 @@
     <div>Game Room Code: {{ game_code }}</div>
 </div>
 <div class="container-home" style="border-style: solid; margin: auto; margin-top: 5px;">
-    <div>Lets Play</div>
-    <div>Game Room Code: {{ game_code }}</div>
-    <div>blue</div>
+    <div class="row">
+        <div class="col-6">
+            <div>timer</div>
+            <div>start</div>
+        </div>
+        <div class="col-6">
+            <div>edit time</div>
+            <div>reset time</div>
+        </div>
+    </div>
 </div>
 
 
@@ -34,11 +41,11 @@
                 <ol>
                     {% for category in categories%}
                     <li>
-                        <div class="row">
-                            <div class="col-md-4 text-left">                                
+                        <div class="row" style="margin-bottom: 1px;">
+                            <div class="col-md-5 text-left">                                
                                     {{category}}                                
                             </div>
-                            <div class="col-md-8">                                
+                            <div class="col-md-7">                                
                                     <input type="text" style="width: 100%;">                                
                             </div>
                         </div>
