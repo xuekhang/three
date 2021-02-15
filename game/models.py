@@ -32,11 +32,11 @@ class Player(models.Model):
     is_host = models.BooleanField()
     def __str__(self):
         return self.name
-class Global_Category(models.Model):
+class GlobalCategory(models.Model):
     name = models.CharField(max_length=100)
     def __str__(self):
         return self.name
 
-class Local_Category(models.Model):
+class LocalCategory(models.Model):
     game = models.OneToOneField(Game, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
