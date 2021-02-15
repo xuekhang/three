@@ -1,7 +1,11 @@
 {% extends "game/base.html" %}
 {% block content %}
 
-<div class="container-home" style="border-style: solid; margin: auto;">
+<div class="container-home" style="border-style: solid; margin: auto; margin-top: 5px;">
+    <div>Lets Play</div>
+    <div>Game Room Code: {{ game_code }}</div>
+</div>
+<div class="container-home" style="border-style: solid; margin: auto; margin-top: 5px;">
     <div>Lets Play</div>
     <div>Game Room Code: {{ game_code }}</div>
     <div>blue</div>
@@ -10,7 +14,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-3" style="border-style: solid; margin: 5px;">
+        <div class="col-sm-3" style="border-style: solid; margin: 5px;">
             <h2 style="text-align: center;"><u>Letter</u></h2>
             <div class="row" style="text-align: center; font-size: 75px;">{{letter}}</div>
             <div class="row">
@@ -24,22 +28,18 @@
                 </button>
             </div>
         </div>
-        <div class="col-8" style="border-style: solid; margin: 5px;">
+        <div class="col-sm-8" style="border-style: solid; margin: 5px;">
             <h4>Categories</h4>
             <form action="POST">
                 <ol>
                     {% for category in categories%}
                     <li>
                         <div class="row">
-                            <div class="col-5">
-                                <div class="text-left">
-                                    {{category}}
-                                </div>
+                            <div class="col-md-4 text-left">                                
+                                    {{category}}                                
                             </div>
-                            <div class="col-5">
-                                <div>
-                                    <input type="text" size="45">
-                                </div>
+                            <div class="col-md-8">                                
+                                    <input type="text" style="width: 100%;">                                
                             </div>
                         </div>
                     </li>
