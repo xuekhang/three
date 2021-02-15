@@ -62,16 +62,17 @@ def board(request, game_code=''):
         return redirect('home')
     if game_code != '':
         game = Game.objects.get(code=game_code)
-        # all_categories = Category.objects.all()
-        # x = [1,2,3,4]
-        # random.shuffle(x)
         all_categories = sorted(Category.objects.all(), key=lambda x: random.random())
         categories = all_categories[:10]
+        all_letters = Config.objects.values_list('letters',flat=True)[0]
+        test = str(all_letters)
+        letters = list(test.split(","))
 
         context = {
             'title':'board',
             'game_code': game_code,
-            'categories': categories
+            'categories': categories,
+            'letter' : random.choice(letters)
         }
     
     return render(request, 'game/board.html', context)
