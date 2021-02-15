@@ -16,14 +16,17 @@ def home(request):
         'title':'home'}   
     if request.method == 'POST':
         game_code = request.POST.get('game_code')
-        return redirect('board', game_code)
+        if game_code != '':
+            return redirect('board', game_code)
+        else:
+            return redirect('home')
     else:
         form = ConfigForm()
 
-    context = {
-        'title':'home',
-        'form': form}    
-    return render(request, 'game/home.html', context)
+        context = {
+            'title':'home',
+            'form': form}    
+        return render(request, 'game/home.html', context)
 
 def config(request):
     if request.method == 'POST':
