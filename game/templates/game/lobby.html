@@ -1,0 +1,16 @@
+{% extends "game/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container-home" style="margin: auto;">
+  <div class="col-sm text-center">
+  </div>
+  <div style="height: 200px;">waiting for players</div> 
+  <form method="POST">
+    {% csrf_token %}
+
+  </form>
+  <div class="col-md-12 text-center">    
+    <button type="submit" class="btn btn-primary">Start Game</button>
+  </div>
+</div>
+{% endblock content%}

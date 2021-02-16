@@ -19,6 +19,7 @@ import logging
 
 # Create your views here.
 
+
 def home(request):
     context = {
         'title': 'home'
@@ -34,12 +35,12 @@ def home(request):
                 is_host=False
             )
             if game_code != '':
-                return redirect('board', game_code, 1, player_name)
+                return redirect('board', game_code, player_name, 1)
             else:
                 messages.error(request, 'Game code does not exist')
                 return redirect('home')
         if 'create' in request.POST:
-            
+
             if player_name == '':
                 messages.warning(request, 'Player name required')
                 return redirect('home')
@@ -51,7 +52,7 @@ def home(request):
                 name=player_name,
                 is_host=True
             )
-            return redirect('config', game_code)
+            return redirect('config', game_code, player_name)
     else:
         form = ConfigForm()
 
@@ -61,7 +62,8 @@ def home(request):
         }
         return render(request, 'game/home.html', context)
 
-def config(request, game_code=''):
+
+def config(request, game_code='', player_name=''):
     if request.method == 'POST':
         form = ConfigForm(request.POST)
         game_code = request.POST.get('game_code')
@@ -100,7 +102,7 @@ def config(request, game_code=''):
                 )
                 categoryInRound.save()
 
-        return redirect('board', game_code, 1)
+        return redirect('lobby', game_code, player_name)
 
     messages.success(request, f'Game created')
     form = ConfigForm(initial={
@@ -115,7 +117,8 @@ def config(request, game_code=''):
     }
     return render(request, 'game/config.html', context)
 
-def board(request, game_code='', round='', player_name=''):
+
+def board(request, game_code='', player_name='', round=''):
     try:
         Game.objects.get(code=game_code)
     except:
@@ -134,7 +137,7 @@ def board(request, game_code='', round='', player_name=''):
             context = {
                 'title': 'board',
                 'game_code': game_code,
-                'player_name' : player_name,
+                'player_name': player_name,
                 'categories': categories,
                 'letter': random.choice(letters)
             }
@@ -143,3 +146,13 @@ def board(request, game_code='', round='', player_name=''):
             return redirect('home')
 
     return render(request, 'game/board.html', context)
+
+
+def lobby(request, game_code='', player_name=''):
+    context = {
+        'title': 'Lobby'
+    }
+
+    if request.method == 'POST':
+        return redirect('board', game_code, player_name, 1)
+    return render(request, 'game/lobby.html', context)
