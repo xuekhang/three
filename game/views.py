@@ -146,8 +146,10 @@ def board(request, game_code='', player_name='', round=''):
     return render(request, 'game/board.html', context)
 
 def lobby(request, game_code='', player_name=''):
+    game = Game.objects.get(code=game_code)
     context = {
-        'title': 'Lobby'
+        'title': 'Lobby',
+        'players': Player.objects.filter(game=game)
     }
 
     if request.method == 'POST':
