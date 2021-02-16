@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.contrib import messages
 from django.urls import reverse
+from django.core import serializers
 from urllib.parse import urlencode
 from .forms import ConfigForm
 from .models import (
@@ -29,8 +30,15 @@ def home(request):
                 messages.warning(request, 'Player name required')
                 return redirect('home')
         game_code = request.POST.get('game_code')
+
+        # logic for joining a game
         if 'join' in request.POST:
             game = Game.objects.get(code=game_code)
+            num_current_players = Player.objects.filter(game=game).count()
+            config = Config.objects.get(game=game)
+            if num_current_players >= config.num_of_players:
+                messages.warning(request, 'Game is full')
+                return redirect('home')
             Player.objects.create(
                 game=game,
                 name=player_name,
@@ -41,6 +49,8 @@ def home(request):
             else:
                 messages.error(request, 'Game code does not exist')
                 return redirect('home')
+
+        # logic for creating a  game
         if 'create' in request.POST:            
             game_code = get_random_string(length=6).upper()
             Game.objects.create(code=game_code)
@@ -155,3 +165,10 @@ def lobby(request, game_code='', player_name=''):
     if request.method == 'POST':
         return redirect('board', game_code, player_name, 1)
     return render(request, 'game/lobby.html', context)
+
+def get_players_in_game(request, game_code):
+    game = Game.objects.get(code=game_code)
+    players = Player.objects.filter(game=game)
+    players_json = serializers.serialize('json', players)
+    # return JsonResponse(players_json, safe=False)
+    return HttpResponse(players_json, content_type='application/json')
