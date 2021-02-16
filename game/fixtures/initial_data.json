@@ -1,0 +1,9 @@
+[
+    {
+        "model": "game.globalcategory",
+        "pk": 1,
+        "fields": {
+            "name": "Anything"
+        }
+    }
+]
