@@ -143,12 +143,16 @@ def board(request, game_code='', player_name='', round=''):
                 'letters', flat=True)[0])
             letters = list(all_letters.split(","))
 
+            max_rounds = Config.objects.get(game=game).num_of_rounds
+            rounds = []
+            for x in range(1,max_rounds + 1):
+                rounds.append(x)
             context = {
                 'title': 'board',
                 'game_code': game_code,
                 'player_name': player_name,
                 'categories': categories,
-                'max_rounds': Config.objects.get(game=game).num_of_rounds,
+                'rounds': rounds,
                 'round' : round,
                 'letter': random.choice(letters)
             }
