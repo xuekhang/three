@@ -135,6 +135,7 @@ def board(request, game_code='', player_name='', round=''):
     if game_code != '':
         if round != '':
             game = Game.objects.get(code=game_code)
+            
             all_categories = sorted(
                 GlobalCategory.objects.all(), key=lambda x: random.random())
             categories = all_categories[:10]
@@ -147,6 +148,8 @@ def board(request, game_code='', player_name='', round=''):
                 'game_code': game_code,
                 'player_name': player_name,
                 'categories': categories,
+                'max_rounds': Config.objects.get(game=game).num_of_rounds,
+                'round' : round,
                 'letter': random.choice(letters)
             }
         else:
