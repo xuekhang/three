@@ -41,9 +41,7 @@ def home(request):
             else:
                 messages.error(request, 'Game code does not exist')
                 return redirect('home')
-        if 'create' in request.POST:
-
-            
+        if 'create' in request.POST:            
             game_code = get_random_string(length=6).upper()
             Game.objects.create(code=game_code)
             game = Game.objects.get(code=game_code)
