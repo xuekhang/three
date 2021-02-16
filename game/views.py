@@ -17,7 +17,6 @@ from django.utils.crypto import get_random_string
 import random
 import logging
 
-
 # Create your views here.
 def home(request):
     context = {
@@ -32,7 +31,28 @@ def home(request):
                 messages.error(request, 'Game code does not exist')
                 return redirect('home')
         if 'create' in request.POST:
-            return redirect('config')
+            player_name = request.POST.get('player_name')
+            if player_name == '':
+                messages.warning(request,'Player name required')
+                return redirect('home')
+            game_code = get_random_string(length=6).upper()
+            Game.objects.create(code=game_code)
+            # game = Game(game_code)
+            # game.save()
+            game = Game.objects.get(code=game_code)
+            
+            # player = Player(
+            #     game=game,
+            #     name=player_name,
+            #     is_host = True
+            #     )
+            # player.save()
+            Player.objects.create(
+                game=game,
+                name=player_name,
+                is_host = True
+            )
+            return redirect('config', game_code)
     else:
         form = ConfigForm()
 
@@ -42,7 +62,7 @@ def home(request):
             }    
         return render(request, 'game/home.html', context)
 
-def config(request):
+def config(request, game_code=''):
     if request.method == 'POST':
         form = ConfigForm(request.POST)
         game_code = request.POST.get('game_code')
@@ -82,8 +102,8 @@ def config(request):
 
         return redirect('board', game_code, 1)       
     
-    new_game_code = get_random_string(length=6).upper()
-    Game.objects.create(code=new_game_code)
+    # new_game_code = get_random_string(length=6).upper()
+    # Game.objects.create(code=new_game_code)
     messages.success(request, f'Game created')
     form = ConfigForm(initial={
         'num_of_players' : 6, 
@@ -93,7 +113,7 @@ def config(request):
     context = {
         'title':'config',
         'form':form,
-        'game_code': new_game_code
+        'game_code': game_code
         }
     return render(request, 'game/config.html', context)
 

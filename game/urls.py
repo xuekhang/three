@@ -9,6 +9,7 @@ from . import views
 urlpatterns = [
     path('', views.home, name='home'),
     path('config/', views.config, name='config'),
+    path('config/<game_code>/', views.config, name='config'),
     path('board/', views.board, name='board'),    
     path('board/<game_code>/', views.board, name='board'),
     path('board/<game_code>/<round>/', views.board, name='board')
