@@ -24,12 +24,15 @@ def home(request):
         'title':'home'
         }   
     if request.method == 'POST':
-        game_code = request.POST.get('game_code')
-        if game_code != '':
-            return redirect('board', game_code)
-        else:
-            messages.error(request, 'Game code does not exist')
-            return redirect('home')
+        if 'join' in request.POST:
+            game_code = request.POST.get('game_code')
+            if game_code != '':
+                return redirect('board', game_code, 1)
+            else:
+                messages.error(request, 'Game code does not exist')
+                return redirect('home')
+        if 'create' in request.POST:
+            return redirect('config')
     else:
         form = ConfigForm()
 
