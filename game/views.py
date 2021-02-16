@@ -19,13 +19,15 @@ import logging
 
 # Create your views here.
 
-
 def home(request):
     context = {
         'title': 'home'
     }
     if request.method == 'POST':
         player_name = request.POST.get('player_name')
+        if player_name == '':
+                messages.warning(request, 'Player name required')
+                return redirect('home')
         game_code = request.POST.get('game_code')
         if 'join' in request.POST:
             game = Game.objects.get(code=game_code)
@@ -41,9 +43,7 @@ def home(request):
                 return redirect('home')
         if 'create' in request.POST:
 
-            if player_name == '':
-                messages.warning(request, 'Player name required')
-                return redirect('home')
+            
             game_code = get_random_string(length=6).upper()
             Game.objects.create(code=game_code)
             game = Game.objects.get(code=game_code)
@@ -146,7 +146,6 @@ def board(request, game_code='', player_name='', round=''):
             return redirect('home')
 
     return render(request, 'game/board.html', context)
-
 
 def lobby(request, game_code='', player_name=''):
     context = {
