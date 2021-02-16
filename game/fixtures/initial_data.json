@@ -1,9 +1,1500 @@
 [
     {
-        "model": "game.globalcategory",
-        "pk": 1,
-        "fields": {
-            "name": "Anything"
-        }
-    }
+		"model": "game.globalcategory",
+		"pk": 1,
+		"fields": {
+			"name": " A boy’s name"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 2,
+		"fields": {
+			"name": " A river"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 3,
+		"fields": {
+			"name": " An animal"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 4,
+		"fields": {
+			"name": " Things that are cold"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 5,
+		"fields": {
+			"name": " Insects"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 6,
+		"fields": {
+			"name": " TV Shows"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 7,
+		"fields": {
+			"name": " Things that grow"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 8,
+		"fields": {
+			"name": " Fruits"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 9,
+		"fields": {
+			"name": " Things that are black"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 10,
+		"fields": {
+			"name": " School subjects"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 11,
+		"fields": {
+			"name": " Movie titles"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 12,
+		"fields": {
+			"name": " Musical Instruments"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 13,
+		"fields": {
+			"name": " Authors"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 14,
+		"fields": {
+			"name": " Bodies of water"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 15,
+		"fields": {
+			"name": " A bird"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 16,
+		"fields": {
+			"name": " Countries"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 17,
+		"fields": {
+			"name": " Cartoon characters"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 18,
+		"fields": {
+			"name": " Holidays"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 19,
+		"fields": {
+			"name": " Things that are square"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 20,
+		"fields": {
+			"name": " In the NWT (Northwest Territories, Canada)"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 21,
+		"fields": {
+			"name": " Clothing"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 22,
+		"fields": {
+			"name": " A relative"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 23,
+		"fields": {
+			"name": " Games"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 24,
+		"fields": {
+			"name": " Sports Stars"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 25,
+		"fields": {
+			"name": " School supplies"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 26,
+		"fields": {
+			"name": " Things that are hot"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 27,
+		"fields": {
+			"name": " Heroes"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 28,
+		"fields": {
+			"name": " A girl’s name"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 29,
+		"fields": {
+			"name": " Fears"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 30,
+		"fields": {
+			"name": " TV Stars"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 31,
+		"fields": {
+			"name": " Colors"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 32,
+		"fields": {
+			"name": " A fish"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 33,
+		"fields": {
+			"name": " Fruits"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 34,
+		"fields": {
+			"name": " Provinces or States"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 35,
+		"fields": {
+			"name": " Sports equipment"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 36,
+		"fields": {
+			"name": " Tools"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 37,
+		"fields": {
+			"name": " Breakfast foods"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 38,
+		"fields": {
+			"name": " Gifts"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 39,
+		"fields": {
+			"name": " Flowers"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 40,
+		"fields": {
+			"name": " Ice cream flavors"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 41,
+		"fields": {
+			"name": " A drink"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 42,
+		"fields": {
+			"name": " Toys"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 43,
+		"fields": {
+			"name": " Cities"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 44,
+		"fields": {
+			"name": " Things in the kitchen"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 45,
+		"fields": {
+			"name": " Ocean things"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 46,
+		"fields": {
+			"name": " Nicknames"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 47,
+		"fields": {
+			"name": " Hobbies"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 48,
+		"fields": {
+			"name": " Parts of the body"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 49,
+		"fields": {
+			"name": " Sandwiches"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 50,
+		"fields": {
+			"name": " Items in a catalog"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 51,
+		"fields": {
+			"name": " World leaders/Poloticians"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 52,
+		"fields": {
+			"name": " School subjects"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 53,
+		"fields": {
+			"name": " Excuses for being late"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 54,
+		"fields": {
+			"name": " Ice cream flavors"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 55,
+		"fields": {
+			"name": " Things that jump/bounce"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 56,
+		"fields": {
+			"name": " Television stars"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 57,
+		"fields": {
+			"name": " Things in a park"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 58,
+		"fields": {
+			"name": " Foriegn cities"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 59,
+		"fields": {
+			"name": " Stones/Gems"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 60,
+		"fields": {
+			"name": " Nicknames"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 61,
+		"fields": {
+			"name": " Things in the sky"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 62,
+		"fields": {
+			"name": " Pizza toppings"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 63,
+		"fields": {
+			"name": " Colleges/Universities"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 64,
+		"fields": {
+			"name": " Fish"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 65,
+		"fields": {
+			"name": " Countries"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 66,
+		"fields": {
+			"name": " Things that have spots"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 67,
+		"fields": {
+			"name": " Historical Figures"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 68,
+		"fields": {
+			"name": " Something you’re afraid oF"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 69,
+		"fields": {
+			"name": " Terms of endearment"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 70,
+		"fields": {
+			"name": " Items in this room"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 71,
+		"fields": {
+			"name": " Drugs that are abused"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 72,
+		"fields": {
+			"name": " Fictional characters"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 73,
+		"fields": {
+			"name": " Menu items"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 74,
+		"fields": {
+			"name": " Magazines"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 75,
+		"fields": {
+			"name": " Capitals"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 76,
+		"fields": {
+			"name": " Kinds of candy"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 77,
+		"fields": {
+			"name": " Items you save up to buy"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 78,
+		"fields": {
+			"name": " Footware"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 79,
+		"fields": {
+			"name": " Something you keep hidden"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 80,
+		"fields": {
+			"name": " Items in a suitcase"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 81,
+		"fields": {
+			"name": " Things with tails"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 82,
+		"fields": {
+			"name": " Sports equiptment"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 83,
+		"fields": {
+			"name": " Crimes"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 84,
+		"fields": {
+			"name": " Things that are sticky"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 85,
+		"fields": {
+			"name": " Awards/ceremonies"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 86,
+		"fields": {
+			"name": " Cars"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 87,
+		"fields": {
+			"name": " Spices/Herbs"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 88,
+		"fields": {
+			"name": " Bad habits"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 89,
+		"fields": {
+			"name": " Cosmetics/Toiletries"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 90,
+		"fields": {
+			"name": " Celebrities"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 91,
+		"fields": {
+			"name": " Cooking utensils"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 92,
+		"fields": {
+			"name": " Reptiles/Amphibians"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 93,
+		"fields": {
+			"name": " Parks"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 94,
+		"fields": {
+			"name": " Leisure activities"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 95,
+		"fields": {
+			"name": " Things you’re allergic to"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 96,
+		"fields": {
+			"name": " Restaurants"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 97,
+		"fields": {
+			"name": " Notorious people"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 98,
+		"fields": {
+			"name": " Fruits"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 99,
+		"fields": {
+			"name": " Things in a medicine cabinet"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 100,
+		"fields": {
+			"name": " Toys"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 101,
+		"fields": {
+			"name": " Household chores"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 102,
+		"fields": {
+			"name": " Bodies of water"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 103,
+		"fields": {
+			"name": " Authors"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 104,
+		"fields": {
+			"name": " Halloween costumes"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 105,
+		"fields": {
+			"name": " Weapons"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 106,
+		"fields": {
+			"name": " Things that are round"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 107,
+		"fields": {
+			"name": " Words associated with exercise"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 108,
+		"fields": {
+			"name": " Sports"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 109,
+		"fields": {
+			"name": " Song titles"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 110,
+		"fields": {
+			"name": " Parts of the body"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 111,
+		"fields": {
+			"name": " Ethnic foods"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 112,
+		"fields": {
+			"name": " Things you shout"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 113,
+		"fields": {
+			"name": " Birds"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 114,
+		"fields": {
+			"name": " A girl’s name"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 115,
+		"fields": {
+			"name": " Ways to get from here to there"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 116,
+		"fields": {
+			"name": " Items in a kitchen"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 117,
+		"fields": {
+			"name": " Villains"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 118,
+		"fields": {
+			"name": " Flowers"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 119,
+		"fields": {
+			"name": " Things you replace"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 120,
+		"fields": {
+			"name": " Baby foods"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 121,
+		"fields": {
+			"name": " Famous duos and trios"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 122,
+		"fields": {
+			"name": " Things found in a desk"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 123,
+		"fields": {
+			"name": " Vacation spots"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 124,
+		"fields": {
+			"name": " Diseases"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 125,
+		"fields": {
+			"name": " Words associated with money"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 126,
+		"fields": {
+			"name": " Items in a vending machine"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 127,
+		"fields": {
+			"name": " Movie Titles"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 128,
+		"fields": {
+			"name": " Games"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 129,
+		"fields": {
+			"name": " Things you wear"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 130,
+		"fields": {
+			"name": " Beers"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 131,
+		"fields": {
+			"name": " Things at a circus"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 132,
+		"fields": {
+			"name": " Vegetables"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 133,
+		"fields": {
+			"name": " States"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 134,
+		"fields": {
+			"name": " Things you throw away"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 135,
+		"fields": {
+			"name": " Occupations"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 136,
+		"fields": {
+			"name": " Appliances"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 137,
+		"fields": {
+			"name": " Cartoon characters"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 138,
+		"fields": {
+			"name": " Types of drinks"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 139,
+		"fields": {
+			"name": " Musical groups"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 140,
+		"fields": {
+			"name": " Store names"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 141,
+		"fields": {
+			"name": " Things at a football game"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 142,
+		"fields": {
+			"name": " Trees"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 143,
+		"fields": {
+			"name": " Personality traits"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 144,
+		"fields": {
+			"name": " Video games"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 145,
+		"fields": {
+			"name": " Electronic gadgets"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 146,
+		"fields": {
+			"name": " Board games"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 147,
+		"fields": {
+			"name": " Things that use a remote"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 148,
+		"fields": {
+			"name": " Card games"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 149,
+		"fields": {
+			"name": " Internet lingo"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 150,
+		"fields": {
+			"name": " Offensive words"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 151,
+		"fields": {
+			"name": " Wireless things"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 152,
+		"fields": {
+			"name": " Computer parts"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 153,
+		"fields": {
+			"name": " Software"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 154,
+		"fields": {
+			"name": " Websites"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 155,
+		"fields": {
+			"name": " Game terms"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 156,
+		"fields": {
+			"name": " Things in a grocery store"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 157,
+		"fields": {
+			"name": " Reasons to quit your job"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 158,
+		"fields": {
+			"name": " Things that have stripes"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 159,
+		"fields": {
+			"name": " Tourist attractions"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 160,
+		"fields": {
+			"name": " Diet foods"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 161,
+		"fields": {
+			"name": " Things found in a hospital"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 162,
+		"fields": {
+			"name": " Food/Drink that is green"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 163,
+		"fields": {
+			"name": " Weekend Activities"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 164,
+		"fields": {
+			"name": " Acronyms"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 165,
+		"fields": {
+			"name": " Seafood"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 166,
+		"fields": {
+			"name": " Christmas songs"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 167,
+		"fields": {
+			"name": " Words ending in “-n”"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 168,
+		"fields": {
+			"name": " Words with double letters"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 169,
+		"fields": {
+			"name": " Children’s books"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 170,
+		"fields": {
+			"name": " Things found at a bar"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 171,
+		"fields": {
+			"name": " Sports played outdoors"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 172,
+		"fields": {
+			"name": " Names used in songs"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 173,
+		"fields": {
+			"name": " Foods you eat raw"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 174,
+		"fields": {
+			"name": " Places in Europe"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 175,
+		"fields": {
+			"name": " Olympic events"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 176,
+		"fields": {
+			"name": " Things you see at the zoo"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 177,
+		"fields": {
+			"name": " Math terms"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 178,
+		"fields": {
+			"name": " Animals in books or movies"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 179,
+		"fields": {
+			"name": " Things to do at a party"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 180,
+		"fields": {
+			"name": " Kinds of soup"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 181,
+		"fields": {
+			"name": " Things found in New York"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 182,
+		"fields": {
+			"name": " Things you get tickets for"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 183,
+		"fields": {
+			"name": " Things you do at work"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 184,
+		"fields": {
+			"name": " Foreign words used in English"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 185,
+		"fields": {
+			"name": " Things you shouldn’t touch"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 186,
+		"fields": {
+			"name": " Spicy foods"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 187,
+		"fields": {
+			"name": " Things at a carnival"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 188,
+		"fields": {
+			"name": " Things you make"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 189,
+		"fields": {
+			"name": " Places to hangout"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 190,
+		"fields": {
+			"name": " Animal noises"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 191,
+		"fields": {
+			"name": " Computer programs"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 192,
+		"fields": {
+			"name": " Honeymoon spots"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 193,
+		"fields": {
+			"name": " Things you buy for kids"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 194,
+		"fields": {
+			"name": " Things that can kill you"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 195,
+		"fields": {
+			"name": " Reasons to take out a loan"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 196,
+		"fields": {
+			"name": " Words associated with winter"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 197,
+		"fields": {
+			"name": " Things to do on a date"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 198,
+		"fields": {
+			"name": " Historic events"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 199,
+		"fields": {
+			"name": " Things you store items in"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 200,
+		"fields": {
+			"name": " Things you do everyday"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 201,
+		"fields": {
+			"name": " Things you get in the mail"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 202,
+		"fields": {
+			"name": " Things you save up to buy"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 203,
+		"fields": {
+			"name": " Things you sit/on"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 204,
+		"fields": {
+			"name": " Reasons to make a phone call"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 205,
+		"fields": {
+			"name": " Types of weather"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 206,
+		"fields": {
+			"name": " Titles people can have"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 207,
+		"fields": {
+			"name": " Things that have buttons"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 208,
+		"fields": {
+			"name": " Items you take on a road trip"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 209,
+		"fields": {
+			"name": " Things that have wheels"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 210,
+		"fields": {
+			"name": " Reasons to call 911"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 211,
+		"fields": {
+			"name": " Things that make you smile"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 212,
+		"fields": {
+			"name": " Ways to kill time"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 213,
+		"fields": {
+			"name": " Things that can get you fired"
+		}
+	},
+	{
+		"model": "game.globalcategory",
+		"pk": 214,
+		"fields": {
+			"name": " Holiday Activities"
+		}
+	}
 ]

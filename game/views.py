@@ -21,7 +21,8 @@ import logging
 def home(request):    
     myList = [1,2]
     context = {
-        'title':'home'}   
+        'title':'home'
+        }   
     if request.method == 'POST':
         game_code = request.POST.get('game_code')
         if game_code != '':
@@ -42,11 +43,12 @@ def config(request):
         form = ConfigForm(request.POST)
         game_code = request.POST.get('game_code')
         game = Game.objects.get(code=game_code)
+
         if form.is_valid():
             obj = form.save(commit=False)
             obj.game = game
             obj.save()
-            messages.success(request, f'Game created')            
+            messages.success(request, f'Game config saved')
 
         # todo: create the rounds
         
@@ -81,6 +83,7 @@ def config(request):
     
     new_game_code = get_random_string(length=6).upper()
     Game.objects.create(code=new_game_code)
+    messages.success(request, f'Game created')
     form = ConfigForm(initial={
         'num_of_players' : 6, 
         'num_of_rounds' : 4,
