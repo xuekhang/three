@@ -77,9 +77,7 @@ def config(request):
                     )
                 categoryInRound.save()
 
-        return redirect('board', game_code)
-
-        
+        return redirect('board', game_code)       
     
     new_game_code = get_random_string(length=6).upper()
     Game.objects.create(code=new_game_code)
