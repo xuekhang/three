@@ -19,21 +19,27 @@ import logging
 
 # Create your views here.
 
-
 def home(request):
     context = {
         'title': 'home'
     }
     if request.method == 'POST':
+        player_name = request.POST.get('player_name')
+        game_code = request.POST.get('game_code')
         if 'join' in request.POST:
-            game_code = request.POST.get('game_code')
+            game = Game.objects.get(code=game_code)
+            Player.objects.create(
+                game=game,
+                name=player_name,
+                is_host=False
+            )
             if game_code != '':
-                return redirect('board', game_code, 1)
+                return redirect('board', game_code, 1, player_name)
             else:
                 messages.error(request, 'Game code does not exist')
                 return redirect('home')
         if 'create' in request.POST:
-            player_name = request.POST.get('player_name')
+            
             if player_name == '':
                 messages.warning(request, 'Player name required')
                 return redirect('home')
@@ -54,7 +60,6 @@ def home(request):
             'form': form
         }
         return render(request, 'game/home.html', context)
-
 
 def config(request, game_code=''):
     if request.method == 'POST':
@@ -110,8 +115,7 @@ def config(request, game_code=''):
     }
     return render(request, 'game/config.html', context)
 
-
-def board(request, game_code='', round=''):
+def board(request, game_code='', round='', player_name=''):
     try:
         Game.objects.get(code=game_code)
     except:
@@ -130,6 +134,7 @@ def board(request, game_code='', round=''):
             context = {
                 'title': 'board',
                 'game_code': game_code,
+                'player_name' : player_name,
                 'categories': categories,
                 'letter': random.choice(letters)
             }
