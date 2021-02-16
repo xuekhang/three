@@ -42,10 +42,15 @@ def config(request):
         form = ConfigForm(request.POST)
         game_code = request.POST.get('game_code')
         game = Game.objects.get(code=game_code)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.game = game
+            obj.save()
+            messages.success(request, f'Game created')            
 
         # todo: create the rounds
         
-        all_letters = str(Config.objects.values_list('letters',flat=True)[0])
+        all_letters = str(Config.objects.values_list('letters',flat=True).filter(game=game))
         letters = list(all_letters.split(","))
 
         all_categories = []
@@ -72,12 +77,9 @@ def config(request):
                     )
                 categoryInRound.save()
 
-        if form.is_valid():
-            obj = form.save(commit=False)
-            obj.game = game
-            obj.save()
-            messages.success(request, f'Game created')
-            return redirect('board', game_code)
+        return redirect('board', game_code)
+
+        
     
     new_game_code = get_random_string(length=6).upper()
     Game.objects.create(code=new_game_code)
