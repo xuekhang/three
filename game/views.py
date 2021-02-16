@@ -17,6 +17,7 @@ from django.utils.crypto import get_random_string
 import random
 import logging
 
+
 # Create your views here.
 def home(request):
     context = {
@@ -48,10 +49,7 @@ def config(request):
             obj = form.save(commit=False)
             obj.game = game
             obj.save()
-            messages.success(request, f'Game config saved')
-
-        # todo: create the rounds
-        
+            messages.success(request, f'Game config saved')        
         all_letters = str(Config.objects.values_list('letters',flat=True).filter(game=game))
         letters = list(all_letters.split(","))
 
@@ -79,7 +77,7 @@ def config(request):
                     )
                 categoryInRound.save()
 
-        return redirect('board', game_code)       
+        return redirect('board', game_code, 1)       
     
     new_game_code = get_random_string(length=6).upper()
     Game.objects.create(code=new_game_code)
@@ -96,29 +94,28 @@ def config(request):
         }
     return render(request, 'game/config.html', context)
 
-def board(request, game_code=''):
-    # if game_code=='':
-    #     game_code = request.GET.get('game_code')
-    #     redirect('board', game_code)
-    # if request.method == 'POST':
-    #     redirect('www.google.com')
+def board(request, game_code='', round=''):
     try:
         Game.objects.get(code=game_code)        
     except:
         messages.error(request, f'Game code does not exist')
         return redirect('home')
     if game_code != '':
-        game = Game.objects.get(code=game_code)
-        all_categories = sorted(GlobalCategory.objects.all(), key=lambda x: random.random())
-        categories = all_categories[:10]
-        all_letters = str(Config.objects.values_list('letters',flat=True)[0])
-        letters = list(all_letters.split(","))
+        if round != '':
+            game = Game.objects.get(code=game_code)
+            all_categories = sorted(GlobalCategory.objects.all(), key=lambda x: random.random())
+            categories = all_categories[:10]
+            all_letters = str(Config.objects.values_list('letters',flat=True)[0])
+            letters = list(all_letters.split(","))
 
-        context = {
-            'title':'board',
-            'game_code': game_code,
-            'categories': categories,
-            'letter' : random.choice(letters)
-        }
+            context = {
+                'title':'board',
+                'game_code': game_code,
+                'categories': categories,
+                'letter' : random.choice(letters)
+            }
+        else:
+            messages.warning(request, 'Game round does not exist')
+            return redirect('home')
     
     return render(request, 'game/board.html', context)
