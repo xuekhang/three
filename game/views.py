@@ -18,8 +18,7 @@ import random
 import logging
 
 # Create your views here.
-def home(request):    
-    myList = [1,2]
+def home(request):
     context = {
         'title':'home'
         }   
@@ -35,7 +34,8 @@ def home(request):
 
         context = {
             'title':'home',
-            'form': form}    
+            'form': form
+            }    
         return render(request, 'game/home.html', context)
 
 def config(request):
