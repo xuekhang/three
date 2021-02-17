@@ -150,6 +150,7 @@ def board(request, game_code='', player_name='', round=''):
 
             # todo get the letter for each round
             
+            
             context = {
                 'title': 'board',
                 'game_code': game_code,
