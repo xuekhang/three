@@ -46,19 +46,21 @@
             <form action="POST">
                 <ol>
                     {% for category in categories%}
-                    <li>
-                        <div class="row" style="margin-bottom: 1px;">
-                            <div class="col-md-5 text-left">
-                                {{category}}
-                            </div>
-                            <div class="col-md-7">
-                                <input type="text" style="width: 100%;">
-                            </div>
+
+                    <div class="row" style="margin-bottom: 1px;">
+                        <li></li>
+                        <div id="category" class="col-md-5 text-left redacted">
+                            {{category}}
                         </div>
-                    </li>
+                        <div class="col-md-7">
+                            <input type="text" style="width: 100%;">
+                        </div>
+                    </div>
+
                     {% endfor %}
                 </ol>
                 <div class="col-md-12 text-right">
+                    <button type="button" class="btn btn-primary" onclick="removeRedacted()">Start</button>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>
@@ -66,4 +68,6 @@
 
     </div>
 </div>
+
+
 {% endblock content%}

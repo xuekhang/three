@@ -147,6 +147,9 @@ def board(request, game_code='', player_name='', round=''):
             rounds = []
             for x in range(1,max_rounds + 1):
                 rounds.append(x)
+
+            # todo get the letter for each round
+            
             context = {
                 'title': 'board',
                 'game_code': game_code,
@@ -154,7 +157,7 @@ def board(request, game_code='', player_name='', round=''):
                 'categories': categories,
                 'rounds': rounds,
                 'round' : round,
-                'letter': random.choice(letters)
+                'letter': random.choice(letters),
             }
         else:
             messages.warning(request, 'Game round does not exist')

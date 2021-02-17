@@ -62,5 +62,27 @@
         });
       }, 2000);
     });
+
+
+    function removeRedacted() {
+      //   var element = document.getElementById("myDIV");
+      var categories = document.getElementsByClassName("redacted");
+      // for (category in categories){
+      //   category.clas
+      // }  
+      while (categories.length > 0) {
+        categories[0].classList.remove("redacted");
+      }
+
+      // array.forEach(categories, function(el){
+      //   el.classList.remove("redacted")
+      // });
+      // categories.forEach(element => {
+      //   element.classList.remove("redacted")
+      // });
+      // categories.classList.remove("redacted");
+    }
+
+
   </script>
 </body>

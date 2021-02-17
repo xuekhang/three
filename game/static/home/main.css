@@ -35,6 +35,23 @@ body {
     box-shadow: #013220;
     outline: #013220;
   }
+
+  .redacted {
+    color: black;
+    background-color: black;
+    white-space:nowrap;
+    -moz-transform: rotate(.8deg) skewx(-12deg);
+    -moz-box-shadow:3px 0 2px #444;
+    border:1px dotted #555;
+    background: -moz-linear-gradient(180deg, #000, #222);
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
 @media (min-width: 400px) {
     .container-home{
         max-width: 400px;
