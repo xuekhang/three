@@ -50,12 +50,15 @@ def home(request):
             )
 
             # todo create questions for players
-            for x in range(1, config.num_of_rounds + 1):
-                Question.objects.create(
-                    number=x,
-                    round=Round.objects.get(game=game, number=x),
-                    player=Player.objects.get(name=player_name)
-                )
+            # for x in range(1, config.num_of_rounds + 1):
+            #     Question.objects.create(
+            #         number=x,
+            #         round=Round.objects.get(game=game, number=x),
+            #         player=Player.objects.get(name=player_name)
+            #     )
+
+            
+
             if game_code != '':
                 return redirect('board', game_code, player_name, 1)
             else:
@@ -109,6 +112,8 @@ def config(request, game_code='', player_name=''):
 
         num_of_rounds = int(request.POST.get('num_of_rounds'))
         num_of_cat_per_round = int(request.POST.get('num_of_cat_per_round'))
+        config = Config.objects.get(game=game)
+
         for i in range(1, num_of_rounds+1):
             round = Round(
                 game=game,
@@ -122,15 +127,21 @@ def config(request, game_code='', player_name=''):
                     round=round
                 )
                 categoryInRound.save()
-
-        # todo add host to answer table
-        config = Config.objects.get(game=game)
-        for x in range(1, config.num_of_rounds + 1):
-            Question.objects.create(
-                number=x,
-                round=Round.objects.get(game=game, number=x),
+                Question.objects.create(
+                number=j,
+                round=Round.objects.get(game=game, number=i),
                 player=Player.objects.get(name=player_name,game=game)
             )
+                
+
+        # todo add host to answer table
+        
+        # for x in range(1, config.num_of_rounds + 1):
+        #     Question.objects.create(
+        #         number=x,
+        #         round=Round.objects.get(game=game, number=x),
+        #         player=Player.objects.get(name=player_name,game=game)
+        #     )
 
         return redirect('lobby', game_code, player_name)
 
@@ -160,14 +171,10 @@ def board(request, game_code='', player_name='', round_num=''):
             if str(key).startswith('answer'):
                 answer = value
                 # gets the number of the answer
-                answernumber = str(key).replace('answer', '')
+                answer_number = str(key).replace('answer', '')
 
-                # PlayerAnswer.objects.create(
-                #     player=player,
-                #     round=round,
-                #     number=answernumber,
-                #     answer=answer
-                # )
+                question = Question.objects.get(number=int(answer_number),round=round,player=player)
+                Answer.objects.create(answer = value, question=question)
 
         if 1 == 1:
             test = []
@@ -198,7 +205,6 @@ def board(request, game_code='', player_name='', round_num=''):
             for category in categories_in_round:
                 categories.append(category.name)
             player = Player.objects.get(game=game,name=player_name)
-            test = 1233123521
 
             context = {
                 'title': 'board',
