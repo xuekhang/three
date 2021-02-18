@@ -13,7 +13,8 @@ from .models import (
     LocalCategory,
     Round,
     CategoryInRound,
-    PlayerAnswer
+    Question,
+    Answer
 )
 from django.utils.crypto import get_random_string
 import random
@@ -46,6 +47,8 @@ def home(request):
                 name=player_name,
                 is_host=False
             )
+
+            # todo create questions for players
             if game_code != '':
                 return redirect('board', game_code, player_name, 1)
             else:
@@ -142,12 +145,12 @@ def board(request, game_code='', player_name='', round_num=''):
                 # gets the number of the answer
                 answernumber = str(key).replace('answer', '')
 
-                PlayerAnswer.objects.create(
-                    player=player,
-                    round=round,
-                    number=answernumber,
-                    answer=answer
-                )
+                # PlayerAnswer.objects.create(
+                #     player=player,
+                #     round=round,
+                #     number=answernumber,
+                #     answer=answer
+                # )
 
         if 1 == 1:
             test = []
