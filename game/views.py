@@ -129,7 +129,7 @@ def config(request, game_code='', player_name=''):
             Question.objects.create(
                 number=x,
                 round=Round.objects.get(game=game, number=x),
-                player=Player.objects.get(name=player_name)
+                player=Player.objects.get(name=player_name,game=game)
             )
 
         return redirect('lobby', game_code, player_name)
@@ -197,6 +197,7 @@ def board(request, game_code='', player_name='', round_num=''):
 
             for category in categories_in_round:
                 categories.append(category.name)
+            player = Player.objects.get(game=game,name=player_name)
 
             context = {
                 'title': 'board',
@@ -206,7 +207,8 @@ def board(request, game_code='', player_name='', round_num=''):
                 'rounds': rounds,
                 'round': round_num,
                 'letter': random.choice(letters),
-                'round_is_played': current_round.is_played
+                'round_is_played': current_round.is_played,
+                'is_player_host': player.is_host
             }
         else:
             messages.warning(request, 'Game round does not exist')
@@ -225,6 +227,13 @@ def lobby(request, game_code='', player_name=''):
     if request.method == 'POST':
         return redirect('board', game_code, player_name, 1)
     return render(request, 'game/lobby.html', context)
+
+def review(request, game_code='', player_name='', round_num=''):
+    context ={
+        'title':'Review',
+        'game_code': game_code
+    }
+    return render(request, 'game/review.html', context)
 
 
 def get_players_in_game(request, game_code):

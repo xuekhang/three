@@ -1,0 +1,22 @@
+{% extends "game/base.html" %}
+{% block content %}
+
+<div class="container-home card" style="border-style: solid; margin: auto; margin-top: 5px;">
+    <div>Hi {{ player_name }}, Lets Play</div>
+    <div>Game Room Code: {{ game_code }}</div>
+</div>
+
+<div class="container">
+    <div class="container-home" style=" margin: auto; margin-top: 5px;">
+        <div class="row">Round:
+            {% for round in rounds %}
+            <a href="./{{ round }}" style="padding-left: 4px; padding-right: 4px;">{{ round }}</a>
+            {% endfor%}
+        </div>
+    </div>
+    <div class="row card" style="border-style: solid; margin: 5px; height: 200px;">
+    </div>
+</div>
+
+
+{% endblock content%}
