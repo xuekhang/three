@@ -39,7 +39,7 @@ def home(request):
             game = Game.objects.get(code=game_code)
             num_current_players = Player.objects.filter(game=game).count()
             config = Config.objects.get(game=game)
-            
+
             if num_current_players >= config.num_of_players:
                 messages.warning(request, 'Game is full')
                 return redirect('home')
@@ -53,8 +53,8 @@ def home(request):
             for x in range(1, config.num_of_rounds + 1):
                 Question.objects.create(
                     number=x,
-                    round = Round.objects.get(game=game, number=x),
-                    player = Player.objects.get(name=player_name)
+                    round=Round.objects.get(game=game, number=x),
+                    player=Player.objects.get(name=player_name)
                 )
             if game_code != '':
                 return redirect('board', game_code, player_name, 1)
@@ -73,7 +73,6 @@ def home(request):
                 is_host=True
             )
 
-            
             return redirect('config', game_code, player_name)
     else:
         form = ConfigForm()
@@ -129,8 +128,8 @@ def config(request, game_code='', player_name=''):
         for x in range(1, config.num_of_rounds + 1):
             Question.objects.create(
                 number=x,
-                round = Round.objects.get(game=game, number=x),
-                player = Player.objects.get(name=player_name)
+                round=Round.objects.get(game=game, number=x),
+                player=Player.objects.get(name=player_name)
             )
 
         return redirect('lobby', game_code, player_name)

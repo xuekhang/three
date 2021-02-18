@@ -54,10 +54,8 @@
                             {{category}}
                         </div>
                         <div class="col-md-7">
-                            <input type="text" style="width: 100%;" name="answer{{ forloop.counter }}"
-                            {% if round_is_played %} readonly
-                            {% endif %}
-                            >
+                            <input type="text" style="width: 100%;" name="answer{{ forloop.counter }}" 
+                            {% if round_is_played %} readonly {% endif %}>
                         </div>
                     </div>
 

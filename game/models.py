@@ -3,6 +3,7 @@ from multiselectfield import MultiSelectField
 
 # Create your models here.
 
+
 class Game(models.Model):
     code = models.CharField(max_length=6)
 
@@ -28,6 +29,7 @@ class Config(models.Model):
 
     def __str__(self):
         return self.game.code + '   ' + str(self.num_of_players)
+
 
 class Player(models.Model):
     name = models.CharField(max_length=100)

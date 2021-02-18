@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import (
-    Config, 
-    Game, 
+    Config,
+    Game,
     Player,
     GlobalCategory,
     LocalCategory,
@@ -9,7 +9,7 @@ from .models import (
     CategoryInRound,
     Question,
     Answer
-    )
+)
 
 # Register your models here.
 admin.site.register(Config)
