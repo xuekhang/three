@@ -43,7 +43,8 @@
         </div>
         <div class="col-sm-8" style="border-style: solid; margin: 5px;">
             <h4>Categories</h4>
-            <form action="POST">
+            <form method="POST">
+                {% csrf_token %}
                 <ol>
                     {% for category in categories%}
 
@@ -53,8 +54,8 @@
                             {{category}}
                         </div>
                         <div class="col-md-7">
-                            <input type="text" style="width: 100%;"
-                            {% if round_is_played%} readonly
+                            <input type="text" style="width: 100%;" name="answer{{ forloop.counter }}"
+                            {% if round_is_played %} readonly
                             {% endif %}
                             >
                         </div>

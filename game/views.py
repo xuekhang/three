@@ -12,13 +12,15 @@ from .models import (
     GlobalCategory,
     LocalCategory,
     Round,
-    CategoryInRound
+    CategoryInRound,
+    PlayerAnswer
 )
 from django.utils.crypto import get_random_string
 import random
 import logging
 
 # Create your views here.
+
 
 def home(request):
     context = {
@@ -27,8 +29,8 @@ def home(request):
     if request.method == 'POST':
         player_name = request.POST.get('player_name')
         if player_name == '':
-                messages.warning(request, 'Player name required')
-                return redirect('home')
+            messages.warning(request, 'Player name required')
+            return redirect('home')
         game_code = request.POST.get('game_code')
 
         # logic for joining a game
@@ -51,7 +53,7 @@ def home(request):
                 return redirect('home')
 
         # logic for creating a  game
-        if 'create' in request.POST:            
+        if 'create' in request.POST:
             game_code = get_random_string(length=6).upper()
             Game.objects.create(code=game_code)
             game = Game.objects.get(code=game_code)
@@ -128,7 +130,27 @@ def config(request, game_code='', player_name=''):
 
 def board(request, game_code='', player_name='', round_num=''):
     # todo record submitted answers and send to next page
+    if request.method == 'POST':
+        # answers = list(request.POST.items())
+        # answers = []
+        game = Game.objects.get(code=game_code)
+        round = Round.objects.get(game=game, number=round_num)
+        player = Player.objects.get(game=game, name=player_name)
+        for key, value in request.POST.items():
+            if str(key).startswith('answer'):
+                answer = value
+                # gets the number of the answer
+                answernumber = str(key).replace('answer', '')
 
+                PlayerAnswer.objects.create(
+                    player=player,
+                    round=round,
+                    number=answernumber,
+                    answer=answer
+                )
+
+        if 1 == 1:
+            test = []
 
     try:
         Game.objects.get(code=game_code)
@@ -144,32 +166,34 @@ def board(request, game_code='', player_name='', round_num=''):
 
             max_rounds = Config.objects.get(game=game).num_of_rounds
             rounds = []
-            for x in range(1,max_rounds + 1):
+            for x in range(1, max_rounds + 1):
                 rounds.append(x)
 
             # todo get the letter for each round
             current_round = Round.objects.get(game=game, number=round_num)
-            categories_in_round = list(CategoryInRound.objects.filter(round=current_round))
+            categories_in_round = list(
+                CategoryInRound.objects.filter(round=current_round))
             categories = []
 
             for category in categories_in_round:
                 categories.append(category.name)
-            
+
             context = {
                 'title': 'board',
                 'game_code': game_code,
                 'player_name': player_name,
                 'categories': categories,
                 'rounds': rounds,
-                'round' : round_num,
+                'round': round_num,
                 'letter': random.choice(letters),
-                'round_is_played' :current_round.is_played
+                'round_is_played': current_round.is_played
             }
         else:
             messages.warning(request, 'Game round does not exist')
             return redirect('home')
 
     return render(request, 'game/board.html', context)
+
 
 def lobby(request, game_code='', player_name=''):
     game = Game.objects.get(code=game_code)
@@ -181,6 +205,7 @@ def lobby(request, game_code='', player_name=''):
     if request.method == 'POST':
         return redirect('board', game_code, player_name, 1)
     return render(request, 'game/lobby.html', context)
+
 
 def get_players_in_game(request, game_code):
     game = Game.objects.get(code=game_code)
