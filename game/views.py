@@ -198,7 +198,7 @@ def board(request, game_code='', player_name='', round_num=''):
             for category in categories_in_round:
                 categories.append(category.name)
             player = Player.objects.get(game=game,name=player_name)
-            test = 5164641
+            test = 12331231321
 
             context = {
                 'title': 'board',
