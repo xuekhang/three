@@ -126,14 +126,14 @@ def config(request, game_code='', player_name=''):
     return render(request, 'game/config.html', context)
 
 
-def board(request, game_code='', player_name='', round=''):
+def board(request, game_code='', player_name='', round_num=''):
     try:
         Game.objects.get(code=game_code)
     except:
         messages.error(request, f'Game code does not exist')
         return redirect('home')
     if game_code != '':
-        if round != '':
+        if round_num != '':
             game = Game.objects.get(code=game_code)
             
             all_categories = sorted(
@@ -157,7 +157,7 @@ def board(request, game_code='', player_name='', round=''):
                 'player_name': player_name,
                 'categories': categories,
                 'rounds': rounds,
-                'round' : round,
+                'round' : round_num,
                 'letter': random.choice(letters),
             }
         else:
