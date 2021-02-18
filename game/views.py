@@ -135,10 +135,6 @@ def board(request, game_code='', player_name='', round_num=''):
     if game_code != '':
         if round_num != '':
             game = Game.objects.get(code=game_code)
-            
-            all_categories = sorted(
-                GlobalCategory.objects.all(), key=lambda x: random.random())
-            categories = all_categories[:10]
             all_letters = str(Config.objects.values_list(
                 'letters', flat=True)[0])
             letters = list(all_letters.split(","))
@@ -149,7 +145,12 @@ def board(request, game_code='', player_name='', round_num=''):
                 rounds.append(x)
 
             # todo get the letter for each round
-            
+            current_round = Round.objects.get(game=game, number=round_num)
+            categories_in_round = list(CategoryInRound.objects.filter(round=current_round))
+            categories = []
+
+            for category in categories_in_round:
+                categories.append(category.name)
             
             context = {
                 'title': 'board',
