@@ -127,6 +127,9 @@ def config(request, game_code='', player_name=''):
 
 
 def board(request, game_code='', player_name='', round_num=''):
+    # todo record submitted answers and send to next page
+
+
     try:
         Game.objects.get(code=game_code)
     except:
@@ -160,6 +163,7 @@ def board(request, game_code='', player_name='', round_num=''):
                 'rounds': rounds,
                 'round' : round_num,
                 'letter': random.choice(letters),
+                'round_is_played' :current_round.is_played
             }
         else:
             messages.warning(request, 'Game round does not exist')

@@ -57,3 +57,12 @@ class CategoryInRound(models.Model):
     
     def __str__(self):
         return str(self.round) + ' Cat: ' + self.name
+
+class PlayerAnswer(models.Model):
+    player = models.ForeignKey(Player, on_delete=models.CASCADE)
+    round = models.ForeignKey(Round, on_delete=models.CASCADE)
+    category_num = models.IntegerField()
+    answer = models.CharField(max_length=150)
+
+    def __str__(self):
+        return str(self.round) + ' Category Num: ' + self.category_num + ' Answer: ' + self.answer
