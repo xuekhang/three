@@ -57,8 +57,6 @@ def home(request):
             #         player=Player.objects.get(name=player_name)
             #     )
 
-            
-
             if game_code != '':
                 return redirect('board', game_code, player_name, 1)
             else:
@@ -128,14 +126,13 @@ def config(request, game_code='', player_name=''):
                 )
                 categoryInRound.save()
                 Question.objects.create(
-                number=j,
-                round=Round.objects.get(game=game, number=i),
-                player=Player.objects.get(name=player_name,game=game)
-            )
-                
+                    number=j,
+                    round=Round.objects.get(game=game, number=i),
+                    player=Player.objects.get(name=player_name, game=game)
+                )
 
         # todo add host to answer table
-        
+
         # for x in range(1, config.num_of_rounds + 1):
         #     Question.objects.create(
         #         number=x,
@@ -173,11 +170,11 @@ def board(request, game_code='', player_name='', round_num=''):
                 # gets the number of the answer
                 answer_number = str(key).replace('answer', '')
 
-                question = Question.objects.get(number=int(answer_number),round=round,player=player)
-                Answer.objects.create(answer = value, question=question)
+                question = Question.objects.get(number=int(
+                    answer_number), round=round, player=player)
+                Answer.objects.create(answer=value, question=question)
 
-        if 1 == 1:
-            test = []
+        return redirect('review', game_code, player_name, round_num, 1)
 
     try:
         Game.objects.get(code=game_code)
@@ -204,7 +201,7 @@ def board(request, game_code='', player_name='', round_num=''):
 
             for category in categories_in_round:
                 categories.append(category.name)
-            player = Player.objects.get(game=game,name=player_name)
+            player = Player.objects.get(game=game, name=player_name)
 
             context = {
                 'title': 'board',
@@ -235,11 +232,13 @@ def lobby(request, game_code='', player_name=''):
         return redirect('board', game_code, player_name, 1)
     return render(request, 'game/lobby.html', context)
 
-def review(request, game_code='', player_name='', round_num=''):
-    context ={
-        'title':'Review',
+
+def review(request, game_code='', player_name='', round_num='', answer_num=''):
+    context = {
+        'title': 'Review',
         'game_code': game_code
     }
+    # todo: get all the answers for this round number and present to 
     return render(request, 'game/review.html', context)
 
 
