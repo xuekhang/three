@@ -89,7 +89,7 @@ img {
 }
 
 @media (min-width: 400px) {
-    .container-home{
+    .width-400{
         max-width: 400px;
     }
 }

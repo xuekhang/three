@@ -1,12 +1,12 @@
 {% extends "game/base.html" %}
 {% block content %}
 
-<div class="container-home card" style="border-style: solid; margin: auto; margin-top: 5px;">
+<div class="width-400 mx-auto card" style="margin: auto; margin-top: 5px;">
     <div>Hi {{ player_name }}, Lets Play</div>
     <div>Game Room Code: {{ game_code }}</div>
 </div>
 
-<div class="container-home"style=" margin: auto; margin-top: 5px;">
+<div class="width-400 mx-auto"style=" margin: auto; margin-top: 5px;">
     <div class="container" >
         <div class="row">Round:
             {% for round in rounds %}
@@ -14,7 +14,7 @@
             {% endfor%}
         </div>
     </div>
-    <div class="row card container-home" style="margin:auto; border-style: solid;">
+    <div class="row card width-400 mx-auto" >
         <div class="container-sm">
             <div class="row">Pick incorrect or similar answers:</div>
             <div class="row">

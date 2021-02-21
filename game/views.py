@@ -58,7 +58,8 @@ def home(request):
             #     )
 
             if game_code != '':
-                return redirect('lobby', game_code, player_name)
+                # return redirect('lobby', game_code, player_name)
+                return redirect('board', game_code, player_name, 1)
             else:
                 messages.error(request, 'Game code does not exist')
                 return redirect('home')
@@ -141,6 +142,7 @@ def config(request, game_code='', player_name=''):
         #     )
 
         return redirect('lobby', game_code, player_name)
+        
 
     messages.success(request, f'Game created')
     form = ConfigForm(initial={
@@ -260,8 +262,13 @@ def review(request, game_code='', player_name='', round_num='', question_num='')
     # answers = ['agfdg','bdfbb','bbgb','dbgbg','dfe','dbgbrfrvrg','dvrvbgbg','dbgrbg','drbgbg']
     answers = []
     for question in questions:
-        player_answer = Answer.objects.get(question=question)
-        answers.append(player_answer.answer)
+        try:
+            player_answer = Answer.objects.get(question=question)
+            answers.append(player_answer.answer)
+        except:
+            answers.append('    ')
+            ## someone hasn't entered there answers.        
+        
     context = {
         'title': 'Review',
         'game_code': game_code,
