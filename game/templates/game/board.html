@@ -53,8 +53,8 @@
 
         <div class="row" style="text-align: center;">
             {% for round in rounds %}
-            <button class="btn btn-primary" type="button" href="./{{ round }}" style="padding-left: 4px; padding-right: 4px;">Round 
-                {{ round }}</button>
+            <a class="btn btn-primary" type="button" href="./{{ round }}" style="padding-left: 4px; padding-right: 4px;">Round 
+                {{ round }}</a>
             {% endfor%}
         </div>
     </div>
@@ -64,7 +64,7 @@
             <div class="row" style="text-align: center; font-size: 75px;">{{letter}}</div>
             <div class="row">
                 <button class="btn btn-primary">
-                    Restart Round?
+                    Restart
                 </button>
             </div>
             <div class="row">

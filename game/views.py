@@ -58,7 +58,7 @@ def home(request):
             #     )
 
             if game_code != '':
-                return redirect('board', game_code, player_name, 1)
+                return redirect('lobby', game_code, player_name)
             else:
                 messages.error(request, 'Game code does not exist')
                 return redirect('home')
@@ -125,11 +125,11 @@ def config(request, game_code='', player_name=''):
                     round=round
                 )
                 categoryInRound.save()
-                Question.objects.create(
-                    number=j,
-                    round=Round.objects.get(game=game, number=i),
-                    player=Player.objects.get(name=player_name, game=game)
-                )
+                # Question.objects.create(
+                #     number=j,
+                #     round=Round.objects.get(game=game, number=i),
+                #     player=Player.objects.get(name=player_name, game=game)
+                # )
 
         # todo add host to answer table
 
@@ -229,6 +229,23 @@ def lobby(request, game_code='', player_name=''):
     }
 
     if request.method == 'POST':
+        # todo: put logic to create player answers here
+        game = Game.objects.get(code=game_code)
+        players = Player.objects.filter(game=game)
+        config = Config.objects.get(game=game)
+        for player in players:
+            for i in range(1, config.num_of_rounds +1):
+                for j in range(1, config.num_of_cat_per_round +1):
+                    Question.objects.create(number=j, round=Round.objects.get(game=game, number=i),player=player)
+
+
+        # Question.objects.create(
+        #     number=j,
+        #     round=Round.objects.get(game=game, number=i),
+        #     player=Player.objects.get(name=player_name, game=game)
+        # )
+
+
         return redirect('board', game_code, player_name, 1)
     return render(request, 'game/lobby.html', context)
 
@@ -238,16 +255,20 @@ def review(request, game_code='', player_name='', round_num='', question_num='')
         return redirect('board',game_code, player_name, int(round_num)+1)
     game = Game.objects.get(code=game_code)
     round = Round.objects.get(game=game,number=round_num)
-    # question = Question.objects.filter(number==question_num,round=round)
+    questions = Question.objects.filter(number=question_num,round=round)
     # answer = Answer.objects.filter()
-    answers = ['agfdg','bdfbb','bbgb','dbgbg','dfe','dbgbrfrvrg','dvrvbgbg','dbgrbg','drbgbg']
+    # answers = ['agfdg','bdfbb','bbgb','dbgbg','dfe','dbgbrfrvrg','dvrvbgbg','dbgrbg','drbgbg']
+    answers = []
+    for question in questions:
+        player_answer = Answer.objects.get(question=question)
+        answers.append(player_answer.answer)
     context = {
         'title': 'Review',
         'game_code': game_code,
-        'answers':answers   
+        'answers':answers
     }
-    
-    # todo: get all the answers for this round number and present to 
+
+    # todo: get all the answers for this round number and present to
     return render(request, 'game/review.html', context)
 
 
