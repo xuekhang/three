@@ -17,23 +17,24 @@
     </div>
     <div class="card width-400 mx-auto" style="margin: auto; margin-top: 5px;">
         <div class>
-            <div >Pick incorrect or similar answers:</div>
+            <div>Pick incorrect or similar answers:</div>
             <div class="row">
-                <form method="POST" class="text-center">
-                    {% csrf_token %}
-                    {% for answer in answers%}
-                    <button class="answer" type="button">{{ answer }}</button>
-                    {% endfor %}
-                    <br>
-                    <div class="col-md-12 text-right">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                <form method="POST" class="">
+                    <div class="col-md-12 text-center">
+                        {% csrf_token %}
+                        {% for answer in answers%}
+                        <button class="answer" type="button">{{ answer }}</button>
+                        {% endfor %}
+                        <br>
+                        <div class="">
+                            <button type="submit" class="btn btn-primary"
+                                style="text-align: right !important;">Submit</button>
+                        </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-</div>
-
 
 {% endblock content%}

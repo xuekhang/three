@@ -1,29 +1,27 @@
-{% extends "game/base.html" %}
-{% load crispy_forms_tags %}
-{% block content %}
+{% extends "game/base.html" %} {% load crispy_forms_tags %} {% block content %}
 <div class="card width-400 mx-auto">
-  <form method="POST">
-    {% csrf_token %}
-    <div class="form-group">
-      <label for="player_name">Player Name</label>
-      <input type="text" class="form-control" id="player_name" name="player_name" >
-    </div>
-    <div class="fieldWrapper">
-      <label for="game_code">Game Code</label>
-      <input type="text" class="form-control" id="game_code" name="game_code" placeholder="Leave blank if creating new game">
-    </div>
-    <!-- <fieldset class="form-group">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="player_name">Player Name</label>
+            <input type="text" class="form-control" id="player_name" name="player_name">
+        </div>
+        <div class="fieldWrapper">
+            <label for="game_code">Game Code</label>
+            <input type="text" class="form-control" id="game_code" name="game_code" placeholder="Leave blank if creating new game">
+        </div>
+        <!-- <fieldset class="form-group">
       <div class="fieldWrapper">
         <label for="game_code">Game Code</label>
         <input type="text" id="game_code_id" name="game_code" style="border-style: hidden;">
       </div>
     </fieldset> -->
-    <br>
-    <div class="col-md-12 text-center">
-      <!-- <a type="button" class="btn btn-primary" href="{% url 'config' %}" >Create Game</a> -->
-      <button type="submit" class="btn btn-primary" name="create">Create Game</button>
-      <button type="submit" class="btn btn-primary" name="join">Join Game</button>
-    </div>
-  </form>
+        <br>
+        <div class="col-md-12 text-center">
+            <!-- <a type="button" class="btn btn-primary" href="{% url 'config' %}" >Create Game</a> -->
+            <button type="submit" class="btn btn-primary" name="create">Create Game</button>
+            <button type="submit" class="btn btn-primary" name="join">Join Game</button>
+        </div>
+    </form>
 </div>
 {% endblock content%}

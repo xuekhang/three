@@ -48,15 +48,6 @@ def home(request):
                 name=player_name,
                 is_host=False
             )
-
-            # todo create questions for players
-            # for x in range(1, config.num_of_rounds + 1):
-            #     Question.objects.create(
-            #         number=x,
-            #         round=Round.objects.get(game=game, number=x),
-            #         player=Player.objects.get(name=player_name)
-            #     )
-
             if game_code != '':
                 # return redirect('lobby', game_code, player_name)
                 return redirect('board', game_code, player_name, 1)
@@ -126,23 +117,7 @@ def config(request, game_code='', player_name=''):
                     round=round
                 )
                 categoryInRound.save()
-                # Question.objects.create(
-                #     number=j,
-                #     round=Round.objects.get(game=game, number=i),
-                #     player=Player.objects.get(name=player_name, game=game)
-                # )
-
-        # todo add host to answer table
-
-        # for x in range(1, config.num_of_rounds + 1):
-        #     Question.objects.create(
-        #         number=x,
-        #         round=Round.objects.get(game=game, number=x),
-        #         player=Player.objects.get(name=player_name,game=game)
-        #     )
-
         return redirect('lobby', game_code, player_name)
-        
 
     messages.success(request, f'Game created')
     form = ConfigForm(initial={
@@ -159,10 +134,7 @@ def config(request, game_code='', player_name=''):
 
 
 def board(request, game_code='', player_name='', round_num=''):
-    # todo record submitted answers and send to next page
     if request.method == 'POST':
-        # answers = list(request.POST.items())
-        # answers = []
         game = Game.objects.get(code=game_code)
         round = Round.objects.get(game=game, number=round_num)
         player = Player.objects.get(game=game, name=player_name)
@@ -195,7 +167,6 @@ def board(request, game_code='', player_name='', round_num=''):
             for x in range(1, max_rounds + 1):
                 rounds.append(x)
 
-            # todo get the letter for each round
             current_round = Round.objects.get(game=game, number=round_num)
             categories_in_round = list(
                 CategoryInRound.objects.filter(round=current_round))
@@ -231,22 +202,14 @@ def lobby(request, game_code='', player_name=''):
     }
 
     if request.method == 'POST':
-        # todo: put logic to create player answers here
         game = Game.objects.get(code=game_code)
         players = Player.objects.filter(game=game)
         config = Config.objects.get(game=game)
         for player in players:
-            for i in range(1, config.num_of_rounds +1):
-                for j in range(1, config.num_of_cat_per_round +1):
-                    Question.objects.create(number=j, round=Round.objects.get(game=game, number=i),player=player)
-
-
-        # Question.objects.create(
-        #     number=j,
-        #     round=Round.objects.get(game=game, number=i),
-        #     player=Player.objects.get(name=player_name, game=game)
-        # )
-
+            for i in range(1, config.num_of_rounds + 1):
+                for j in range(1, config.num_of_cat_per_round + 1):
+                    Question.objects.create(number=j, round=Round.objects.get(
+                        game=game, number=i), player=player)
 
         return redirect('board', game_code, player_name, 1)
     return render(request, 'game/lobby.html', context)
@@ -254,28 +217,28 @@ def lobby(request, game_code='', player_name=''):
 
 def review(request, game_code='', player_name='', round_num='', question_num=''):
     if request.method == 'POST':
-        return redirect('board',game_code, player_name, int(round_num)+1)
+        return redirect('board', game_code, player_name, int(round_num)+1)
     game = Game.objects.get(code=game_code)
-    round = Round.objects.get(game=game,number=round_num)
-    questions = Question.objects.filter(number=question_num,round=round)
+    round = Round.objects.get(game=game, number=round_num)
+    questions = Question.objects.filter(number=question_num, round=round)
     # answer = Answer.objects.filter()
-    # answers = ['agfdg','bdfbb','bbgb','dbgbg','dfe','dbgbrfrvrg','dvrvbgbg','dbgrbg','drbgbg']
-    answers = []
+    answers = ['agfdg', 'bdfbb', 'bbgb', 'dbgbg', 'dfe',
+               'dbgbrfrvrg', 'dvrvbgbg', 'dbgrbg', 'drbgbg']
+    # answers = []
     for question in questions:
         try:
             player_answer = Answer.objects.get(question=question)
             answers.append(player_answer.answer)
         except:
             answers.append('    ')
-            ## someone hasn't entered there answers.        
-        
+            # someone hasn't entered there answers.
+
     context = {
         'title': 'Review',
         'game_code': game_code,
-        'answers':answers
+        'answers': answers
     }
 
-    # todo: get all the answers for this round number and present to
     return render(request, 'game/review.html', context)
 
 
