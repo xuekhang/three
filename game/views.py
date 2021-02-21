@@ -234,10 +234,17 @@ def lobby(request, game_code='', player_name=''):
 
 
 def review(request, game_code='', player_name='', round_num='', question_num=''):
+    game = Game.objects.get(code=game_code)
+    round = Round.objects.get(game=game,number=round_num)
+    # question = Question.objects.filter(number==question_num,round=round)
+    # answer = Answer.objects.filter()
+    answers = ['a','b','b','d']
     context = {
         'title': 'Review',
-        'game_code': game_code
+        'game_code': game_code,
+        'answers':answers   
     }
+    
     # todo: get all the answers for this round number and present to 
     return render(request, 'game/review.html', context)
 
