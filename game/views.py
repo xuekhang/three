@@ -238,7 +238,7 @@ def review(request, game_code='', player_name='', round_num='', question_num='')
     round = Round.objects.get(game=game,number=round_num)
     # question = Question.objects.filter(number==question_num,round=round)
     # answer = Answer.objects.filter()
-    answers = ['a','b','b','d']
+    answers = ['agfdg','bdfbb','bbgb','dbgbg','dfe','dbgbrfrvrg','dvrvbgbg','dbgrbg','drbgbg']
     context = {
         'title': 'Review',
         'game_code': game_code,

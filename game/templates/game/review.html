@@ -14,17 +14,20 @@
             {% endfor%}
         </div>
     </div>
-    <div class="row card container-home" style="margin:auto; border-style: solid; height: 200px;">
+    <div class="row card container-home" style="margin:auto; border-style: solid;">
         <div class="container">
-            <div class="row">Pick incorrect or similar answers</div>
+            <div class="row">Pick incorrect or similar answers:</div>
             <div class="row">
-                <form method="POST">
+                <form method="POST" class="text-center">
                     {% for answer in answers%}
-                    <div>{{ answer }}</div>
+                    <button class="answer" type="button">{{ answer }}</button>
                     {% endfor %}
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <br>
+                    <div class="col-md-12 text-right">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
             </div>
-            </form>
         </div>
     </div>
 </div>
