@@ -17,5 +17,5 @@ urlpatterns = [
     # path('board/<game_code>/<round>/', views.board, name='board'),
     path('board/<game_code>/<player_name>/<round_num>', views.board, name='board'),
     path('players_in_game/<game_code>/', views.get_players_in_game, name='players_in_game'),
-    path('review/<game_code>/<player_name>/<round_num>', views.review, name='review')
+    path('review/<game_code>/<player_name>/<round_num>/<question_num>', views.review, name='review')
 ]

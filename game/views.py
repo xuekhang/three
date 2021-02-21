@@ -233,7 +233,7 @@ def lobby(request, game_code='', player_name=''):
     return render(request, 'game/lobby.html', context)
 
 
-def review(request, game_code='', player_name='', round_num='', answer_num=''):
+def review(request, game_code='', player_name='', round_num='', question_num=''):
     context = {
         'title': 'Review',
         'game_code': game_code
