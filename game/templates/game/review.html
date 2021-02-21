@@ -6,19 +6,20 @@
     <div>Game Room Code: {{ game_code }}</div>
 </div>
 
-<div class="container">
-    <div class="container-home" style=" margin: auto; margin-top: 5px;">
+<div class="container-home"style=" margin: auto; margin-top: 5px;">
+    <div class="container" >
         <div class="row">Round:
             {% for round in rounds %}
-            <a href="./{{ round }}" style="padding-left: 4px; padding-right: 4px;">{{ round }}</a>
+            <button class="btn"type="button" href="./{{ round }}" style="padding-left: 4px; padding-right: 4px;">{{ round }}</button>
             {% endfor%}
         </div>
     </div>
     <div class="row card container-home" style="margin:auto; border-style: solid;">
-        <div class="container">
+        <div class="container-sm">
             <div class="row">Pick incorrect or similar answers:</div>
             <div class="row">
                 <form method="POST" class="text-center">
+                    {% csrf_token %}
                     {% for answer in answers%}
                     <button class="answer" type="button">{{ answer }}</button>
                     {% endfor %}

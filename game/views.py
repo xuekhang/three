@@ -234,6 +234,8 @@ def lobby(request, game_code='', player_name=''):
 
 
 def review(request, game_code='', player_name='', round_num='', question_num=''):
+    if request.method == 'POST':
+        return redirect('board',game_code, player_name, int(round_num)+1)
     game = Game.objects.get(code=game_code)
     round = Round.objects.get(game=game,number=round_num)
     # question = Question.objects.filter(number==question_num,round=round)

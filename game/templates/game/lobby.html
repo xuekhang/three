@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 {% block content %}
 <div class="container-home card" style="margin: auto;">
-  <div class="container">
+  <div class="container-sm">
     <div class="row">
       <div class="col">
         Waiting for players...
@@ -17,7 +17,7 @@
       <div class="col">
         <form method="POST">
           {% csrf_token %}
-          <div class="col-md-12 text-center">
+          <div class="col text-center">
             <button type="submit" class="btn btn-primary" name="start">Start Game</button>
           </div>
         </form>
