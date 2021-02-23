@@ -12,6 +12,7 @@ RUN echo 'alias pmr="python manage.py runserver 0.0.0.0:8000"' >> ~/.bashrc
 RUN echo 'alias pvb="python manage.py varnish-ban "' >> ~/.bashrc
 
 ADD requirements.txt /srv/web/three
+
 RUN pip install -r /srv/web/three/requirements.txt --upgrade
 
 CMD ["/bin/bash"]

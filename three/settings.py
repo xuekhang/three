@@ -31,10 +31,11 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 
-INSTALLED_APPS = [    
-    'game.apps.GameConfig',    
+INSTALLED_APPS = [
+    'game.apps.GameConfig',
     'crispy_forms',
     'multiselectfield',
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -72,7 +73,16 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'three.wsgi.application'
+ASGI_APPLICATION = 'three.asgi.application'
 
+CHANNEL_LAYERS = {
+    'defualt': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': ['three.redis', '6379']
+        }
+    }
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases

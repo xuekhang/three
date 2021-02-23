@@ -74,7 +74,7 @@ def home(request):
             'title': 'home',
             'form': form
         }
-        return render(request, 'game/home.html', context)
+    return render(request, 'game/home.html', context)
 
 
 def config(request, game_code='', player_name=''):
