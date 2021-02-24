@@ -25,7 +25,11 @@
     </form>
     <!-- <div> channels example </div> -->
 </div>
-<div class="card"> channels example
+<div class="card">
+    <h4>channels example</h4>
+    <ul id="testList">
+
+    </ul>
     <form action="" id="testForm">
         <label for="">test</label>
         <input type="text" name="test" id="test">
@@ -41,6 +45,7 @@
     var loc = window.location
     var formData = $("#testForm")
     var msgInput = $("#test")
+    var testHolder = $('#testList')
 
     var wsStart = 'ws://'
     if (loc.protocol == 'https:') {
@@ -51,6 +56,9 @@
 
     socket.onmessage = function(e) {
         console.log("message", e)
+        console.log(e.data)
+        var listDataMsg = JSON.parse(e.data)
+        testHolder.append("<li>" + listDataMsg.message + " via socket" + "</li>")
     }
     socket.onopen = function(e) {
         console.log("open", e)
@@ -58,8 +66,14 @@
         formData.submit(function(event) {
             event.preventDefault()
             var msgText = msgInput.val()
+            testHolder.append("<li>" + msgText + "</li>")
+                // var formDataSerialized = formData.serialize()
+            var finalData = {
+                'message': msgText
+            }
+
             console.log('trying to send to socket layer')
-            socket.send(msgText)
+            socket.send(JSON.stringify(finalData))
             formData[0].reset()
         })
     }

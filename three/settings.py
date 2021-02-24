@@ -79,7 +79,7 @@ CHANNEL_LAYERS = {
     'defualt': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            'hosts': ['three.redis', '6379']
+            'hosts': [('three.redis', 6379)]
         }
     }
 }
