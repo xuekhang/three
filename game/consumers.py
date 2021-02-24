@@ -19,6 +19,15 @@ from .models import (
 class TestConsumer(AsyncConsumer):
     async def websocket_connect(self, event):
         print("connected", event)
+        await self.send({
+            "type":"websocket.accept"
+        })
+
+        # await asyncio.sleep(5)
+        await self.send({
+            "type": "websocket.send",
+            "text": "hellow word"
+        })
     
     async def websocket_receive(self, event):
         print("receieved", event)
