@@ -4,39 +4,25 @@ from django.contrib.auth import get_user_model
 from channels.consumer import AsyncConsumer
 from channels.db import database_sync_to_async
 
-from .models import (
-    Game,
-    Config,
-    Player,
-    GlobalCategory,
-    LocalCategory,
-    Round,
-    CategoryInRound,
-    Question,
-    Answer
-)
+from .models import (Game, Config, Player, GlobalCategory, LocalCategory,
+                     Round, CategoryInRound, Question, Answer)
+
 
 class TestConsumer(AsyncConsumer):
     async def websocket_connect(self, event):
         print("connected", event)
-        
+
         other_user = "other user"
         me = "me"
         # print(other_user,me)
         room = "thread_1"
         self.room = room
-        await self.channel_layer.group_add(
-            room,
-            self.channel_name
-        )
+        await self.channel_layer.group_add(room, self.channel_name)
 
-        await self.send({
-            "type":"websocket.accept"
-        })
+        await self.send({"type": "websocket.accept"})
 
         # await asyncio.sleep(5)
-        
-    
+
     async def websocket_receive(self, event):
         print("receieved", event)
         front_text = event.get('text', None)
@@ -44,34 +30,52 @@ class TestConsumer(AsyncConsumer):
             loaded_dict_data = json.loads(front_text)
             msg = loaded_dict_data.get('message')
             print(msg)
-            myResponse = {
-                'message':msg,
-                'username':'jimmy'
-            }
+            myResponse = {'message': msg, 'username': 'jimmy'}
 
             # new_event = {
             # "type": "websocket.send",
             # "text": json.dumps(myResponse)
             # }
-            await self.channel_layer.group_send(
-                self.room,
-                {
-                    "type":"chat_message",
-                    "text":json.dumps(myResponse)
-                }
-            )
+            await self.channel_layer.group_send(self.room, {
+                "type": "chat_message",
+                "text": json.dumps(myResponse)
+            })
             # await self.send()
 
     async def chat_message(self, event):
         # print('message', event)
         # sends actual message
-        await self.send({
-            "type":"websocket.send",
-            "text":event['text']
-        })
-    
+        await self.send({"type": "websocket.send", "text": event['text']})
+
     async def websocket_disconnect(self, event):
         print("disconnected", event)
-        await self.send({
-            "type": "websocket.close"
-        })
+        await self.send({"type": "websocket.close"})
+
+
+class LobbyConsumer(AsyncConsumer):
+    # todo: everytim someone connects send the new list
+    # of players to everyone currently in lobby
+
+    async def websocket_connect(self, event):
+        print('connected', event)
+        await self.send({"type": "websocket.accept"})
+        game_code = self.scope['url_route']['kwargs']['game_code']
+        # game = Game.objects.get(code=game_code)
+        # players = Player.objects.filter(game=game)
+        players_obj = await self.get_players(game_code=game_code)
+        print(players_obj)
+        await self.send({'type': 'websocket.send', 'text': 'hello world'})
+
+    @database_sync_to_async
+    def get_players(self, game_code):
+        game = Game.objects.get(code=game_code)
+        # players = Player.objects.filter(game=game)
+        # return Player.objects.filter(game=game)
+        print(game)
+        return game
+
+    async def websocket_receive(self, event):
+        print('receieved', event)
+
+    async def websocket_disconnect(Self, event):
+        print('disconnect', event)

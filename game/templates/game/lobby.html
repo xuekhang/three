@@ -1,30 +1,73 @@
-{% extends "game/base.html" %}
-{% load crispy_forms_tags %}
-{% block content %}
+{% extends "game/base.html" %} {% load crispy_forms_tags %} {% block content %}
 <div class="width-400 mx-auto card" style="margin: auto;">
-  <div class="width-400">
-    <div class="row">
-      <div class="col">
-        Waiting for players...
-        <ol>
-          {% for player in players%}
-          <li>{{ player.name }}</li>
-          {% endfor %}
-        </ol>
-      </div>
+    <div class="width-400">
+        <div class="row">
+            <div class="col">
+                Waiting for players...
+                <ol id="playerList">
+                    {% for player in players%}
+                    <li>{{ player.name }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="col text-center">
+                        <button type="submit" class="btn btn-primary" name="start">Start Game</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-    <div class="row">
-      <div class="col">
-        <form method="POST">
-          {% csrf_token %}
-          <div class="col text-center">
-            <button type="submit" class="btn btn-primary" name="start">Start Game</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
 </div>
+<script>
+    // test script
+    console.log(window.location)
+    var loc = window.location
+        // var formData = $("#testForm")
+        // var msgInput = $("#test")
+    var chatList = $('#chatList')
+
+    var wsStart = 'ws://'
+    if (loc.protocol == 'https:') {
+        wsStart = 'wss://'
+    }
+    var endpoint = wsStart + loc.host + loc.pathname
+    var socket = new WebSocket(endpoint)
+
+    socket.onmessage = function(e) {
+        console.log("message", e)
+        console.log(e.data)
+            // var listDataMsg = JSON.parse(e.data)
+            // testHolder.append("<li>" + listDataMsg.message + " via socket" + "</li>")
+    }
+    socket.onopen = function(e) {
+        console.log("open", e)
+            // console.log(formData)
+            // formData.submit(function(event) {
+            //     event.preventDefault()
+            //     var msgText = msgInput.val()
+            //     testHolder.append("<li>" + msgText + "</li>")
+            //         // var formDataSerialized = formData.serialize()
+            //     var finalData = {
+            //         'message': msgText
+            //     }
+
+        //     console.log('trying to send to socket layer')
+        //     socket.send(JSON.stringify(finalData))
+        //     formData[0].reset()
+        // })
+    }
+    socket.onerror = function(e) {
+        console.log("error", e)
+    }
+    socket.onclose = function(e) {
+        console.log("close", e)
+    }
+</script>
 <!-- 
 <script>
   $(document).ready(function () {

@@ -5,17 +5,8 @@ from django.urls import reverse
 from django.core import serializers
 from urllib.parse import urlencode
 from .forms import ConfigForm
-from .models import (
-    Game,
-    Config,
-    Player,
-    GlobalCategory,
-    LocalCategory,
-    Round,
-    CategoryInRound,
-    Question,
-    Answer
-)
+from .models import (Game, Config, Player, GlobalCategory, LocalCategory,
+                     Round, CategoryInRound, Question, Answer)
 from django.utils.crypto import get_random_string
 import random
 import logging
@@ -24,9 +15,7 @@ import logging
 
 
 def home(request):
-    context = {
-        'title': 'home'
-    }
+    context = {'title': 'home'}
     if request.method == 'POST':
         player_name = request.POST.get('player_name')
         if player_name == '':
@@ -43,14 +32,10 @@ def home(request):
             if num_current_players >= config.num_of_players:
                 messages.warning(request, 'Game is full')
                 return redirect('home')
-            Player.objects.create(
-                game=game,
-                name=player_name,
-                is_host=False
-            )
+            Player.objects.create(game=game, name=player_name, is_host=False)
             if game_code != '':
-                # return redirect('lobby', game_code, player_name)
-                return redirect('board', game_code, player_name, 1)
+                return redirect('lobby', game_code, player_name)
+                # return redirect('board', game_code, player_name, 1)
             else:
                 messages.error(request, 'Game code does not exist')
                 return redirect('home')
@@ -60,20 +45,13 @@ def home(request):
             game_code = get_random_string(length=6).upper()
             Game.objects.create(code=game_code)
             game = Game.objects.get(code=game_code)
-            Player.objects.create(
-                game=game,
-                name=player_name,
-                is_host=True
-            )
+            Player.objects.create(game=game, name=player_name, is_host=True)
 
             return redirect('config', game_code, player_name)
     else:
         form = ConfigForm()
 
-        context = {
-            'title': 'home',
-            'form': form
-        }
+        context = {'title': 'home', 'form': form}
     return render(request, 'game/home.html', context)
 
 
@@ -88,8 +66,8 @@ def config(request, game_code='', player_name=''):
             obj.game = game
             obj.save()
             messages.success(request, f'Game config saved')
-        all_letters = str(Config.objects.values_list(
-            'letters', flat=True).filter(game=game))
+        all_letters = str(
+            Config.objects.values_list('letters', flat=True).filter(game=game))
         letters = list(all_letters.split(","))
 
         all_categories = []
@@ -104,18 +82,12 @@ def config(request, game_code='', player_name=''):
         num_of_cat_per_round = int(request.POST.get('num_of_cat_per_round'))
         config = Config.objects.get(game=game)
 
-        for i in range(1, num_of_rounds+1):
-            round = Round(
-                game=game,
-                number=i,
-                letter=random.choice(letters)
-            )
+        for i in range(1, num_of_rounds + 1):
+            round = Round(game=game, number=i, letter=random.choice(letters))
             round.save()
-            for j in range(1, num_of_cat_per_round+1):
+            for j in range(1, num_of_cat_per_round + 1):
                 categoryInRound = CategoryInRound(
-                    name=random.choice(all_categories),
-                    round=round
-                )
+                    name=random.choice(all_categories), round=round)
                 categoryInRound.save()
         return redirect('lobby', game_code, player_name)
 
@@ -125,11 +97,7 @@ def config(request, game_code='', player_name=''):
         'num_of_rounds': 4,
         'num_of_cat_per_round': 10
     })
-    context = {
-        'title': 'config',
-        'form': form,
-        'game_code': game_code
-    }
+    context = {'title': 'config', 'form': form, 'game_code': game_code}
     return render(request, 'game/config.html', context)
 
 
@@ -144,8 +112,9 @@ def board(request, game_code='', player_name='', round_num=''):
                 # gets the number of the answer
                 answer_number = str(key).replace('answer', '')
 
-                question = Question.objects.get(number=int(
-                    answer_number), round=round, player=player)
+                question = Question.objects.get(number=int(answer_number),
+                                                round=round,
+                                                player=player)
                 Answer.objects.create(answer=value, question=question)
 
         return redirect('review', game_code, player_name, round_num, 1)
@@ -158,8 +127,8 @@ def board(request, game_code='', player_name='', round_num=''):
     if game_code != '':
         if round_num != '':
             game = Game.objects.get(code=game_code)
-            all_letters = str(Config.objects.values_list(
-                'letters', flat=True)[0])
+            all_letters = str(
+                Config.objects.values_list('letters', flat=True)[0])
             letters = list(all_letters.split(","))
 
             max_rounds = Config.objects.get(game=game).num_of_rounds
@@ -196,10 +165,7 @@ def board(request, game_code='', player_name='', round_num=''):
 
 def lobby(request, game_code='', player_name=''):
     game = Game.objects.get(code=game_code)
-    context = {
-        'title': 'Lobby',
-        'players': Player.objects.filter(game=game)
-    }
+    context = {'title': 'Lobby', 'players': Player.objects.filter(game=game)}
 
     if request.method == 'POST':
         game = Game.objects.get(code=game_code)
@@ -208,22 +174,30 @@ def lobby(request, game_code='', player_name=''):
         for player in players:
             for i in range(1, config.num_of_rounds + 1):
                 for j in range(1, config.num_of_cat_per_round + 1):
-                    Question.objects.create(number=j, round=Round.objects.get(
-                        game=game, number=i), player=player)
+                    Question.objects.create(number=j,
+                                            round=Round.objects.get(game=game,
+                                                                    number=i),
+                                            player=player)
 
         return redirect('board', game_code, player_name, 1)
     return render(request, 'game/lobby.html', context)
 
 
-def review(request, game_code='', player_name='', round_num='', question_num=''):
+def review(request,
+           game_code='',
+           player_name='',
+           round_num='',
+           question_num=''):
     if request.method == 'POST':
-        return redirect('board', game_code, player_name, int(round_num)+1)
+        return redirect('board', game_code, player_name, int(round_num) + 1)
     game = Game.objects.get(code=game_code)
     round = Round.objects.get(game=game, number=round_num)
     questions = Question.objects.filter(number=question_num, round=round)
     # answer = Answer.objects.filter()
-    answers = ['agfdg', 'bdfbb', 'bbgb', 'dbgbg', 'dfe',
-               'dbgbrfrvrg', 'dvrvbgbg', 'dbgrbg', 'drbgbg']
+    answers = [
+        'agfdg', 'bdfbb', 'bbgb', 'dbgbg', 'dfe', 'dbgbrfrvrg', 'dvrvbgbg',
+        'dbgrbg', 'drbgbg'
+    ]
     # answers = []
     for question in questions:
         try:
@@ -233,11 +207,7 @@ def review(request, game_code='', player_name='', round_num='', question_num='')
             answers.append('    ')
             # someone hasn't entered there answers.
 
-    context = {
-        'title': 'Review',
-        'game_code': game_code,
-        'answers': answers
-    }
+    context = {'title': 'Review', 'game_code': game_code, 'answers': answers}
 
     return render(request, 'game/review.html', context)
 
