@@ -9,3 +9,4 @@ nba-api==1.1.9
 django-multiselectfield==0.1.12
 twisted==20.3.0
 channels==3.0.3
+ptvsd==4.3.2
