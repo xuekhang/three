@@ -19,12 +19,20 @@ from .models import (
 class TestConsumer(AsyncConsumer):
     async def websocket_connect(self, event):
         print("connected", event)
-        await self.send({
-            "type":"websocket.accept"
-        })
+        
         other_user = "other user"
         me = "me"
         # print(other_user,me)
+        room = "thread_1"
+        self.room = room
+        await self.channel_layer.group_add(
+            room,
+            self.channel_name
+        )
+
+        await self.send({
+            "type":"websocket.accept"
+        })
 
         # await asyncio.sleep(5)
         
@@ -40,10 +48,27 @@ class TestConsumer(AsyncConsumer):
                 'message':msg,
                 'username':'jimmy'
             }
-            await self.send({
-            "type": "websocket.send",
-            "text": json.dumps(myResponse)
-            })
+
+            # new_event = {
+            # "type": "websocket.send",
+            # "text": json.dumps(myResponse)
+            # }
+            await self.channel_layer.group_send(
+                self.room,
+                {
+                    "type":"chat_message",
+                    "text":json.dumps(myResponse)
+                }
+            )
+            # await self.send()
+
+    async def chat_message(self, event):
+        # print('message', event)
+        # sends actual message
+        await self.send({
+            "type":"websocket.send",
+            "text":event['text']
+        })
     
     async def websocket_disconnect(self, event):
         print("disconnected", event)

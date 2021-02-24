@@ -76,12 +76,12 @@ WSGI_APPLICATION = 'three.wsgi.application'
 ASGI_APPLICATION = 'three.asgi.application'
 
 CHANNEL_LAYERS = {
-    'defualt': {
+    'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            'hosts': [('three.redis', 6379)]
-        }
-    }
+            'hosts': [('three.redis', 6379)],
+        },
+    },
 }
 
 # Database

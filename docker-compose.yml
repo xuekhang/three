@@ -54,6 +54,7 @@ services:
           ipv4_address: 172.29.0.4
   
   three.redis:
+    hostname: three.redis
     container_name: three.redis
     image: redis:6.0.6
     expose:
