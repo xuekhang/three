@@ -17,6 +17,8 @@ from channels.security.websocket import AllowedHostsOriginValidator, OriginValid
 
 # from three.game.consumers import TestConsumer
 # from . import routing
+# from three.game.routing import ws_urlpatterns
+from game.routing import ws_urlpatterns
 
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'three.settings')
@@ -25,9 +27,9 @@ application = ProtocolTypeRouter({
     'http': get_asgi_application(),
     'websocket': AllowedHostsOriginValidator(
         AuthMiddlewareStack(
-            URLRouter([
+            URLRouter(ws_urlpatterns
                 # path('something', )
-            ])
+            )
         )
     )
 })
