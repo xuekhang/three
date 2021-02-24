@@ -22,11 +22,14 @@ class TestConsumer(AsyncConsumer):
         await self.send({
             "type":"websocket.accept"
         })
+        other_user = "other user"
+        me = "me"
+        print(other_user,me)
 
         # await asyncio.sleep(5)
         await self.send({
             "type": "websocket.send",
-            "text": "hellow word"
+            "text": "hello word"
         })
     
     async def websocket_receive(self, event):
@@ -34,3 +37,6 @@ class TestConsumer(AsyncConsumer):
     
     async def websocket_disconnect(self, event):
         print("disconnected", event)
+        await self.send({
+            "type": "websocket.close"
+        })

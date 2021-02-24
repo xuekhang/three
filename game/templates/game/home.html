@@ -23,13 +23,24 @@
             <button type="submit" class="btn btn-primary" name="join">Join Game</button>
         </div>
     </form>
-    <div> channels example </div>
+    <!-- <div> channels example </div> -->
 </div>
+<div class="card"> channels example
+    <form action="" id="testForm">
+        <label for="">test</label>
+        <input type="text" name="test" id="test">
+        <label for="testtwo">testtwo</label>
+        <input type="text" name="testtwo" id="testtwo">
+        <button type="submit" class="btn btn-primary">send socket msg</button>
+    </form>
 
+</div>
 <script>
     // test script
     console.log(window.location)
     var loc = window.location
+    var formData = $("#testForm")
+    var msgInput = $("#test")
 
     var wsStart = 'ws://'
     if (loc.protocol == 'https:') {
@@ -39,10 +50,18 @@
     var socket = new WebSocket(endpoint)
 
     socket.onmessage = function(e) {
-        console.log("meesage", e)
+        console.log("message", e)
     }
     socket.onopen = function(e) {
         console.log("open", e)
+        console.log(formData)
+        formData.submit(function(event) {
+            event.preventDefault()
+            var msgText = msgInput.val()
+            console.log('trying to send to socket layer')
+            socket.send(msgText)
+            formData[0].reset()
+        })
     }
     socket.onerror = function(e) {
         console.log("error", e)
