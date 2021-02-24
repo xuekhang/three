@@ -15,15 +15,21 @@ from channels.routing import ProtocolTypeRouter , URLRouter
 from channels.auth import AuthMiddlewareStack
 from channels.security.websocket import AllowedHostsOriginValidator, OriginValidator
 
-# from ..game.consumers import TestConsumer
-
+# from three.game.consumers import TestConsumer
+# from . import routing
 
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'three.settings')
 
 application = ProtocolTypeRouter({
-    'http': get_asgi_application()
-    # 'websocket'
+    'http': get_asgi_application(),
+    'websocket': AllowedHostsOriginValidator(
+        AuthMiddlewareStack(
+            URLRouter([
+                # path('something', )
+            ])
+        )
+    )
 })
 
 
