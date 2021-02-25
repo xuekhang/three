@@ -3,7 +3,7 @@
     <div class="width-400">
         <div class="row">
             <div class="col">
-                Waiting for players...
+                Waiting for players <span id="wait">.</span>
                 <ol id="playerList">
                     {% for player in players%}
                     <li>{{ player.name }}</li>
@@ -85,4 +85,14 @@
   });
 
 </script> -->
+
+<script>
+    var dots = window.setInterval(function() {
+        var wait = document.getElementById("wait");
+        if (wait.innerHTML.length > 3)
+            wait.innerHTML = "";
+        else
+            wait.innerHTML += ".";
+    }, 100);
+</script>
 {% endblock content%}
