@@ -63,19 +63,18 @@ class LobbyConsumer(AsyncConsumer):
         # game = Game.objects.get(code=game_code)
         # players = Player.objects.filter(game=game)
         players_obj = await self.get_players(game_code=game_code)
-        print(players_obj)
+        for player in players_obj:
+            print(player)
         await self.send({'type': 'websocket.send', 'text': 'hello world'})
-
-    @database_sync_to_async
-    def get_players(self, game_code):
-        game = Game.objects.get(code=game_code)
-        # players = Player.objects.filter(game=game)
-        # return Player.objects.filter(game=game)
-        print(game)
-        return game
 
     async def websocket_receive(self, event):
         print('receieved', event)
 
     async def websocket_disconnect(Self, event):
         print('disconnect', event)
+
+    @database_sync_to_async # can't return queryset when using this decorator
+    def get_players(self, game_code):
+        game = Game.objects.get(code=game_code)
+        # players = Player.objects.filter(game=game)[0]
+        return list(Player.objects.filter(game=game))
