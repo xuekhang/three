@@ -1,11 +1,10 @@
-{% extends "game/base.html" %}
-{% block content %}
+{% extends "game/base.html" %} {% block content %}
 
-<div class="width-400 mx-auto card" style="border-style: solid; margin: auto; margin-top: 5px;">
+<div class="width-400 mx-auto card" style="border-style: solid;  ">
     <div>Hi {{ player_name }}, Lets Play</div>
     <div>Game Room Code: {{ game_code }}</div>
 </div>
-<div class="width-400 mx-auto card" style="border-style: solid; margin: auto; margin-top: 5px;">
+<div class="width-400 mx-auto card" style="border-style: solid; ">
     <div class="row">
         <div class="col-6">
             <div>timer</div>
@@ -19,10 +18,10 @@
 </div>
 
 <div>
-    <div class="width-400 mx-auto" style=" margin: auto; margin-top: 5px;">
+    <div class="width-400 mx-auto" style=" ">
 
-<!-- testing tabs do not delete-->
-<!-- <ul class="nav nav-tabs justify-content-center">
+        <!-- testing tabs do not delete-->
+        <!-- <ul class="nav nav-tabs justify-content-center">
     <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
     <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
     <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
@@ -49,17 +48,16 @@
       <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
     </div>
   </div> -->
-<!-- end testing -->
+        <!-- end testing -->
 
         <div class="row" style="text-align: center;">
             {% for round in rounds %}
             <a class="btn btn-primary" type="button" href="./{{ round }}" style="padding-left: 4px; padding-right: 4px;">Round 
-                {{ round }}</a>
-            {% endfor%}
+                {{ round }}</a> {% endfor%}
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-3 card" >
+        <div class="col-sm-3 card">
             <h2 style="text-align: center;"><u>Letter</u></h2>
             <div class="row" style="text-align: center; font-size: 75px;">{{letter}}</div>
             <div class="row">
@@ -71,11 +69,10 @@
                 {% if is_player_host%}
                 <button class="btn btn-primary" href="">
                     Edit Settings
-                </button>
-                {% endif %}
+                </button> {% endif %}
             </div>
         </div>
-        <div class="col-sm-8 card" >
+        <div class="col-sm-8 card">
             <h4>Categories</h4>
             <form method="POST">
                 {% csrf_token %}
@@ -88,8 +85,7 @@
                             {{category}}
                         </div>
                         <div class="col-md-7">
-                            <input type="text" style="width: 100%;" name="answer{{ forloop.counter }}" 
-                            {% if round_is_played %} readonly {% endif %}>
+                            <input type="text" style="width: 100%;" name="answer{{ forloop.counter }}" {% if round_is_played %} readonly {% endif %}>
                         </div>
                     </div>
 
