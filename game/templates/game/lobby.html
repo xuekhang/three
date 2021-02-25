@@ -29,7 +29,7 @@
     var loc = window.location
         // var formData = $("#testForm")
         // var msgInput = $("#test")
-    var chatList = $('#chatList')
+    var playerList = $('#playerList')
 
     var wsStart = 'ws://'
     if (loc.protocol == 'https:') {
@@ -41,8 +41,16 @@
     socket.onmessage = function(e) {
         console.log("message", e)
         console.log(e.data)
-            // var listDataMsg = JSON.parse(e.data)
-            // testHolder.append("<li>" + listDataMsg.message + " via socket" + "</li>")
+        var players = JSON.parse(e.data)
+        console.log(players)
+        playerList.empty()
+        players.forEach(element => {
+            console.log(element)
+            playerList.append("<li>" + element + "</li>")
+
+        });
+        // var listDataMsg = JSON.parse(e.data)
+        // testHolder.append("<li>" + listDataMsg.message + " via socket" + "</li>")
     }
     socket.onopen = function(e) {
         console.log("open", e)
