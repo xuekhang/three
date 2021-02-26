@@ -67,13 +67,15 @@ class LobbyConsumer(AsyncConsumer):
         # players = Player.objects.filter(game=game)
         players_obj = await self.get_players(game_code=game_code)
         players_list = []
+        start_game = False
         for player in players_obj:
             players_list.append(player.name)
             print(player)
+        response = {'player_list': players_list, 'start_game': start_game}
 
         await self.channel_layer.group_send(game_code, {
             'type': 'send_player_list',
-            'text': json.dumps(players_list)
+            'text': json.dumps(response)
         })
         # await self.send({'type': 'websocket.send', 'text': json.dumps(players_list)})
 

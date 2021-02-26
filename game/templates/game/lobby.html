@@ -39,10 +39,12 @@
     var socket = new WebSocket(endpoint)
 
     socket.onmessage = function(e) {
-        console.log("message", e)
-        console.log(e.data)
-        var players = JSON.parse(e.data)
-        console.log(players)
+        // console.log("message", e)
+        // console.log(e.data)
+        var response = JSON.parse(e.data)
+        console.log(response.player_list)
+        players = response.player_list
+
         playerList.empty()
         players.forEach(element => {
             console.log(element)
