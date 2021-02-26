@@ -115,3 +115,11 @@ class LobbyConsumer(AsyncConsumer):
         game = Game.objects.get(code=game_code)
         # players = Player.objects.filter(game=game)[0]
         return list(Player.objects.filter(game=game))
+
+
+class BoardConsumer(AsyncConsumer):
+    async def websocket_connect(self, event):
+        await self.send({"type": "websocket.accept"})
+
+    async def websocket_receive(self, event):
+        print('received', event)
