@@ -14,10 +14,11 @@
         <div class="row">
             <div class="col">
                 <form method="POST" id="startGameForm">
-                    {% csrf_token %}
+                    {% csrf_token %} {% if is_player_host%}
                     <div class="col text-center">
                         <button type="submit" class="btn btn-primary" name="start">Start Game</button>
                     </div>
+                    {% endif %}
                 </form>
             </div>
         </div>

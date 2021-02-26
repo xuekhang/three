@@ -165,7 +165,12 @@ def board(request, game_code='', player_name='', round_num=''):
 
 def lobby(request, game_code='', player_name=''):
     game = Game.objects.get(code=game_code)
-    context = {'title': 'Lobby', 'players': Player.objects.filter(game=game)}
+    player = Player.objects.get(game=game, name=player_name)
+    context = {
+        'title': 'Lobby',
+        'players': Player.objects.filter(game=game),
+        'is_player_host': player.is_host
+    }
 
     if request.method == 'POST':
         game = Game.objects.get(code=game_code)
