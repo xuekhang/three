@@ -59,6 +59,7 @@ class LobbyConsumer(AsyncConsumer):
     async def websocket_connect(self, event):
         print('connected', event)
         game_code = self.scope['url_route']['kwargs']['game_code']
+        self.game_code = game_code
         await self.channel_layer.group_add(game_code, self.channel_name)
 
         await self.send({"type": "websocket.accept"})
@@ -71,19 +72,40 @@ class LobbyConsumer(AsyncConsumer):
         for player in players_obj:
             players_list.append(player.name)
             print(player)
+        self.players_list = players_list
         response = {'player_list': players_list, 'start_game': start_game}
 
         await self.channel_layer.group_send(game_code, {
-            'type': 'send_player_list',
+            'type': 'send_lobby_data',
             'text': json.dumps(response)
         })
         # await self.send({'type': 'websocket.send', 'text': json.dumps(players_list)})
 
-    async def send_player_list(self, event):
+    async def send_lobby_data(self, event):
         await self.send({"type": "websocket.send", "text": event['text']})
 
     async def websocket_receive(self, event):
         print('receieved', event)
+        self.game_code
+        print('game code', self.game_code)
+        front_text = event.get('text', None)
+        print(front_text)
+        if front_text is not None:
+            loaded_dict_data = json.loads(front_text)
+            start_game = loaded_dict_data.get('start_game')
+            print(start_game)
+            if start_game == True:
+                print('starting da game')
+                # await self.channel_layer.group_send
+                response = {
+                    'player_list': self.players_list,
+                    'start_game': start_game
+                }
+                await self.channel_layer.group_send(
+                    self.game_code, {
+                        'type': 'send_lobby_data',
+                        'text': json.dumps(response)
+                    })
 
     async def websocket_disconnect(Self, event):
         print('disconnect', event)

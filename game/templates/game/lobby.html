@@ -13,7 +13,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <form method="POST">
+                <form method="POST" id="startGameForm">
                     {% csrf_token %}
                     <div class="col text-center">
                         <button type="submit" class="btn btn-primary" name="start">Start Game</button>
@@ -24,10 +24,9 @@
     </div>
 </div>
 <script>
-    // test script
     console.log(window.location)
     var loc = window.location
-        // var formData = $("#testForm")
+    var formData = $("#startGameForm")
         // var msgInput = $("#test")
     var playerList = $('#playerList')
 
@@ -42,34 +41,36 @@
         // console.log("message", e)
         // console.log(e.data)
         var response = JSON.parse(e.data)
-        console.log(response.player_list)
+        console.log(response)
         players = response.player_list
+        if (response.start_game === true) {
+            console.log('starting da game')
+                // formData.submit()
+            newPath = loc.pathname.replace('lobby', 'board')
+            window.location.href = '../../..' + newPath + '1';
+        }
 
         playerList.empty()
         players.forEach(element => {
             console.log(element)
-            playerList.append("<li>" + element + "</li>")
+            playerList.append('<li>' + element + '</li>')
 
         });
         // var listDataMsg = JSON.parse(e.data)
         // testHolder.append("<li>" + listDataMsg.message + " via socket" + "</li>")
     }
     socket.onopen = function(e) {
-        console.log("open", e)
-            // console.log(formData)
-            // formData.submit(function(event) {
-            //     event.preventDefault()
-            //     var msgText = msgInput.val()
-            //     testHolder.append("<li>" + msgText + "</li>")
-            //         // var formDataSerialized = formData.serialize()
-            //     var finalData = {
-            //         'message': msgText
-            //     }
+        // console.log("open", e)
+        // console.log(formData)
+        formData.submit(function(event) {
+            event.preventDefault()
 
-        //     console.log('trying to send to socket layer')
-        //     socket.send(JSON.stringify(finalData))
-        //     formData[0].reset()
-        // })
+            var request = {
+                'start_game': true
+            }
+            socket.send(JSON.stringify(request))
+
+        })
     }
     socket.onerror = function(e) {
         console.log("error", e)
