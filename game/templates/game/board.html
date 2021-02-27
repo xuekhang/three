@@ -18,7 +18,7 @@
 </div>
 
 <div>
-    <div class="width-400 mx-auto" style=" ">
+    <div class="width-400 mx-auto">
 
         <!-- testing tabs do not delete-->
         <!-- <ul class="nav nav-tabs justify-content-center">
@@ -64,8 +64,8 @@
             </div>
             <div class="row mx-auto">
                 {% if is_player_host%}
-                <button class="btn btn-primary">
-                    Restart
+                <button class="btn btn-primary" onclick="startTimer()">
+                    Start
                 </button>
                 <button class="btn btn-primary" href="">
                     Edit Settings
@@ -104,9 +104,10 @@
 </div>
 
 <script>
+    const TIME_LIMIT = 60;
     const FULL_DASH_ARRAY = 283;
-    const WARNING_THRESHOLD = 10;
-    const ALERT_THRESHOLD = 5;
+    const WARNING_THRESHOLD = TIME_LIMIT * .4;
+    const ALERT_THRESHOLD = TIME_LIMIT * .15;
 
     const COLOR_CODES = {
         info: {
@@ -122,7 +123,7 @@
         }
     };
 
-    const TIME_LIMIT = 120;
+
     let timePassed = 0;
     let timeLeft = TIME_LIMIT;
     let timerInterval = null;
@@ -152,7 +153,7 @@
     </div>
     `;
 
-    startTimer();
+    // startTimer();
 
     function onTimesUp() {
         clearInterval(timerInterval);
