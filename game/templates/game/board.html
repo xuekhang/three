@@ -64,7 +64,7 @@
             </div>
             <div class="row mx-auto">
                 {% if is_player_host%}
-                <button class="btn btn-primary" onclick="startTimer()">
+                <button id='startTimerBtn' class="btn btn-primary" onclick="sendStartTimer()">
                     Start
                 </button>
                 <button class="btn btn-primary" href="">
@@ -95,7 +95,7 @@
                     {% endfor %}
                 </ol>
                 <div class="col-md-12 text-right">
-                    <button type="button" class="btn btn-primary" onclick="removeRedacted()">Start</button>
+                    <button type="button" class="btn btn-primary" onclick="removeRedacted()">Start(remove redacted)</button>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>
@@ -104,7 +104,7 @@
 </div>
 
 <script>
-    const TIME_LIMIT = 60;
+    var TIME_LIMIT = 6;
     const FULL_DASH_ARRAY = 283;
     const WARNING_THRESHOLD = TIME_LIMIT * .4;
     const ALERT_THRESHOLD = TIME_LIMIT * .15;
@@ -157,9 +157,12 @@
 
     function onTimesUp() {
         clearInterval(timerInterval);
+        TIME_LIMIT = 60;
+
     }
 
     function startTimer() {
+        // document.getElementById("startBtn").disabled = true;
         timerInterval = setInterval(() => {
             timePassed = timePassed += 1;
             timeLeft = TIME_LIMIT - timePassed;
@@ -221,6 +224,68 @@
         document
             .getElementById("base-timer-path-remaining")
             .setAttribute("stroke-dasharray", circleDasharray);
+    }
+</script>
+
+<script>
+    var loc = window.location
+        // var formData = $("#startGameForm")
+        // var playerList = $('#playerList')
+    var startBtn = $('#startBtn')
+
+    var wsStart = 'ws://'
+    if (loc.protocol == 'https:') {
+        wsStart = 'wss://'
+    }
+    var endpoint = wsStart + loc.host + loc.pathname
+    var socket = new WebSocket(endpoint)
+
+    socket.onmessage = function(e) {
+        console.log('message', e)
+
+        var response = JSON.parse(e.data)
+            // players = response.player_list
+        if (response.start_timer === true) {
+            startTimer();
+            // startGamePath = loc.pathname.replace('lobby', 'startgame')
+
+            // $.ajax({
+            //     url: '../../..' + startGamePath
+            // })
+
+            // newPath = loc.pathname.replace('lobby', 'board')
+            // window.location.href = '../../..' + newPath + '1';
+        }
+
+        // playerList.empty()
+        // players.forEach(element => {
+        //     playerList.append('<li>' + element + '</li>')
+
+        // });
+    }
+    socket.onopen = function(e) {
+        console.log('open', e)
+            // $("#startTimerBtn").submit(function(event) {
+            //     event.preventDefault()
+
+        //     var request = {
+        //         'start_timer': true
+        //     }
+        //     socket.send(JSON.stringify(request))
+        // })
+    }
+    socket.onerror = function(e) {
+        console.log('error', e)
+    }
+    socket.onclose = function(e) {
+        console.log('close', e)
+    }
+
+    function sendStartTimer() {
+        var request = {
+            'start_timer': true
+        }
+        socket.send(JSON.stringify(request))
     }
 </script>
 

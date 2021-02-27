@@ -53,9 +53,6 @@ class TestConsumer(AsyncConsumer):
 
 
 class LobbyConsumer(AsyncConsumer):
-    # todo: everytim someone connects send the new list
-    # of players to everyone currently in lobby
-
     async def websocket_connect(self, event):
         print('connected', event)
         game_code = self.scope['url_route']['kwargs']['game_code']
@@ -86,7 +83,7 @@ class LobbyConsumer(AsyncConsumer):
 
     async def websocket_receive(self, event):
         print('receieved', event)
-        self.game_code
+        # self.game_code
         print('game code', self.game_code)
         front_text = event.get('text', None)
         print(front_text)
@@ -119,7 +116,34 @@ class LobbyConsumer(AsyncConsumer):
 
 class BoardConsumer(AsyncConsumer):
     async def websocket_connect(self, event):
+        game_code = self.scope['url_route']['kwargs']['game_code']
+        self.game_code = game_code
+        await self.channel_layer.group_add(game_code, self.channel_name)
         await self.send({"type": "websocket.accept"})
 
     async def websocket_receive(self, event):
+        # todo accept a start message from client and
+        # send start to everyone
+        print('testing')
+        front_text = event.get('text', None)
         print('received', event)
+        if front_text is not None:
+            loaded_dict_data = json.loads(front_text)
+            start_timer = loaded_dict_data.get('start_timer')
+
+            if start_timer == True:
+                print('starting da timer')
+                response = {
+                    # 'player_list': self.players_list,
+                    'start_timer': start_timer
+                }
+                await self.channel_layer.group_send(
+                    self.game_code, {
+                        'type': 'send_board_data',
+                        'text': json.dumps(response)
+                    })
+    async def websocket_disconnect(self, event):
+        print('disconnect', event)
+
+    async def send_board_data(self, event):
+        await self.send({"type": "websocket.send", "text": event['text']})
