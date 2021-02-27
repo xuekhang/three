@@ -22,5 +22,6 @@ urlpatterns = [
          name='players_in_game'),
     path('review/<game_code>/<player_name>/<round_num>/<question_num>',
          views.review,
-         name='review')
+         name='review'),
+     path('startgame/<game_code>/<player_name>/', views.start_game, name='start_game')
 ]

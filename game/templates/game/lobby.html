@@ -25,10 +25,8 @@
     </div>
 </div>
 <script>
-    console.log(window.location)
     var loc = window.location
     var formData = $("#startGameForm")
-        // var msgInput = $("#test")
     var playerList = $('#playerList')
 
     var wsStart = 'ws://'
@@ -39,30 +37,26 @@
     var socket = new WebSocket(endpoint)
 
     socket.onmessage = function(e) {
-        // console.log("message", e)
-        // console.log(e.data)
         var response = JSON.parse(e.data)
-        console.log(response)
         players = response.player_list
         if (response.start_game === true) {
-            console.log('starting da game')
-                // formData.submit()
+            startGamePath = loc.pathname.replace('lobby', 'startgame')
+
+            $.ajax({
+                url: '../../..' + startGamePath
+            })
+
             newPath = loc.pathname.replace('lobby', 'board')
             window.location.href = '../../..' + newPath + '1';
         }
 
         playerList.empty()
         players.forEach(element => {
-            console.log(element)
             playerList.append('<li>' + element + '</li>')
 
         });
-        // var listDataMsg = JSON.parse(e.data)
-        // testHolder.append("<li>" + listDataMsg.message + " via socket" + "</li>")
     }
     socket.onopen = function(e) {
-        // console.log("open", e)
-        // console.log(formData)
         formData.submit(function(event) {
             event.preventDefault()
 
@@ -70,15 +64,10 @@
                 'start_game': true
             }
             socket.send(JSON.stringify(request))
-
         })
     }
-    socket.onerror = function(e) {
-        console.log("error", e)
-    }
-    socket.onclose = function(e) {
-        console.log("close", e)
-    }
+    socket.onerror = function(e) {}
+    socket.onclose = function(e) {}
 </script>
 <!-- 
 <script>

@@ -10,6 +10,7 @@ from .models import (Game, Config, Player, GlobalCategory, LocalCategory,
 from django.utils.crypto import get_random_string
 import random
 import logging
+import json
 
 # Create your views here.
 
@@ -223,3 +224,23 @@ def get_players_in_game(request, game_code):
     players_json = serializers.serialize('json', players)
     # return JsonResponse(players_json, safe=False)
     return HttpResponse(players_json, content_type='application/json')
+
+
+def start_game(request, game_code, player_name):
+    game = Game.objects.get(code=game_code)
+    config = Config.objects.get(game=game)
+    players = Player.objects.filter(game=game)
+    rounds = Round.objects.filter(game=game)
+    for round in rounds:
+        # this should delete the ansewrs too
+        Question.objects.filter(round=round).delete()
+
+    for player in players:
+        for i in range(1, config.num_of_rounds + 1):
+            for j in range(1, config.num_of_cat_per_round + 1):
+                Question.objects.create(number=j,
+                                        round=Round.objects.get(game=game,
+                                                                number=i),
+                                        player=player)
+    # response = serializers.serialize('json', 'success')
+    return HttpResponse('success', content_type='application/json')
