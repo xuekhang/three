@@ -16,7 +16,7 @@
                 <form method="POST" id="startGameForm">
                     {% csrf_token %} {% if is_player_host%}
                     <div class="col text-center">
-                        <button type="submit" class="btn btn-primary" name="start">Start Game</button>
+                        <button class="btn btn-primary" onclick="startGame()">Start Game</button>
                     </div>
                     {% endif %}
                 </form>
@@ -57,17 +57,28 @@
         });
     }
     socket.onopen = function(e) {
-        formData.submit(function(event) {
-            event.preventDefault()
+        // formData.submit(function(event) {
+        //     event.preventDefault()
 
-            var request = {
-                'start_game': true
-            }
-            socket.send(JSON.stringify(request))
-        })
+        //     var request = {
+        //         'start_game': true
+        //     }
+        //     socket.send(JSON.stringify(request))
+        // })
     }
-    socket.onerror = function(e) {}
-    socket.onclose = function(e) {}
+    socket.onerror = function(e) {
+        console.log('error', e)
+    }
+    socket.onclose = function(e) {
+        console.log('close', e)
+    }
+
+    function startGame() {
+        var request = {
+            'start_game': true
+        }
+        socket.send(JSON.stringify(request))
+    }
 </script>
 <!-- 
 <script>
