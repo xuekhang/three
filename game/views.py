@@ -201,29 +201,18 @@ def review(request,
     for x in range(1, max_rounds + 1):
         rounds.append(x)
     round = Round.objects.get(game=game, number=round_num)
-    # questions = Question.objects.filter(number=question_num, round=round)
     cat_in_round = CategoryInRound.objects.filter(round=round)
-    # answer = Answer.objects.filter()
-    answers = [
-        'agfdg', 'bdfbb', 'bbgb', 'dbgbg', 'dfe', 'dbgbrfrvrg', 'dvrvbgbg',
-        'dbgrbg', 'drbgbg'
-    ]
-    # answers = []
-    # for question in questions:
-    #     try:
-    #         player_answer = Answer.objects.get(question=question)
-    #         answers.append(player_answer.answer)
-    #     except:
-    #         answers.append('    ')
-    #         # someone hasn't entered there answers.
+    # todo get all the questions in the round
+    # get all the answers to those questions
+    questions = Question.objects.filter(round=round)
+
 
     context = {
         'title': 'Review',
         'game_code': game_code,
-        'answers': answers,
-        # 'questions': questions,
         'cat_in_round':cat_in_round,
         'rounds': rounds,
+        'test':questions
     }
 
     return render(request, 'game/review.html', context)

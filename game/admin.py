@@ -22,7 +22,7 @@ class GameAdmin(admin.ModelAdmin):
 
 class PlayerAdmin(admin.ModelAdmin):
     # list_display = [field.name for field in Player._meta.get_fields()]
-    list_display = ['name','game','is_host']
+    list_display = ['id','name','game','is_host']
 
 
 class GlobalCategoryAdmin(admin.ModelAdmin):
@@ -42,7 +42,8 @@ class CategoryInRoundAdmin(admin.ModelAdmin):
 
 
 class QuestionAdmin(admin.ModelAdmin):
-    list_display = [field.name for field in Question._meta.get_fields()]
+    # list_display = [field.name for field in Question._meta.get_fields()]
+    list_display = ['id','player','round','number']
 
 
 class AnswerAdmin(admin.ModelAdmin):
