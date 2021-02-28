@@ -199,6 +199,7 @@ def review(request,
     game = Game.objects.get(code=game_code)
     round = Round.objects.get(game=game, number=round_num)
     questions = Question.objects.filter(number=question_num, round=round)
+    cat_in_round = CategoryInRound.objects.filter(round=round)
     # answer = Answer.objects.filter()
     answers = [
         'agfdg', 'bdfbb', 'bbgb', 'dbgbg', 'dfe', 'dbgbrfrvrg', 'dvrvbgbg',
@@ -213,7 +214,13 @@ def review(request,
             answers.append('    ')
             # someone hasn't entered there answers.
 
-    context = {'title': 'Review', 'game_code': game_code, 'answers': answers}
+    context = {
+        'title': 'Review',
+        'game_code': game_code,
+        'answers': answers,
+        'questions': questions,
+        'cat_in_round':cat_in_round
+    }
 
     return render(request, 'game/review.html', context)
 
