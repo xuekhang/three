@@ -191,16 +191,28 @@ def review(request, game_code='', player_name='', round_num=''):
     categories_in_round = CategoryInRound.objects.filter(round=round)
     # todo get all the questions in the round
     # get all the answers to those questions
-    question = []
-    for cat in categories_in_round:
-        question.append(list(Question.objects.filter(category_in_round=cat)))
+    # question = []
+    # for cat in categories_in_round:
+    #     question.append(list(Question.objects.filter(category_in_round=cat)))
 
-    answers = [[['player1', 'apple'], ['player2', 'always'],
-                ['player3', 'anything']],
-               [['player1', 'answer2'], ['player2', 'answer2'],
-                ['player3', 'answer2']],
-               [['player1', 'answer3'], ['player2', 'answer3'],
-                ['player3', 'answer3']]]
+    # build the answer list
+
+    answers = []
+    for cat in categories_in_round:
+        questions = Question.objects.filter(category_in_round=cat)
+        player_answers = []
+        for q in questions:
+            answer = Answer.objects.filter(question=q)
+            player_answers.append([q.player,answer])
+        answers.append([cat,player_answers])
+            
+
+    # answers = [[['player1', 'apple'], ['player2', 'always'],
+    #             ['player3', 'anything']],
+    #            [['player1', 'answer2'], ['player2', 'answer2'],
+    #             ['player3', 'answer2']],
+    #            [['player1', 'answer3'], ['player2', 'answer3'],
+    #             ['player3', 'answer3']]]
 
     test = [[
         'cat_num_one',
