@@ -118,7 +118,7 @@ def board(request, game_code='', player_name='', round_num=''):
                                                 player=player)
                 Answer.objects.create(answer=value, question=question)
 
-        return redirect('review', game_code, player_name, round_num, 1)
+        return redirect('review', game_code, player_name, round_num)
 
     try:
         Game.objects.get(code=game_code)
@@ -192,13 +192,16 @@ def lobby(request, game_code='', player_name=''):
 def review(request,
            game_code='',
            player_name='',
-           round_num='',
-           question_num=''):
+           round_num=''):
     if request.method == 'POST':
         return redirect('board', game_code, player_name, int(round_num) + 1)
     game = Game.objects.get(code=game_code)
+    max_rounds = Config.objects.get(game=game).num_of_rounds
+    rounds = []
+    for x in range(1, max_rounds + 1):
+        rounds.append(x)
     round = Round.objects.get(game=game, number=round_num)
-    questions = Question.objects.filter(number=question_num, round=round)
+    # questions = Question.objects.filter(number=question_num, round=round)
     cat_in_round = CategoryInRound.objects.filter(round=round)
     # answer = Answer.objects.filter()
     answers = [
@@ -206,20 +209,21 @@ def review(request,
         'dbgrbg', 'drbgbg'
     ]
     # answers = []
-    for question in questions:
-        try:
-            player_answer = Answer.objects.get(question=question)
-            answers.append(player_answer.answer)
-        except:
-            answers.append('    ')
-            # someone hasn't entered there answers.
+    # for question in questions:
+    #     try:
+    #         player_answer = Answer.objects.get(question=question)
+    #         answers.append(player_answer.answer)
+    #     except:
+    #         answers.append('    ')
+    #         # someone hasn't entered there answers.
 
     context = {
         'title': 'Review',
         'game_code': game_code,
         'answers': answers,
-        'questions': questions,
-        'cat_in_round':cat_in_round
+        # 'questions': questions,
+        'cat_in_round':cat_in_round,
+        'rounds': rounds,
     }
 
     return render(request, 'game/review.html', context)

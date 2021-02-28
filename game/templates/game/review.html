@@ -21,7 +21,7 @@
     <div class="width-400 mx-auto">
         <div class="row mx-auto">
             {% for round in rounds %}
-            <a class="btn btn-primary" type="button" href="./{{ round }}"
+            <a class="btn btn-primary" type="button" href="../{{ round }}"
                 style="padding-left: 4px; padding-right: 4px;">Round
                 {{ round }}</a> {% endfor%}
         </div>
@@ -54,7 +54,7 @@
         
                         <a class="nav-link {% if forloop.counter == 1%} active{% endif %}" id="v-pills-{{ cat.id }}-tab"
                             data-toggle="pill" href="#v-pills-{{ cat.id }}" role="tab" aria-controls="v-pills-{{ cat.id }}"
-                            aria-selected="false">{{ cat.name }}</a>
+                            aria-selected="false">{{ forloop.counter}}. {{ cat.name }}</a>
                         {% endfor %}
                         
                     </div>
