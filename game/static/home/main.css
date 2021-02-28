@@ -173,3 +173,26 @@ img {
 
 
 /* end timer styles */
+
+
+/* start left nav styles */
+
+.nav .nav-link {
+    border: 1px solid transparent !important;
+    border-top-left-radius: .25rem !important;
+    border-bottom-left-radius: .25rem !important;
+    margin-right: -1px;
+}
+
+.nav .nav-link.active {
+    color: #495057 !important;
+    background-color: #fff !important;
+    border-color: #dee2e6 #fff #dee2e6 #dee2e6 !important;
+}
+
+.nav {
+    border-right: 1px solid #dee2e6;
+}
+
+
+/* end left nav styles */

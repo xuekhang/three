@@ -1,35 +1,79 @@
 {% extends "game/base.html" %} {% block content %}
 
-
-<div class="width-400 mx-auto card" style="margin: auto; margin-top: 5px;">
+<div class="width-400 mx-auto card">
     <div>Hi {{ player_name }}, Lets Play</div>
     <div>Game Room Code: {{ game_code }}</div>
 </div>
-
-<div class="width-400 mx-auto" style=" margin: auto; margin-top: 5px;">
-    <div class>
-        <div class="row">Round: {% for round in rounds %}
-            <button class="btn" type="button" href="./{{ round }}" style="padding-left: 4px; padding-right: 4px;">
-                {{ round }}</button> {% endfor%}
+<div class="width-400 mx-auto card">
+    <div class="row">
+        <div class="col-6">
+            <div>timer</div>
+            <div>start</div>
         </div>
-    </div>
-    <div class="card width-400 mx-auto" style="margin: auto; margin-top: 5px;">
-        <div class>
-            <div>Pick incorrect or similar answers:</div>
-            <div class="row">
-                <form method="POST" class="">
-                    <div class="col-md-12 text-center">
-                        {% csrf_token %} {% for answer in answers%}
-                        <button class="answer" type="button">{{ answer }}</button> {% endfor %}
-                        <br>
-                        <div class="">
-                            <button type="submit" class="btn btn-primary" style="text-align: right !important;">Submit</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+        <div class="col-6">
+            <div>edit time</div>
+            <div>reset time</div>
         </div>
     </div>
 </div>
+
+<div>
+    <div class="width-400 mx-auto">
+        <div class="row mx-auto">
+            {% for round in rounds %}
+            <a class="btn btn-primary" type="button" href="./{{ round }}" style="padding-left: 4px; padding-right: 4px;">Round 
+                {{ round }}</a> {% endfor%}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 card">
+            <h2 style="text-align: center;"><u>Letter</u></h2>
+            <div class="row">
+                <div class="col text-center" style="font-size:75px !important;">{{ letter }}</div>
+            </div>
+            <div class="row mx-auto">
+                {% if is_player_host%}
+                <button class="btn btn-primary" onclick="sendStartTimer()">
+                    Start
+                </button>
+                <button class="btn btn-primary" href="">
+                    Edit Settings
+                </button> {% endif %}
+            </div>
+            <div class="row mx-auto">
+                <div id="timer"></div>
+            </div>
+        </div>
+        <div class="col-sm-8 card">
+            <h4>Categories</h4>
+
+            <div class="row">
+                <div class="col-3">
+                    <div class="nav flex-column " id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+                        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
+                        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
+                        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+                    </div>
+                </div>
+                <div class="col-9">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">.aaaa..</div>
+                        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">.bbbbb..</div>
+                        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">.cccc..</div>
+                        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">.dddd..</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+
+</div>
+
 
 {% endblock content%}
