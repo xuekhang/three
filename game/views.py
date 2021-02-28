@@ -203,7 +203,7 @@ def review(request, game_code='', player_name='', round_num=''):
         player_answers = []
         for q in questions:
             answer = Answer.objects.filter(question=q)
-            player_answers.append([q.player,answer])
+            player_answers.append([answer])
         answers.append([cat,player_answers])
             
 

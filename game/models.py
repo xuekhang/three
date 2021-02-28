@@ -71,7 +71,7 @@ class CategoryInRound(models.Model):
     number = models.IntegerField()
 
     def __str__(self):
-        return str(self.round) + ' Cat: ' + self.name
+        return self.name
 
 
 class Question(models.Model):
@@ -83,7 +83,7 @@ class Question(models.Model):
 
     def __str__(self):
         # + ' Answer: ' + self.answer
-        return str(self.round) + ' Player: ' + str(self.player)
+        return ' Player: ' + str(self.player)
 
 
 class Answer(models.Model):

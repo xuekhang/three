@@ -47,34 +47,37 @@
         </div>
         <div class="col-sm-8 card">
             <h4>Categories</h4>
+
             <div class="row">
                 <div class="col-s-4">
                     <div class="nav flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        {% for cat in test %}
-        
+                        {% for answer in answers %}
+
                         <a class="nav-link {% if forloop.counter == 1%} active{% endif %}"
-                            id="v-pills-{{ forloop.counter }}-tab" data-toggle="pill" href="#v-pills-{{ forloop.counter }}"
-                            role="tab" aria-controls="v-pills-{{ forloop.counter }}" aria-selected="false">{{ forloop.counter}}.
-                            {{ cat.0 }}</a>
+                            id="v-pills-{{ forloop.counter }}-tab" data-toggle="pill"
+                            href="#v-pills-{{ forloop.counter }}" role="tab"
+                            aria-controls="v-pills-{{ forloop.counter }}" aria-selected="false">{{ forloop.counter}}.
+                            {{ answer.0.name }}</a>
                         {% endfor %}
-        
+
                     </div>
                 </div>
                 <div class="col-s-8">
-        
+
                     <div class="tab-content" id="v-pills-tabContent">
-                        {% for cat in test %}
-        
+                        {% for answer in answers %}
+
                         <div class="tab-pane fade {% if forloop.counter == 1%} show active{% endif %}"
                             id="v-pills-{{ forloop.counter }}" role="tabpanel"
                             aria-labelledby="v-pills-{{ forloop.counter }}-tab">
-                            {% for x in cat.1%}
+                            {% for x in answer.1%}
+                            {% for y in x%}
                             <div class="row">
-        
-                                <div class="col">{{ x.0 }}</div>
-                                <div class="col">{{ x.1 }}</div>
+                                <div class="col">{{y.0}}</div>
                             </div>
-        
+
+                            {% endfor%}
+
                             {% endfor %}
                         </div>
                         {% endfor %}
@@ -83,6 +86,14 @@
             </div>
         </div>
     </div>
+
+    {%for a in answers %}
+    <div>{{a}}</div>
+    {% endfor %}
+
+
+
+
 </div>
 
 
