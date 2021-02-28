@@ -1,5 +1,5 @@
-{% extends "game/base.html" %}
-{% block content %}
+{% extends "game/base.html" %} {% block content %}
+
 
 <div class="width-400 mx-auto card" style="margin: auto; margin-top: 5px;">
     <div>Hi {{ player_name }}, Lets Play</div>
@@ -8,11 +8,9 @@
 
 <div class="width-400 mx-auto" style=" margin: auto; margin-top: 5px;">
     <div class>
-        <div class="row">Round:
-            {% for round in rounds %}
+        <div class="row">Round: {% for round in rounds %}
             <button class="btn" type="button" href="./{{ round }}" style="padding-left: 4px; padding-right: 4px;">
-                {{ round }}</button>
-            {% endfor%}
+                {{ round }}</button> {% endfor%}
         </div>
     </div>
     <div class="card width-400 mx-auto" style="margin: auto; margin-top: 5px;">
@@ -21,14 +19,11 @@
             <div class="row">
                 <form method="POST" class="">
                     <div class="col-md-12 text-center">
-                        {% csrf_token %}
-                        {% for answer in answers%}
-                        <button class="answer" type="button">{{ answer }}</button>
-                        {% endfor %}
+                        {% csrf_token %} {% for answer in answers%}
+                        <button class="answer" type="button">{{ answer }}</button> {% endfor %}
                         <br>
                         <div class="">
-                            <button type="submit" class="btn btn-primary"
-                                style="text-align: right !important;">Submit</button>
+                            <button type="submit" class="btn btn-primary" style="text-align: right !important;">Submit</button>
                         </div>
                     </div>
                 </form>
