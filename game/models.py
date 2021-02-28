@@ -68,6 +68,7 @@ class Round(models.Model):
 class CategoryInRound(models.Model):
     name = models.CharField(max_length=100)
     round = models.ForeignKey(Round, on_delete=models.CASCADE)
+    number = models.IntegerField()
 
     def __str__(self):
         return str(self.round) + ' Cat: ' + self.name
@@ -76,12 +77,12 @@ class CategoryInRound(models.Model):
 class Question(models.Model):
     player = models.ForeignKey(Player, on_delete=models.CASCADE)
     round = models.ForeignKey(Round, on_delete=models.CASCADE)
-    number = models.IntegerField()
+    
     # answer = models.CharField(max_length=150)
 
     def __str__(self):
         # + ' Answer: ' + self.answer
-        return str(self.round) + ' Player: ' + str(self.player) + ' Category Num: ' + str(self.number)
+        return str(self.round) + ' Player: ' + str(self.player)
 
 
 class Answer(models.Model):

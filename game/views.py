@@ -87,9 +87,12 @@ def config(request, game_code='', player_name=''):
             round = Round(game=game, number=i, letter=random.choice(letters))
             round.save()
             for j in range(1, num_of_cat_per_round + 1):
-                categoryInRound = CategoryInRound(
-                    name=random.choice(all_categories), round=round)
-                categoryInRound.save()
+                CategoryInRound.objects.create(
+                    name=random.choice(all_categories), round=round, number=j)
+
+                # categoryInRound = CategoryInRound(
+                #     name=random.choice(all_categories), round=round,number=j)
+                # categoryInRound.save()
         return redirect('lobby', game_code, player_name)
 
     messages.success(request, f'Game created')
@@ -180,7 +183,7 @@ def lobby(request, game_code='', player_name=''):
         for player in players:
             for i in range(1, config.num_of_rounds + 1):
                 for j in range(1, config.num_of_cat_per_round + 1):
-                    Question.objects.create(number=j,
+                    Question.objects.create(
                                             round=Round.objects.get(game=game,
                                                                     number=i),
                                             player=player)
@@ -189,10 +192,7 @@ def lobby(request, game_code='', player_name=''):
     return render(request, 'game/lobby.html', context)
 
 
-def review(request,
-           game_code='',
-           player_name='',
-           round_num=''):
+def review(request, game_code='', player_name='', round_num=''):
     if request.method == 'POST':
         return redirect('board', game_code, player_name, int(round_num) + 1)
     game = Game.objects.get(code=game_code)
@@ -206,13 +206,12 @@ def review(request,
     # get all the answers to those questions
     questions = Question.objects.filter(round=round)
 
-
     context = {
         'title': 'Review',
         'game_code': game_code,
-        'cat_in_round':cat_in_round,
+        'cat_in_round': cat_in_round,
         'rounds': rounds,
-        'test':questions
+        'test': questions
     }
 
     return render(request, 'game/review.html', context)
@@ -238,7 +237,7 @@ def start_game(request, game_code, player_name):
     for player in players:
         for i in range(1, config.num_of_rounds + 1):
             for j in range(1, config.num_of_cat_per_round + 1):
-                Question.objects.create(number=j,
+                Question.objects.create(
                                         round=Round.objects.get(game=game,
                                                                 number=i),
                                         player=player)
