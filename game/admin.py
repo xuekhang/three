@@ -34,7 +34,8 @@ class LocalCategoryAdmin(admin.ModelAdmin):
 
 
 class RoundAdmin(admin.ModelAdmin):
-    list_display = [field.name for field in Round._meta.get_fields()]
+    # list_display = [field.name for field in Round._meta.get_fields()]
+    list_display = ['id','number','game','is_played']
 
 
 class CategoryInRoundAdmin(admin.ModelAdmin):

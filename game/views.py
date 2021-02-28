@@ -67,9 +67,9 @@ def config(request, game_code='', player_name=''):
             obj.game = game
             obj.save()
             messages.success(request, f'Game config saved')
-        all_letters = str(
+        letters = list(
             Config.objects.values_list('letters', flat=True).filter(game=game))
-        letters = list(all_letters.split(","))
+        # letters = list(all_letters.split(","))
 
         all_categories = []
         global_categories = GlobalCategory.objects.all()
@@ -84,7 +84,7 @@ def config(request, game_code='', player_name=''):
         config = Config.objects.get(game=game)
 
         for i in range(1, num_of_rounds + 1):
-            round = Round(game=game, number=i, letter=random.choice(letters))
+            round = Round(game=game, number=i, letter=random.choice(letters[0]))
             round.save()
             for j in range(1, num_of_cat_per_round + 1):
                 CategoryInRound.objects.create(
@@ -115,10 +115,12 @@ def board(request, game_code='', player_name='', round_num=''):
                 answer = value
                 # gets the number of the answer
                 answer_number = str(key).replace('answer', '')
+                cat_in_round = CategoryInRound.objects.get(round=round,number=answer_number)
 
-                question = Question.objects.get(number=int(answer_number),
-                                                round=round,
-                                                player=player)
+                question = Question.objects.get(player=player,category_in_round=cat_in_round)
+                # question = Question.objects.get(number=int(answer_number),
+                #                                 round=round,
+                #                                 player=player)
                 Answer.objects.create(answer=value, question=question)
 
         return redirect('review', game_code, player_name, round_num)
@@ -156,7 +158,7 @@ def board(request, game_code='', player_name='', round_num=''):
                 'categories': categories,
                 'rounds': rounds,
                 'round': round_num,
-                'letter': random.choice(letters),
+                'letter': random.choice([letters]),
                 'round_is_played': current_round.is_played,
                 'is_player_host': player.is_host
             }
@@ -201,17 +203,19 @@ def review(request, game_code='', player_name='', round_num=''):
     for x in range(1, max_rounds + 1):
         rounds.append(x)
     round = Round.objects.get(game=game, number=round_num)
-    cat_in_round = CategoryInRound.objects.filter(round=round)
+    categories_in_round = CategoryInRound.objects.filter(round=round)
     # todo get all the questions in the round
     # get all the answers to those questions
-    questions = Question.objects.filter(round=round)
+    question=[]
+    for cat in categories_in_round:
+        question.append(list(Question.objects.filter(category_in_round=cat)))
 
     context = {
         'title': 'Review',
         'game_code': game_code,
-        'cat_in_round': cat_in_round,
+        'cat_in_round': categories_in_round,
         'rounds': rounds,
-        'test': questions
+        'test': question
     }
 
     return render(request, 'game/review.html', context)
