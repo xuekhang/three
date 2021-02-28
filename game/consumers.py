@@ -93,16 +93,18 @@ class LobbyConsumer(AsyncConsumer):
             print(start_game)
             if start_game == True:
                 print('starting da game')
-                # await self.channel_layer.group_send
-                response = {
-                    'player_list': self.players_list,
-                    'start_game': start_game
-                }
-                await self.channel_layer.group_send(
-                    self.game_code, {
-                        'type': 'send_lobby_data',
-                        'text': json.dumps(response)
-                    })
+                # todo: add backend start game logic here
+                if await self.start_game(self.game_code) == 'success':
+                    # await self.channel_layer.group_send
+                    response = {
+                        'player_list': self.players_list,
+                        'start_game': start_game
+                    }
+                    await self.channel_layer.group_send(
+                        self.game_code, {
+                            'type': 'send_lobby_data',
+                            'text': json.dumps(response)
+                        })
 
     async def websocket_disconnect(Self, event):
         print('disconnect', event)
@@ -112,6 +114,27 @@ class LobbyConsumer(AsyncConsumer):
         game = Game.objects.get(code=game_code)
         # players = Player.objects.filter(game=game)[0]
         return list(Player.objects.filter(game=game))
+
+    @database_sync_to_async
+    def start_game(self,game_code):
+        game = Game.objects.get(code=game_code)
+        config = Config.objects.get(game=game)
+        players = Player.objects.filter(game=game)
+        rounds = Round.objects.filter(game=game)
+
+        for round in rounds:
+            # this should delete the ansewrs too
+            categories_in_round = CategoryInRound.objects.filter(
+                round=round)
+            for cat in categories_in_round:
+                Question.objects.filter(category_in_round=cat).delete()
+
+        for player in players:
+            for round in rounds:
+                categories_in_round = CategoryInRound.objects.filter(round=round)
+                for cat in categories_in_round:
+                    Question.objects.create(player=player, category_in_round=cat)
+        return 'success'
 
 
 class BoardConsumer(AsyncConsumer):

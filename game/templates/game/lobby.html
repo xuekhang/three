@@ -43,9 +43,9 @@
         if (response.start_game === true) {
             startGamePath = loc.pathname.replace('lobby', 'startgame')
 
-            $.ajax({
-                url: '../../..' + startGamePath
-            })
+            // $.ajax({
+            //     url: '../../..' + startGamePath
+            // })
 
             newPath = loc.pathname.replace('lobby', 'board')
             window.location.href = '../../..' + newPath + '1';

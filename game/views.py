@@ -252,8 +252,10 @@ def start_game(request, game_code, player_name):
 
     for round in rounds:
         # this should delete the ansewrs too
-        Question.objects.filter(category_in_round=CategoryInRound(
-            round=round)).delete()
+        categories_in_round = CategoryInRound.objects.filter(
+            round=round)
+        for cat in categories_in_round:
+            Question.objects.filter(category_in_round=cat).delete()
 
     for player in players:
         for round in rounds:

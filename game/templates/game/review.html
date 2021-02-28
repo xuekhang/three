@@ -57,7 +57,7 @@
                             id="v-pills-{{ forloop.counter }}-tab" data-toggle="pill"
                             href="#v-pills-{{ forloop.counter }}" role="tab"
                             aria-controls="v-pills-{{ forloop.counter }}" aria-selected="false">{{ forloop.counter}}.
-                            {{ answer.0.name }}</a>
+                            {{ answer.0.name }}</a> 
                         {% endfor %}
 
                     </div>
@@ -72,8 +72,9 @@
                             aria-labelledby="v-pills-{{ forloop.counter }}-tab">
                             {% for x in answer.1%}
                             {% for y in x%}
-                            <div class="row">
-                                <div class="col">{{y.0}}</div>
+                            <div class="row" style="margin-left: 10px;">
+                                <div class="col">{{y.0.question.player}}: </div>
+                                <div class="col">{{y.0.answer}}</div>
                             </div>
 
                             {% endfor%}
