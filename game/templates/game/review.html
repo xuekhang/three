@@ -48,26 +48,36 @@
         <div class="col-sm-8 card">
             <h4>Categories</h4>
             <div class="row">
-                <div class="col-4">
+                <div class="col-s-4">
                     <div class="nav flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        {% for cat in cat_in_round %}
+                        {% for cat in test %}
         
-                        <a class="nav-link {% if forloop.counter == 1%} active{% endif %}" id="v-pills-{{ cat.id }}-tab"
-                            data-toggle="pill" href="#v-pills-{{ cat.id }}" role="tab" aria-controls="v-pills-{{ cat.id }}"
-                            aria-selected="false">{{ forloop.counter}}. {{ cat.name }}</a>
+                        <a class="nav-link {% if forloop.counter == 1%} active{% endif %}"
+                            id="v-pills-{{ forloop.counter }}-tab" data-toggle="pill" href="#v-pills-{{ forloop.counter }}"
+                            role="tab" aria-controls="v-pills-{{ forloop.counter }}" aria-selected="false">{{ forloop.counter}}.
+                            {{ cat.0 }}</a>
                         {% endfor %}
-                        
+        
                     </div>
                 </div>
-                <div class="col-8">
+                <div class="col-s-8">
         
                     <div class="tab-content" id="v-pills-tabContent">
-                        {% for cat in cat_in_round %}
-                        <div class="tab-pane fade {% if forloop.counter == 1%} show active{% endif %}" id="v-pills-{{ cat.id }}"
-                            role="tabpanel" aria-labelledby="v-pills-{{ cat.id }}-tab">        
-                            {{ forloop.counter }}     
+                        {% for cat in test %}
+        
+                        <div class="tab-pane fade {% if forloop.counter == 1%} show active{% endif %}"
+                            id="v-pills-{{ forloop.counter }}" role="tabpanel"
+                            aria-labelledby="v-pills-{{ forloop.counter }}-tab">
+                            {% for x in cat.1%}
+                            <div class="row">
+        
+                                <div class="col">{{ x.0 }}</div>
+                                <div class="col">{{ x.1 }}</div>
+                            </div>
+        
+                            {% endfor %}
                         </div>
-                        {% endfor %}      
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -75,9 +85,31 @@
     </div>
 
 
-<!-- test area -->
+    <!-- test area -->
 
-<!-- end test area -->
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- end test area -->
 
 </div>
 
