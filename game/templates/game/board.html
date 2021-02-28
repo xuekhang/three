@@ -1,11 +1,10 @@
-{% extends "game/base.html" %}
-{% block content %}
+{% extends "game/base.html" %} {% block content %}
 
-<div class="width-400 mx-auto card" style="border-style: solid; margin: auto; margin-top: 5px;">
+<div class="width-400 mx-auto card" style="border-style: solid;  ">
     <div>Hi {{ player_name }}, Lets Play</div>
     <div>Game Room Code: {{ game_code }}</div>
 </div>
-<div class="width-400 mx-auto card" style="border-style: solid; margin: auto; margin-top: 5px;">
+<div class="width-400 mx-auto card" style="border-style: solid; ">
     <div class="row">
         <div class="col-6">
             <div>timer</div>
@@ -19,10 +18,10 @@
 </div>
 
 <div>
-    <div class="width-400 mx-auto" style=" margin: auto; margin-top: 5px;">
+    <div class="width-400 mx-auto">
 
-<!-- testing tabs do not delete-->
-<!-- <ul class="nav nav-tabs justify-content-center">
+        <!-- testing tabs do not delete-->
+        <!-- <ul class="nav nav-tabs justify-content-center">
     <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
     <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
     <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
@@ -49,33 +48,34 @@
       <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
     </div>
   </div> -->
-<!-- end testing -->
+        <!-- end testing -->
 
-        <div class="row" style="text-align: center;">
+        <div class="row mx-auto">
             {% for round in rounds %}
             <a class="btn btn-primary" type="button" href="./{{ round }}" style="padding-left: 4px; padding-right: 4px;">Round 
-                {{ round }}</a>
-            {% endfor%}
+                {{ round }}</a> {% endfor%}
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-3 card" >
+        <div class="col-sm-3 card">
             <h2 style="text-align: center;"><u>Letter</u></h2>
-            <div class="row" style="text-align: center; font-size: 75px;">{{letter}}</div>
             <div class="row">
-                <button class="btn btn-primary">
-                    Restart
-                </button>
+                <div class="col text-center" style="font-size:75px !important;">{{ letter }}</div>
             </div>
-            <div class="row">
+            <div class="row mx-auto">
                 {% if is_player_host%}
+                <button class="btn btn-primary" onclick="sendStartTimer()">
+                    Start
+                </button>
                 <button class="btn btn-primary" href="">
                     Edit Settings
-                </button>
-                {% endif %}
+                </button> {% endif %}
+            </div>
+            <div class="row mx-auto">
+                <div id="timer"></div>
             </div>
         </div>
-        <div class="col-sm-8 card" >
+        <div class="col-sm-8 card">
             <h4>Categories</h4>
             <form method="POST">
                 {% csrf_token %}
@@ -88,22 +88,205 @@
                             {{category}}
                         </div>
                         <div class="col-md-7">
-                            <input type="text" style="width: 100%;" name="answer{{ forloop.counter }}" 
-                            {% if round_is_played %} readonly {% endif %}>
+                            <input type="text" style="width: 100%;" name="answer{{ forloop.counter }}" {% if round_is_played %} readonly {% endif %}>
                         </div>
                     </div>
 
                     {% endfor %}
                 </ol>
                 <div class="col-md-12 text-right">
-                    <button type="button" class="btn btn-primary" onclick="removeRedacted()">Start</button>
+                    <button type="button" class="btn btn-primary" onclick="removeRedacted()">Start(remove redacted)</button>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>
         </div>
-
     </div>
 </div>
 
+<script>
+    var TIME_LIMIT = 6;
+    const FULL_DASH_ARRAY = 283;
+    const WARNING_THRESHOLD = TIME_LIMIT * .4;
+    const ALERT_THRESHOLD = TIME_LIMIT * .15;
+
+    const COLOR_CODES = {
+        info: {
+            color: "green"
+        },
+        warning: {
+            color: "orange",
+            threshold: WARNING_THRESHOLD
+        },
+        alert: {
+            color: "red",
+            threshold: ALERT_THRESHOLD
+        }
+    };
+
+
+    let timePassed = 0;
+    let timeLeft = TIME_LIMIT;
+    let timerInterval = null;
+    let remainingPathColor = COLOR_CODES.info.color;
+
+    document.getElementById("timer").innerHTML = `
+    <div class="base-timer">
+      <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <g class="base-timer__circle">
+          <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
+          <path
+            id="base-timer-path-remaining"
+            stroke-dasharray="283"
+            class="base-timer__path-remaining ${remainingPathColor}"
+            d="
+              M 50, 50
+              m -45, 0
+              a 45,45 0 1,0 90,0
+              a 45,45 0 1,0 -90,0
+            "
+          ></path>
+        </g>
+      </svg>
+      <span id="base-timer-label" class="base-timer__label">${formatTime(
+        timeLeft
+      )}</span>
+    </div>
+    `;
+
+    // startTimer();
+
+    function onTimesUp() {
+        clearInterval(timerInterval);
+        TIME_LIMIT = 60;
+
+    }
+
+    function startTimer() {
+        // document.getElementById("startBtn").disabled = true;
+        timerInterval = setInterval(() => {
+            timePassed = timePassed += 1;
+            timeLeft = TIME_LIMIT - timePassed;
+            document.getElementById("base-timer-label").innerHTML = formatTime(
+                timeLeft
+            );
+            setCircleDasharray();
+            setRemainingPathColor(timeLeft);
+
+            if (timeLeft === 0) {
+                onTimesUp();
+            }
+        }, 1000);
+    }
+
+    function formatTime(time) {
+        const minutes = Math.floor(time / 60);
+        let seconds = time % 60;
+
+        if (seconds < 10) {
+            seconds = `0${seconds}`;
+        }
+
+        return `${minutes}:${seconds}`;
+    }
+
+    function setRemainingPathColor(timeLeft) {
+        const {
+            alert,
+            warning,
+            info
+        } = COLOR_CODES;
+        if (timeLeft <= alert.threshold) {
+            document
+                .getElementById("base-timer-path-remaining")
+                .classList.remove(warning.color);
+            document
+                .getElementById("base-timer-path-remaining")
+                .classList.add(alert.color);
+        } else if (timeLeft <= warning.threshold) {
+            document
+                .getElementById("base-timer-path-remaining")
+                .classList.remove(info.color);
+            document
+                .getElementById("base-timer-path-remaining")
+                .classList.add(warning.color);
+        }
+    }
+
+    function calculateTimeFraction() {
+        const rawTimeFraction = timeLeft / TIME_LIMIT;
+        return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
+    }
+
+    function setCircleDasharray() {
+        const circleDasharray = `${(
+        calculateTimeFraction() * FULL_DASH_ARRAY
+      ).toFixed(0)} 283`;
+        document
+            .getElementById("base-timer-path-remaining")
+            .setAttribute("stroke-dasharray", circleDasharray);
+    }
+</script>
+
+<script>
+    var loc = window.location
+        // var formData = $("#startGameForm")
+        // var playerList = $('#playerList')
+    var startBtn = $('#startBtn')
+
+    var wsStart = 'ws://'
+    if (loc.protocol == 'https:') {
+        wsStart = 'wss://'
+    }
+    var endpoint = wsStart + loc.host + loc.pathname
+    var socket = new WebSocket(endpoint)
+
+    socket.onmessage = function(e) {
+        console.log('message', e)
+
+        var response = JSON.parse(e.data)
+            // players = response.player_list
+        if (response.start_timer === true) {
+            startTimer();
+            // startGamePath = loc.pathname.replace('lobby', 'startgame')
+
+            // $.ajax({
+            //     url: '../../..' + startGamePath
+            // })
+
+            // newPath = loc.pathname.replace('lobby', 'board')
+            // window.location.href = '../../..' + newPath + '1';
+        }
+
+        // playerList.empty()
+        // players.forEach(element => {
+        //     playerList.append('<li>' + element + '</li>')
+
+        // });
+    }
+    socket.onopen = function(e) {
+        console.log('open', e)
+            // $("#startTimerBtn").submit(function(event) {
+            //     event.preventDefault()
+
+        //     var request = {
+        //         'start_timer': true
+        //     }
+        //     socket.send(JSON.stringify(request))
+        // })
+    }
+    socket.onerror = function(e) {
+        console.log('error', e)
+    }
+    socket.onclose = function(e) {
+        console.log('close', e)
+    }
+
+    function sendStartTimer() {
+        var request = {
+            'start_timer': true
+        }
+        socket.send(JSON.stringify(request))
+    }
+</script>
 
 {% endblock content%}

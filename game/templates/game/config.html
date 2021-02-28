@@ -1,60 +1,50 @@
-{% extends "game/base.html" %}
-{% load crispy_forms_tags %}
-{% block content %}
+{% extends "game/base.html" %} {% load crispy_forms_tags %} {% block content %}
 
-<div class="width-400 mx-auto card" style="margin: auto;">
+<div class="width-400 mx-auto card">
 
-  <form method="POST">
-    {% csrf_token %}
-    <!-- <fieldset class="form-group">      
+    <form method="POST">
+        {% csrf_token %}
+        <!-- <fieldset class="form-group">      
       {{ form|crispy }}
     </fieldset> -->
-    <fieldset class="form-group">
-      <div class="fieldWrapper">
-        <label for="game_code">Game Code</label>
-        <input type="text" id="game_code_id" name="game_code" readonly value="{{game_code}}" style="border-style: hidden;">
-      </div>
-      <!-- <div class="fieldWrapper">
+        <fieldset class="form-group">
+            <div class="fieldWrapper">
+                <label for="game_code">Game Code</label>
+                <input type="text" id="game_code_id" name="game_code" readonly value="{{game_code}}" style="border-style: hidden;">
+            </div>
+            <!-- <div class="fieldWrapper">
         {{ form.game_code.errors }}
         <label for="{{form.game_code.id_for_label}}">Game Code</label>
         <div>{{ form.game_code }} </div>
       </div> -->
-      <div class="fieldWrapper">
-        {{ form.num_of_players.errors }}
-        <label for="{{form.num_of_players.id_for_label}}">Number of Players</label>
-        <div>{{ form.num_of_players }} </div>
-      </div>
-      <div class="fieldWrapper">
-        {{ form.num_of_rounds.errors }}
-        <label for="{{form.num_of_rounds.id_for_label}}">Number of Rounds</label>
-        <div>{{ form.num_of_rounds }} </div>
-      </div>
-      <div class="fieldWrapper">
-        {{ form.num_of_cat_per_round.errors }}
-        <label for="{{form.num_of_cat_per_round.id_for_label}}">Number of Categories</label>
-        <div>{{ form.num_of_cat_per_round }} </div>
-      </div>
-      <div>
-        <label for="">Letters to Include: </label>
-        {% for value, text in form.letters.field.choices %}
+            <div class="fieldWrapper">
+                {{ form.num_of_players.errors }}
+                <label for="{{form.num_of_players.id_for_label}}">Number of Players</label>
+                <div>{{ form.num_of_players }} </div>
+            </div>
+            <div class="fieldWrapper">
+                {{ form.num_of_rounds.errors }}
+                <label for="{{form.num_of_rounds.id_for_label}}">Number of Rounds</label>
+                <div>{{ form.num_of_rounds }} </div>
+            </div>
+            <div class="fieldWrapper">
+                {{ form.num_of_cat_per_round.errors }}
+                <label for="{{form.num_of_cat_per_round.id_for_label}}">Number of Categories</label>
+                <div>{{ form.num_of_cat_per_round }} </div>
+            </div>
+            <div>
+                <label for="">Letters to Include: </label> {% for value, text in form.letters.field.choices %}
 
-        <input id="letters{{ forloop.counter0 }}" name="{{ form.letters.name }}" type="checkbox" value="{{ value }}" 
-        {% with 'A B C D E F G H I J K L M N O P R S T W' as list %}
-        {% if value in list.split %} 
-        checked="checked" 
-        {% endif %}
-        {% endwith %}        >
-        <label>{{ text }}</label>
+                <input id="letters{{ forloop.counter0 }}" name="{{ form.letters.name }}" type="checkbox" value="{{ value }}" {% with 'A B C D E F G H I J K L M N O P R S T W' as list %} {% if value in list.split %} checked="checked" {% endif %} {% endwith %}>
+                <label>{{ text }}</label> {% endfor %}
+            </div>
 
-        {% endfor %}
-      </div>
-
-      <br>
-      <div class="col-md-12 text-center">
-        <button type="submit" class="btn btn-primary" >Save Settings</button>
-      </div>
-    </fieldset>
-  </form>
+            <br>
+            <div class="col-md-12 text-center">
+                <button type="submit" class="btn btn-primary">Save Settings</button>
+            </div>
+        </fieldset>
+    </form>
 </div>
 
 
