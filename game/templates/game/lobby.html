@@ -37,6 +37,7 @@
     var socket = new WebSocket(endpoint)
 
     socket.onmessage = function(e) {
+        console.log('onmessage',e)
         var response = JSON.parse(e.data)
         players = response.player_list
         if (response.start_game === true) {

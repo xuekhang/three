@@ -43,7 +43,7 @@ class CategoryInRoundAdmin(admin.ModelAdmin):
 
 class QuestionAdmin(admin.ModelAdmin):
     # list_display = [field.name for field in Question._meta.get_fields()]
-    list_display = ['id','player','round']
+    list_display = ['id','player','category_in_round']
 
 
 class AnswerAdmin(admin.ModelAdmin):

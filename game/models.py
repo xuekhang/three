@@ -76,7 +76,8 @@ class CategoryInRound(models.Model):
 
 class Question(models.Model):
     player = models.ForeignKey(Player, on_delete=models.CASCADE)
-    round = models.ForeignKey(Round, on_delete=models.CASCADE)
+    # round = models.ForeignKey(Round, on_delete=models.CASCADE)
+    category_in_round = models.ForeignKey(CategoryInRound, on_delete=models.CASCADE)
     
     # answer = models.CharField(max_length=150)
 

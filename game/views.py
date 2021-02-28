@@ -176,19 +176,19 @@ def lobby(request, game_code='', player_name=''):
         'is_player_host': player.is_host
     }
 
-    if request.method == 'POST':
-        game = Game.objects.get(code=game_code)
-        players = Player.objects.filter(game=game)
-        config = Config.objects.get(game=game)
-        for player in players:
-            for i in range(1, config.num_of_rounds + 1):
-                for j in range(1, config.num_of_cat_per_round + 1):
-                    Question.objects.create(
-                                            round=Round.objects.get(game=game,
-                                                                    number=i),
-                                            player=player)
+    # if request.method == 'POST':
+    #     game = Game.objects.get(code=game_code)
+    #     players = Player.objects.filter(game=game)
+    #     config = Config.objects.get(game=game)
+    #     for player in players:
+    #         for i in range(1, config.num_of_rounds + 1):
+    #             for j in range(1, config.num_of_cat_per_round + 1):
+    #                 Question.objects.create(
+    #                                         round=Round.objects.get(game=game,
+    #                                                                 number=i),
+    #                                         player=player)
 
-        return redirect('board', game_code, player_name, 1)
+    # return redirect('board', game_code, player_name, 1)
     return render(request, 'game/lobby.html', context)
 
 
@@ -230,16 +230,22 @@ def start_game(request, game_code, player_name):
     config = Config.objects.get(game=game)
     players = Player.objects.filter(game=game)
     rounds = Round.objects.filter(game=game)
+
     for round in rounds:
         # this should delete the ansewrs too
-        Question.objects.filter(round=round).delete()
+        Question.objects.filter(category_in_round=CategoryInRound(
+            round=round)).delete()
 
     for player in players:
-        for i in range(1, config.num_of_rounds + 1):
-            for j in range(1, config.num_of_cat_per_round + 1):
-                Question.objects.create(
-                                        round=Round.objects.get(game=game,
-                                                                number=i),
-                                        player=player)
+        for round in rounds:
+            categories_in_round = CategoryInRound.objects.filter(round=round)
+            for cat in categories_in_round:
+                Question.objects.create(player=player, category_in_round=cat)
+
+        # for i in range(1, config.num_of_rounds + 1):
+        #     for cat in categories_in_round:
+        #         question.objects.create(player=player_name, categories_in_round=cat)
+        # for j in range(1, config.num_of_cat_per_round + 1):
+        #     Question.objects.create(player=player_name,category_in_round=)
     # response = serializers.serialize('json', 'success')
     return HttpResponse('success', content_type='application/json')
