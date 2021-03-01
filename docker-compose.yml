@@ -54,7 +54,6 @@ services:
       three_network:
         ipv4_address: 172.29.0.8
 
-
   three.mysql:
     container_name: three.mysql
     image: mysql:5.7
@@ -89,9 +88,6 @@ services:
     networks:
       three_network:
         ipv4_address: 172.29.0.6
-
-
-
 
 volumes:
   datavolume: {}
