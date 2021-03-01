@@ -183,6 +183,7 @@ img {
     border-bottom-left-radius: .25rem !important;
     margin-right: -1px;
     color: #015737 !important;
+    /* max-width: 200px; */
 }
 
 .nav .nav-link.active {
