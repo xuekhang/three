@@ -1,4 +1,4 @@
-version: '3.5'
+version: "3.5"
 services:
   three.nginx:
     container_name: three.nginx
@@ -12,20 +12,20 @@ services:
       - .:/srv/web/three
     networks:
       three_network:
-          ipv4_address: 172.29.0.3
+        ipv4_address: 172.29.0.3
 
   three.python:
     container_name: three.python
-    build: 
+    build:
       context: .
       dockerfile: ./Dockerfile
     command: bash -c "python manage.py makemigrations &&
-                      python manage.py migrate &&
-                      python manage.py runserver 0.0.0.0:8000"
+      python manage.py migrate &&
+      python manage.py runserver 0.0.0.0:8000"
     # command: python manage.py runserver 0.0.0.0:8000
     tty: true
     environment:
-      - ENV=DEV 
+      - ENV=DEV
     ports:
       - "8000:8000"
       - "3000:3000"
@@ -35,12 +35,34 @@ services:
       - .:/srv/web/three
     networks:
       three_network:
-          ipv4_address: 172.29.0.2
+        ipv4_address: 172.29.0.2
+
+  three.daphne:
+    container_name: three.daphne
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: bash -c "daphne -b 0.0.0.0 -p 8001 three.asgi:application"
+    ports:
+      - "8080:8000"
+    expose:
+      - "8080"
+    volumes:
+      - .:/srv/web/three
+    networks:
+      three_network:
+        ipv4_address: 172.29.0.8
+
 
   three.mysql:
     container_name: three.mysql
     image: mysql:5.7
-    command: [mysqld, --character-set-server=utf8mb4, --collation-server=utf8mb4_unicode_ci]
+    command:
+      [
+        mysqld,
+        --character-set-server=utf8mb4,
+        --collation-server=utf8mb4_unicode_ci,
+      ]
     environment:
       - MYSQL_ROOT_PASSWORD=three
       - MYSQL_DATABASE=three
@@ -51,8 +73,8 @@ services:
       - datavolume:/var/run/mysqld
     networks:
       three_network:
-          ipv4_address: 172.29.0.4
-  
+        ipv4_address: 172.29.0.4
+
   three.redis:
     hostname: three.redis
     container_name: three.redis
@@ -65,7 +87,10 @@ services:
       - redis:/data
     networks:
       three_network:
-          ipv4_address: 172.29.0.6
+        ipv4_address: 172.29.0.6
+
+
+
 
 volumes:
   datavolume: {}
