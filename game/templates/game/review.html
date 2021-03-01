@@ -56,7 +56,9 @@
                         <a class="nav-link {% if forloop.counter == 1%} active{% endif %}"
                             id="v-pills-{{ forloop.counter }}-tab" data-toggle="pill"
                             href="#v-pills-{{ forloop.counter }}" role="tab"
-                            aria-controls="v-pills-{{ forloop.counter }}" aria-selected="false">{{ forloop.counter}}.
+                            aria-controls="v-pills-{{ forloop.counter }}" aria-selected="false"
+                            style="margin-left: 10px;"
+                            >{{ forloop.counter}}.
                             {{ answer.0.name }}</a> 
                         {% endfor %}
 
