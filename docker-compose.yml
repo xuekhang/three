@@ -42,7 +42,8 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
-    command: bash -c "daphne -b 0.0.0.0 -p 8001 three.asgi:application"
+    command: bash -c "
+      daphne -b 0.0.0.0 -p 8080 three.asgi:application"
     ports:
       - "8080:8000"
     expose:
