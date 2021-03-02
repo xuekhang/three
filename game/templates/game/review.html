@@ -57,9 +57,10 @@
                             id="v-pills-{{ forloop.counter }}-tab" data-toggle="pill"
                             href="#v-pills-{{ forloop.counter }}" role="tab"
                             aria-controls="v-pills-{{ forloop.counter }}" aria-selected="false"
-                            style="margin-left: 10px;"
-                            >{{ forloop.counter}}.
-                            {{ answer.0.name }}</a> 
+                            style="margin-left: 10px;" >
+                            <span>{{ forloop.counter}}.</span>
+                            <span class="cat-tab-{{ forloop.counter }}">{{ answer.0.name }}</span>
+                        </a> 
                         {% endfor %}
 
                     </div>
@@ -68,7 +69,7 @@
 
                     <div class="tab-content" id="v-pills-tabContent">
                         {% for answer in answers %}
-
+                        <div class="category-header-{{ forloop.counter }}"></div>
                         <div class="tab-pane fade {% if forloop.counter == 1%} show active{% endif %}"
                             id="v-pills-{{ forloop.counter }}" role="tabpanel"
                             aria-labelledby="v-pills-{{ forloop.counter }}-tab">
@@ -76,8 +77,6 @@
                                 <div class="col"><div class="ans-header">Player</div></div>
                                 <div class="col"><div class="ans-header">Answer</div></div>
                                 <div class="col-s"><div class="ans-header">Vote</div></div>
-
-
                             </div>
                             {% for x in answer.1%}
                             {% for y in x%}
@@ -111,9 +110,14 @@
     function vote(str){
         console.log(str)
     }
+    window.addEventListener('resize', moveCatName);
 
+    function moveCatName(){
+        if ($(window).width() < 575){
+            console.log('moving category names');
 
-
+        }        
+    }
 </script>
 
 {% endblock content%}
