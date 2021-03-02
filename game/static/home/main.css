@@ -13,6 +13,10 @@ body {
 /* .navbar {
     height: 50px;
 } */
+i{
+    margin-left: 2px;
+    margin-right: 2px;
+}
 
 .navlink-center {
     float: none;
@@ -49,6 +53,7 @@ body {
     -moz-box-shadow: 3px 0 2px #444;
     border: 1px dotted #555;
     background: -moz-linear-gradient(180deg, #000, #222);
+    transition: opacity 2s linear;
     -webkit-touch-callout: none;
     /* iOS Safari */
     -webkit-user-select: none;
@@ -198,3 +203,8 @@ img {
 
 
 /* end left nav styles */
+
+.ans-header{
+    font-weight: bold;
+    text-decoration: underline;
+}

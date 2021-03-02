@@ -1,0 +1,23 @@
+{% extends "game/base.html" %} {% block content %}
+
+<div class="width-400 mx-auto card">
+    <div>Hi {{ player_name }}, Lets Play</div>
+    <div>Game Room Code: {{ game_code }}</div>
+</div>
+
+<div>
+    <div class="width-400 mx-auto">
+
+        <div class="row mx-auto">
+            {% for round in rounds %}
+            <a class="btn btn-primary" type="button" href="../{{ round }}"
+                style="padding-left: 4px; padding-right: 4px;">Round
+                {{ round }}</a> {% endfor%}
+        </div>
+    </div>
+    <div class="width-400 mx-auto card">
+        <h1>results</h1>
+    </div>
+</div>
+
+{% endblock content%}

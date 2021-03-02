@@ -25,5 +25,8 @@ urlpatterns = [
          name='review'),
     path('startgame/<game_code>/<player_name>/',
          views.start_game,
-         name='start_game')
+         name='start_game'),
+    path('result/<game_code>/<player_name>/',
+         views.result,
+         name='result')
 ]

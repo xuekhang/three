@@ -265,3 +265,10 @@ def start_game(request, game_code, player_name):
                 Question.objects.create(player=player, category_in_round=cat)
 
     return HttpResponse('success', content_type='application/json')
+
+
+def result(request, game_code, player_name):
+    context = {
+        'title':'Results'
+    }
+    return render(request, 'game/result.html', context)

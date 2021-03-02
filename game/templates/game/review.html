@@ -64,7 +64,7 @@
 
                     </div>
                 </div>
-                <div class="col-xs">
+                <div class="col">
 
                     <div class="tab-content" id="v-pills-tabContent">
                         {% for answer in answers %}
@@ -72,11 +72,24 @@
                         <div class="tab-pane fade {% if forloop.counter == 1%} show active{% endif %}"
                             id="v-pills-{{ forloop.counter }}" role="tabpanel"
                             aria-labelledby="v-pills-{{ forloop.counter }}-tab">
+                            <div class="row" style="margin-left: 10px; margin-right: 10px;">
+                                <div class="col"><div class="ans-header">Player</div></div>
+                                <div class="col"><div class="ans-header">Answer</div></div>
+                                <div class="col-s"><div class="ans-header">Vote</div></div>
+
+
+                            </div>
                             {% for x in answer.1%}
                             {% for y in x%}
-                            <div class="row" style="margin-left: 10px;">
+                            <div class="row" style="margin-left: 10px; margin-right: 10px;">
                                 <div class="col">{{y.0.question.player}}: </div>
                                 <div class="col">{{y.0.answer}}</div>
+                                <div class="col-s">
+                                    2<i class="bi bi-arrow-up-circle" onclick="vote('up')"></i>
+                                </div>
+                                <div class="col-s">
+                                    <i class="bi bi-arrow-down-circle" onclick="vote('down')"></i>2
+                                </div>
                             </div>
 
                             {% endfor%}
@@ -94,6 +107,13 @@
     <div>{{a}}</div>
     {% endfor %} -->
 </div>
+<script>
+    function vote(str){
+        console.log(str)
+    }
 
+
+
+</script>
 
 {% endblock content%}
