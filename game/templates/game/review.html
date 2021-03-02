@@ -4,18 +4,6 @@
     <div>Hi {{ player_name }}, Lets Play</div>
     <div>Game Room Code: {{ game_code }}</div>
 </div>
-<!-- <div class="width-400 mx-auto card">
-    <div class="row">
-        <div class="col-6">
-            <div>timer</div>
-            <div>start</div>
-        </div>
-        <div class="col-6">
-            <div>edit time</div>
-            <div>reset time</div>
-        </div>
-    </div>
-</div> -->
 
 <div>
     <div class="width-400 mx-auto">
@@ -107,22 +95,10 @@
             </div>
         </div>
     </div>
-
-    <!-- {%for a in answers %}
-    <div>{{a}}</div>
-    {% endfor %} -->
 </div>
 <script>
     function vote(str) {
         console.log(str)
-    }
-    window.addEventListener('resize', moveCatName);
-
-    function moveCatName() {
-        if ($(window).width() < 575) {
-            console.log('moving category names');
-
-        }
     }
 </script>
 <script>
