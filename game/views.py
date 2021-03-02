@@ -131,6 +131,7 @@ def board(request, game_code='', player_name='', round_num=''):
     if game_code != '':
         if round_num != '':
             game = Game.objects.get(code=game_code)
+            round = Round.objects.get(game=game, number=round_num)
             all_letters = str(
                 Config.objects.values_list('letters', flat=True)[0])
             letters = list(all_letters.split(","))
@@ -156,7 +157,7 @@ def board(request, game_code='', player_name='', round_num=''):
                 'categories': categories,
                 'rounds': rounds,
                 'round': round_num,
-                'letter': random.choice([letters]),
+                'letter': round.letter,
                 'round_is_played': current_round.is_played,
                 'is_player_host': player.is_host
             }
