@@ -177,3 +177,21 @@ class ReviewConsumer(AsyncConsumer):
 
     async def websocket_receive(self, event):
         print('receive', event)
+        front_text = event.get('text', None)
+        if front_text is not None:
+            loaded_dict_data = json.loads(front_text)
+            vote = loaded_dict_data.get('vote')
+            answer_id = loaded_dict_data.get('answerId')
+            player_id = loaded_dict_data.get('playerId')
+            print("vote:",vote,", answerId:",answer_id,", playerId:",player_id)
+            # myResponse = {'message': msg, 'username': 'jimmy'}
+
+            # new_event = {
+            # "type": "websocket.send",
+            # "text": json.dumps(myResponse)
+            # }
+            # await self.channel_layer.group_send(self.room, {
+            #     "type": "chat_message",
+            #     "text": json.dumps(myResponse)
+            # })
+            # await self.send()

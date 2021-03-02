@@ -1,7 +1,7 @@
 {% extends "game/base.html" %} {% block content %}
 
 <div class="width-400 mx-auto card">
-    <div>Hi {{ player_name }}, Lets Play</div>
+    <div>Hi {{ player.name }}, Lets Play</div>
     <div>Game Room Code: {{ game_code }}</div>
 </div>
 
@@ -75,13 +75,13 @@
                             {% for x in answer.1%}
                             {% for y in x%}
                             <div class="row" style="margin-left: 10px; margin-right: 10px;">
-                                <div class="col">{{y.0.question.player}}: </div>
-                                <div class="col">{{y.0.answer}}</div>
+                                <div class="col">{{y.0.question.player}}: {{y.0.question.player.id}}:</div>
+                                <div class="col">{{y.0.id}} {{y.0.answer}}</div>
                                 <div class="col-s">
-                                    2<i class="bi bi-arrow-up-circle" onclick="vote('up')"></i>
+                                    2<i class="bi bi-arrow-up-circle" onclick="vote('up',{{ y.0.id }},{{ player.id }})"></i>
                                 </div>
                                 <div class="col-s">
-                                    <i class="bi bi-arrow-down-circle" onclick="vote('down')"></i>2
+                                    <i class="bi bi-arrow-down-circle" onclick="vote('down',{{ y.0.id }}, {{ player.id }})"></i>2
                                 </div>
                             </div>
 
@@ -95,14 +95,26 @@
             </div>
         </div>
     </div>
+
+    <div>
+
+        {{answers}}
+    </div>
 </div>
 <script>
-    function vote(str) {
-        console.log(str)
+    function vote(vote, answerId, playerId) {
+        console.log(vote, answerId, playerId)
+        // todo: add websocket send here
+        var request = {
+            'vote':vote,
+            'answerId':answerId,
+            'playerId':playerId
+        }
+        socket.send(JSON.stringify(request))
+
     }
-</script>
-<script>
-     var loc = window.location
+
+    var loc = window.location
     var startBtn = $('#startBtn')
 
     var wsStart = 'ws://'

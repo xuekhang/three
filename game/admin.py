@@ -8,7 +8,8 @@ from .models import (
     Round,
     CategoryInRound,
     Question,
-    Answer
+    Answer,
+    Vote
 )
 
 
@@ -51,6 +52,9 @@ class AnswerAdmin(admin.ModelAdmin):
     list_display = [field.name for field in Answer._meta.get_fields()]
 
 
+class VoteAdmin(admin.ModelAdmin):
+    list_display = ['id','vote', 'player','question']
+
 # Register your models here.
 admin.site.register(Config, ConfigAdmin)
 admin.site.register(Game, GameAdmin)
@@ -62,3 +66,4 @@ admin.site.register(Round, RoundAdmin)
 admin.site.register(CategoryInRound, CategoryInRoundAdmin)
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Answer, AnswerAdmin)
+admin.site.register(Vote, VoteAdmin)

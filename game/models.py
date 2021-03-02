@@ -92,3 +92,15 @@ class Answer(models.Model):
 
     def __str__(self):
         return str(self.question) + ' Ans: ' + self.answer
+
+
+class Vote(models.Model):
+    vote_choices = [
+        ('up','up'),('down','down')
+    ]
+    vote = models.CharField(max_length=10,choices=vote_choices)
+    player = models.ForeignKey(Player,on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.vote

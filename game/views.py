@@ -230,7 +230,8 @@ def review(request, game_code='', player_name='', round_num=''):
         'cat_in_round': categories_in_round,
         'rounds': rounds,
         'test': test,
-        'answers': answers
+        'answers': answers,
+        'player':Player.objects.get(game=game, name=player_name)
         
     }
 
