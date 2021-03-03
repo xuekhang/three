@@ -182,17 +182,13 @@ class ReviewConsumer(AsyncConsumer):
         await self.send({"type": "websocket.accept"})
 
     async def websocket_receive(self, event):
-        print('receive', event)
         front_text = event.get('text', None)
         if front_text is not None:
             loaded_dict_data = json.loads(front_text)
             vote = loaded_dict_data.get('vote')
             answer_id = loaded_dict_data.get('answerId')
             player_id = loaded_dict_data.get('playerId')
-            print("vote:", vote, ", answerId:", answer_id, ", playerId:",
-                  player_id)
             voting = await self.save_vote(vote, answer_id, player_id)
-            print(voting)
             voteUpCount = await self.get_vote_count('up', answer_id)
             voteDownCount = await self.get_vote_count('down', answer_id)
             myResponse = {
