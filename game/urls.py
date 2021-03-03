@@ -26,7 +26,7 @@ urlpatterns = [
     path('startgame/<game_code>/<player_name>/',
          views.start_game,
          name='start_game'),
-    path('result/<game_code>/<player_name>/',
+    path('result/<game_code>/<player_name>/<round_num>/',
          views.result,
          name='result')
 ]

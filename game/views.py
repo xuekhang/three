@@ -6,7 +6,7 @@ from django.core import serializers
 from urllib.parse import urlencode
 from .forms import ConfigForm
 from .models import (Game, Config, Player, GlobalCategory, LocalCategory,
-                     Round, CategoryInRound, Question, Answer)
+                     Round, CategoryInRound, Question, Answer, Vote)
 from django.utils.crypto import get_random_string
 import random
 import logging
@@ -182,7 +182,7 @@ def lobby(request, game_code='', player_name=''):
 
 def review(request, game_code='', player_name='', round_num=''):
     if request.method == 'POST':
-        return redirect('board', game_code, player_name, int(round_num) + 1)
+        return redirect('result', game_code, player_name, round_num)
     game = Game.objects.get(code=game_code)
     max_rounds = Config.objects.get(game=game).num_of_rounds
     rounds = []
@@ -268,8 +268,35 @@ def start_game(request, game_code, player_name):
     return HttpResponse('success', content_type='application/json')
 
 
-def result(request, game_code, player_name):
+def result(request, game_code, player_name, round_num):
+    if request.method=='POST':
+        return redirect('board', game_code, player_name, int(round_num) + 1)
+
+    game = Game.objects.get(code=game_code)
+    players = Player.objects.filter(game=game)
+    results = []
+    for player in players:
+        points = 0
+        questions = Question.objects.filter(player=player)
+        for q in questions:
+            try:
+                answer = Answer.objects.get(question=q)
+                votes_up = Vote.objects.filter(vote='up', answer=answer).count()
+                votes_down = Vote.objects.filter(vote='down', answer=answer).count()
+                if votes_up >= votes_down:
+                    points += 1
+            except:
+                print('cannot find answer')
+        results.append([player,points])
+    def takeSecond(elem):
+        return elem[1]
+
+    results.sort(key=takeSecond, reverse=True)
+
     context = {
-        'title':'Results'
+        'title':'Results',
+        'player_name':player_name,
+        'game_code':game_code,
+        'results':results
     }
     return render(request, 'game/result.html', context)

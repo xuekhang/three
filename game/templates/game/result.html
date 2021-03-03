@@ -16,7 +16,17 @@
         </div>
     </div>
     <div class="width-400 mx-auto card">
-        <h1>results</h1>
+        <h4>Results</h4>
+        {% for result in results %}
+        <div>{{ result.0.name }} {{ result.1}}</div>
+
+        {% endfor %}
+        <form method="POST">
+            {% csrf_token %}
+            <div class="col-md-12 text-right">
+                <button type="submit" class="btn btn-primary">Go to next round</button>
+            </div>
+        </form>
     </div>
 </div>
 

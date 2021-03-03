@@ -79,10 +79,12 @@
                                 <div class="col">{{y.0.id}} {{y.0.answer}}</div>
                                 <div class="col-s">
                                     <span id="vote-up-{{y.0.id}}">0</span>
-                                    <i class="bi bi-arrow-up-circle" onclick="vote('up',{{ y.0.id }},{{ player.id }})"></i>
+                                    <i class="bi bi-arrow-up-circle"
+                                        onclick="vote('up',{{ y.0.id }},{{ player.id }})"></i>
                                 </div>
                                 <div class="col-s">
-                                    <i class="bi bi-arrow-down-circle" onclick="vote('down',{{ y.0.id }}, {{ player.id }})"></i>
+                                    <i class="bi bi-arrow-down-circle"
+                                        onclick="vote('down',{{ y.0.id }}, {{ player.id }})"></i>
                                     <span id="vote-down-{{y.0.id}}">0</span>
                                 </div>
                             </div>
@@ -93,13 +95,19 @@
                         </div>
                         {% endfor %}
                     </div>
+
                 </div>
             </div>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="col-md-12 text-right">
+                    <button type="submit" class="btn btn-primary">Go to results</button>
+                </div>
+            </form>
         </div>
     </div>
 
     <div>
-
         {{answers}}
     </div>
 </div>
@@ -108,9 +116,9 @@
         console.log(vote, answerId, playerId)
         // todo: add websocket send here
         var request = {
-            'vote':vote,
-            'answerId':answerId,
-            'playerId':playerId
+            'vote': vote,
+            'answerId': answerId,
+            'playerId': playerId
         }
         socket.send(JSON.stringify(request))
 
@@ -129,7 +137,7 @@
     socket.onmessage = function (e) {
         console.log('message', e);
         var response = JSON.parse(e.data);
-        console.log(response.answerId,response.voteUpCount,response.voteDownCount);
+        console.log(response.answerId, response.voteUpCount, response.voteDownCount);
         var answerId = response.answerId;
         var voteUpCount = response.voteUpCount;
         var voteDownCount = response.voteDownCount;
