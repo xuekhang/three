@@ -17,7 +17,7 @@ class TestConsumer(AsyncConsumer):
         # print(other_user,me)
         room = "thread_1"
         self.room = room
-        await self.channel_layer.group_add(room, self.channel_name)
+        await self.channel_layer.group_add(self.room, self.channel_name)
 
         await self.send({"type": "websocket.accept"})
 
@@ -56,8 +56,8 @@ class LobbyConsumer(AsyncConsumer):
     async def websocket_connect(self, event):
         print('connected', event)
         game_code = self.scope['url_route']['kwargs']['game_code']
-        self.game_code = game_code
-        await self.channel_layer.group_add(game_code, self.channel_name)
+        self.game_code = str(game_code).upper()
+        await self.channel_layer.group_add(self.game_code, self.channel_name)
 
         await self.send({"type": "websocket.accept"})
 
@@ -72,7 +72,7 @@ class LobbyConsumer(AsyncConsumer):
         self.players_list = players_list
         response = {'player_list': players_list, 'start_game': start_game}
 
-        await self.channel_layer.group_send(game_code, {
+        await self.channel_layer.group_send(self.game_code, {
             'type': 'send_lobby_data',
             'text': json.dumps(response)
         })
@@ -141,8 +141,8 @@ class LobbyConsumer(AsyncConsumer):
 class BoardConsumer(AsyncConsumer):
     async def websocket_connect(self, event):
         game_code = self.scope['url_route']['kwargs']['game_code']
-        self.game_code = game_code
-        await self.channel_layer.group_add(game_code, self.channel_name)
+        self.game_code = str(game_code).upper()
+        await self.channel_layer.group_add(self.game_code, self.channel_name)
         await self.send({"type": "websocket.accept"})
 
     async def websocket_receive(self, event):
@@ -177,8 +177,8 @@ class BoardConsumer(AsyncConsumer):
 class ReviewConsumer(AsyncConsumer):
     async def websocket_connect(self, event):
         game_code = self.scope['url_route']['kwargs']['game_code']
-        self.game_code = game_code
-        await self.channel_layer.group_add(game_code, self.channel_name)
+        self.game_code = str(game_code).upper()
+        await self.channel_layer.group_add(self.game_code, self.channel_name)
         await self.send({"type": "websocket.accept"})
 
     async def websocket_receive(self, event):
