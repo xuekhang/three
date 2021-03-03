@@ -173,6 +173,9 @@ class BoardConsumer(AsyncConsumer):
 
 class ReviewConsumer(AsyncConsumer):
     async def websocket_connect(self, event):
+        game_code = self.scope['url_route']['kwargs']['game_code']
+        self.game_code = game_code
+        await self.channel_layer.group_add(game_code, self.channel_name)
         await self.send({"type": "websocket.accept"})
 
     async def websocket_receive(self, event):
@@ -186,17 +189,15 @@ class ReviewConsumer(AsyncConsumer):
             print("vote:",vote,", answerId:",answer_id,", playerId:",player_id)
             voting = await self.save_vote(vote, answer_id, player_id)
             print(voting)
-            # myResponse = {'message': msg, 'username': 'jimmy'}
+            myResponse = {'answerId': 'testid', 'voteUp': 'testvoteup',
+            'voteDown':'testvotedown'}
 
-            # new_event = {
-            # "type": "websocket.send",
-            # "text": json.dumps(myResponse)
-            # }
-            # await self.channel_layer.group_send(self.room, {
-            #     "type": "chat_message",
-            #     "text": json.dumps(myResponse)
-            # })
-            # await self.send()
+
+            await self.channel_layer.group_send(self.game_code, {
+                "type": "send_review_data",
+                "text": json.dumps(myResponse)
+            })
+
     
     @database_sync_to_async
     def save_vote(self, vote, answer_id, player_id):
@@ -212,5 +213,9 @@ class ReviewConsumer(AsyncConsumer):
             vote_obj.vote=vote
             vote_obj.save()
             return 'vote updated'
+
+    async def send_review_data(self, event):
+        await self.send({'type':'websocket.send','text':event['text']})
+
 
 
