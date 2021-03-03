@@ -27,8 +27,8 @@ i{
 }
 
 .btn-primary {
-    background-color: #013220 !important;
-    border-color: #013220;
+    background-color: black !important;
+    border-color: black;
     margin: 2px;
     border: none;
     color: white;
@@ -41,8 +41,8 @@ i{
 }
 
 .btn-primary:focus {
-    box-shadow: #013220;
-    outline: #013220;
+    box-shadow: black;
+    outline: black;
 }
 
 .redacted {
@@ -105,11 +105,11 @@ img {
     padding: 2px 16px;
 }
 
-@media (min-width: 400px) {
-    .width-400 {
-        max-width: 400px;
-    }
+
+.width-400 {
+    max-width: 400px;
 }
+
 
 
 /* start timer styles */
@@ -208,3 +208,10 @@ img {
     font-weight: bold;
     text-decoration: underline;
 }
+
+@media only screen and (max-width: 575px) {
+    .nav-link {
+      background-color: lightblue;
+      max-width: 10px;
+    }
+  }
