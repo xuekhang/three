@@ -288,6 +288,7 @@ def result(request, game_code, player_name, round_num):
             except:
                 print('cannot find answer')
         results.append([player,points])
+    # sort the list based on the points of the players
     def takeSecond(elem):
         return elem[1]
 
