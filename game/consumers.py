@@ -193,10 +193,12 @@ class ReviewConsumer(AsyncConsumer):
                   player_id)
             voting = await self.save_vote(vote, answer_id, player_id)
             print(voting)
+            voteUpCount = await self.get_vote_count('up', answer_id)
+            voteDownCount = await self.get_vote_count('down', answer_id)
             myResponse = {
                 'answerId': answer_id,
-                'voteUpCount': '3',
-                'voteDownCount': '-3'
+                'voteUpCount': voteUpCount,
+                'voteDownCount': voteDownCount
             }
             await self.channel_layer.group_send(self.game_code, {
                 "type": "send_review_data",
@@ -217,6 +219,11 @@ class ReviewConsumer(AsyncConsumer):
             vote_obj.vote = vote
             vote_obj.save()
             return 'vote updated'
+
+    @database_sync_to_async
+    def get_vote_count(self, vote, answer_id):
+        answer = Answer.objects.get(pk=answer_id)
+        return Vote.objects.filter(vote=vote, answer=answer_id).count()
 
     async def send_review_data(self, event):
         await self.send({'type': 'websocket.send', 'text': event['text']})
