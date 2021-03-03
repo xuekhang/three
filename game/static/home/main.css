@@ -1,5 +1,5 @@
 body {
-    color: #333333;
+    color: #FCB16F;
     /* padding-top: 64px; */
 }
 
@@ -27,8 +27,8 @@ i{
 }
 
 .btn-primary {
-    background-color: black !important;
-    border-color: black;
+    background-color: #FCB16F !important;
+    border-color: #FCB16F;
     margin: 2px;
     border: none;
     color: white;
@@ -41,8 +41,8 @@ i{
 }
 
 .btn-primary:focus {
-    box-shadow: black;
-    outline: black;
+    box-shadow: #FCB16F;
+    outline: #FCB16F;
 }
 
 .redacted {
@@ -193,15 +193,17 @@ img {
 
 .nav .nav-link.active {
     color: #495057 !important;
-    background-color: #fff !important;
-    border-color: #dee2e6 #fff #dee2e6 #dee2e6 !important;
+    background-color: #fffdd0 !important;
+    border-color: #dee2e6 #fffdd0 #dee2e6 #dee2e6 !important;
 }
 
 .nav {
     border-right: 1px solid #dee2e6;
 }
 
-
+.tab-area{
+    background-color: #fffdd0;
+}
 /* end left nav styles */
 
 .ans-header{
