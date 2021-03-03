@@ -116,7 +116,7 @@ class LobbyConsumer(AsyncConsumer):
         return list(Player.objects.filter(game=game))
 
     @database_sync_to_async
-    def start_game(self,game_code):
+    def start_game(self, game_code):
         game = Game.objects.get(code=game_code)
         config = Config.objects.get(game=game)
         players = Player.objects.filter(game=game)
@@ -124,16 +124,17 @@ class LobbyConsumer(AsyncConsumer):
 
         for round in rounds:
             # this should delete the ansewrs too
-            categories_in_round = CategoryInRound.objects.filter(
-                round=round)
+            categories_in_round = CategoryInRound.objects.filter(round=round)
             for cat in categories_in_round:
                 Question.objects.filter(category_in_round=cat).delete()
 
         for player in players:
             for round in rounds:
-                categories_in_round = CategoryInRound.objects.filter(round=round)
+                categories_in_round = CategoryInRound.objects.filter(
+                    round=round)
                 for cat in categories_in_round:
-                    Question.objects.create(player=player, category_in_round=cat)
+                    Question.objects.create(player=player,
+                                            category_in_round=cat)
         return 'success'
 
 
@@ -158,18 +159,20 @@ class BoardConsumer(AsyncConsumer):
                 print('starting da timer')
                 response = {
                     # 'player_list': self.players_list,
-                    'start_timer': start_timer
+                    'startTimer': start_timer
                 }
                 await self.channel_layer.group_send(
                     self.game_code, {
                         'type': 'send_board_data',
                         'text': json.dumps(response)
                     })
+
     async def websocket_disconnect(self, event):
         print('disconnect', event)
 
     async def send_board_data(self, event):
         await self.send({"type": "websocket.send", "text": event['text']})
+
 
 class ReviewConsumer(AsyncConsumer):
     async def websocket_connect(self, event):
@@ -186,36 +189,34 @@ class ReviewConsumer(AsyncConsumer):
             vote = loaded_dict_data.get('vote')
             answer_id = loaded_dict_data.get('answerId')
             player_id = loaded_dict_data.get('playerId')
-            print("vote:",vote,", answerId:",answer_id,", playerId:",player_id)
+            print("vote:", vote, ", answerId:", answer_id, ", playerId:",
+                  player_id)
             voting = await self.save_vote(vote, answer_id, player_id)
             print(voting)
-            myResponse = {'answerId': 'testid', 'voteUp': 'testvoteup',
-            'voteDown':'testvotedown'}
-
-
+            myResponse = {
+                'answerId': answer_id,
+                'voteUpCount': '3',
+                'voteDownCount': '-3'
+            }
             await self.channel_layer.group_send(self.game_code, {
                 "type": "send_review_data",
                 "text": json.dumps(myResponse)
             })
 
-    
     @database_sync_to_async
     def save_vote(self, vote, answer_id, player_id):
         player = Player.objects.get(pk=player_id)
         answer = Answer.objects.get(pk=answer_id)
         #todo if already exist then update else create
         try:
-            vote_obj = Vote.objects.get(player=player,answer=answer)
+            vote_obj = Vote.objects.get(player=player, answer=answer)
         except:
-            Vote.objects.create(player=player,answer=answer,vote=vote)
+            Vote.objects.create(player=player, answer=answer, vote=vote)
             return 'vote created'
         else:
-            vote_obj.vote=vote
+            vote_obj.vote = vote
             vote_obj.save()
             return 'vote updated'
 
     async def send_review_data(self, event):
-        await self.send({'type':'websocket.send','text':event['text']})
-
-
-
+        await self.send({'type': 'websocket.send', 'text': event['text']})

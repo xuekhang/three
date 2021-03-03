@@ -78,10 +78,12 @@
                                 <div class="col">{{y.0.question.player}}: {{y.0.question.player.id}}:</div>
                                 <div class="col">{{y.0.id}} {{y.0.answer}}</div>
                                 <div class="col-s">
-                                    2<i class="bi bi-arrow-up-circle" onclick="vote('up',{{ y.0.id }},{{ player.id }})"></i>
+                                    <span id="vote-up-{{y.0.id}}">2</span>
+                                    <i class="bi bi-arrow-up-circle" onclick="vote('up',{{ y.0.id }},{{ player.id }})"></i>
                                 </div>
                                 <div class="col-s">
-                                    <i class="bi bi-arrow-down-circle" onclick="vote('down',{{ y.0.id }}, {{ player.id }})"></i>2
+                                    <i class="bi bi-arrow-down-circle" onclick="vote('down',{{ y.0.id }}, {{ player.id }})"></i>
+                                    <span id="vote-down-{{y.0.id}}">2</span>
                                 </div>
                             </div>
 
@@ -121,21 +123,29 @@
     if (loc.protocol == 'https:') {
         wsStart = 'wss://'
     }
-    var endpoint = wsStart + loc.host + loc.pathname
-    var socket = new WebSocket(endpoint)
+    var endpoint = wsStart + loc.host + loc.pathname;
+    var socket = new WebSocket(endpoint);
 
     socket.onmessage = function (e) {
-        console.log('message', e)
-        var response = JSON.parse(e.data)
+        console.log('message', e);
+        var response = JSON.parse(e.data);
+        console.log(response.answerId,response.voteUpCount,response.voteDownCount);
+        var answerId = response.answerId;
+        var voteUpCount = response.voteUpCount;
+        var voteDownCount = response.voteDownCount;
+        document.getElementById("vote-up-" + answerId).innerText = voteUpCount;
+        document.getElementById("vote-down-" + answerId).innerText = voteDownCount;
+
+
     }
     socket.onopen = function (e) {
-        console.log('open', e)
+        console.log('open', e);
     }
     socket.onerror = function (e) {
-        console.log('error', e)
+        console.log('error', e);
     }
     socket.onclose = function (e) {
-        console.log('close', e)
+        console.log('close', e);
     }
 
 </script>
