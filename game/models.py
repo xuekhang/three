@@ -100,7 +100,7 @@ class Vote(models.Model):
     ]
     vote = models.CharField(max_length=10,choices=vote_choices)
     player = models.ForeignKey(Player,on_delete=models.CASCADE)
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    answer = models.ForeignKey(Answer, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.vote

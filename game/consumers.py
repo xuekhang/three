@@ -5,7 +5,7 @@ from channels.consumer import AsyncConsumer
 from channels.db import database_sync_to_async
 
 from .models import (Game, Config, Player, GlobalCategory, LocalCategory,
-                     Round, CategoryInRound, Question, Answer)
+                     Round, CategoryInRound, Question, Answer, Vote)
 
 
 class TestConsumer(AsyncConsumer):
@@ -184,6 +184,8 @@ class ReviewConsumer(AsyncConsumer):
             answer_id = loaded_dict_data.get('answerId')
             player_id = loaded_dict_data.get('playerId')
             print("vote:",vote,", answerId:",answer_id,", playerId:",player_id)
+            voting = await self.save_vote(vote, answer_id, player_id)
+            print(voting)
             # myResponse = {'message': msg, 'username': 'jimmy'}
 
             # new_event = {
@@ -195,3 +197,20 @@ class ReviewConsumer(AsyncConsumer):
             #     "text": json.dumps(myResponse)
             # })
             # await self.send()
+    
+    @database_sync_to_async
+    def save_vote(self, vote, answer_id, player_id):
+        player = Player.objects.get(pk=player_id)
+        answer = Answer.objects.get(pk=answer_id)
+        #todo if already exist then update else create
+        try:
+            vote_obj = Vote.objects.get(player=player,answer=answer)
+        except:
+            Vote.objects.create(player=player,answer=answer,vote=vote)
+            return 'vote created'
+        else:
+            vote_obj.vote=vote
+            vote_obj.save()
+            return 'vote updated'
+
+

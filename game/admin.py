@@ -53,7 +53,7 @@ class AnswerAdmin(admin.ModelAdmin):
 
 
 class VoteAdmin(admin.ModelAdmin):
-    list_display = ['id','vote', 'player','question']
+    list_display = ['id','vote', 'player','answer']
 
 # Register your models here.
 admin.site.register(Config, ConfigAdmin)
