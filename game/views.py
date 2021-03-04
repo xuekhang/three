@@ -26,7 +26,11 @@ def home(request):
 
         # logic for joining a game
         if 'join' in request.POST:
-            game = Game.objects.get(code=game_code)
+            try:
+                game = Game.objects.get(code=game_code)
+            except:
+                messages.error(request, 'Game code does not exist')
+                return redirect('home')
             num_current_players = Player.objects.filter(game=game).count()
             config = Config.objects.get(game=game)
 
