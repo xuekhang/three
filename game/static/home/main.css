@@ -203,6 +203,7 @@ img {
 
 .tab-area{
     background-color: #fffdd0;
+    margin-right: 10px;
 }
 /* end left nav styles */
 
@@ -211,9 +212,22 @@ img {
     text-decoration: underline;
 }
 
-@media only screen and (max-width: 575px) {
-    .nav-link {
+@media only screen and (max-width: 991px) {
+    /* .nav-link {
       background-color: lightblue;
-      max-width: 10px;
+      max-width: 24px;
+    } */
+
+    /* .review-cat{
+        display: none !important;
+    } */
+    .review-cat{
+        display: none !important;
     }
   }
+
+@media only screen and (min-width: 991px){
+    .reivew-cat{
+        display: none !important;
+    }
+}

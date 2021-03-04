@@ -47,7 +47,7 @@
                             aria-controls="v-pills-{{ forloop.counter }}" aria-selected="false"
                             style="margin-left: 10px;">
                             <span>{{ forloop.counter}}.</span>
-                            <span class="cat-tab-{{ forloop.counter }}">{{ answer.0.name }}</span>
+                            <span class="review-cat cat-tab-{{ forloop.counter }}">{{ answer.0.name }}</span>
                         </a>
                         {% endfor %}
 
@@ -56,12 +56,15 @@
                 <div class="col tab-area">
                     <br>
 
+
                     <div class="tab-content" id="v-pills-tabContent">
                         {% for answer in answers %}
+
                         <div class="category-header-{{ forloop.counter }}"></div>
                         <div class="tab-pane fade {% if forloop.counter == 1%} show active{% endif %}"
                             id="v-pills-{{ forloop.counter }}" role="tabpanel"
                             aria-labelledby="v-pills-{{ forloop.counter }}-tab">
+                            <span class="reivew-cat"> <h5 style="font-weight: bold;">{{ answer.0 }}</h5> </span> 
                             <div class="row" style="margin-left: 10px; margin-right: 10px;">
                                 <div class="col">
                                     <div class="ans-header">Player</div>
@@ -76,8 +79,8 @@
                             {% for x in answer.1%}
                             {% for y in x%}
                             <div class="row" style="margin-left: 10px; margin-right: 10px;">
-                                <div class="col">{{y.0.question.player}}: {{y.0.question.player.id}}:</div>
-                                <div class="col">{{y.0.id}} {{y.0.answer}}</div>
+                                <div class="col">{{y.0.question.player}}</div>
+                                <div class="col">{{y.0.answer}}</div>
                                 <div class="col-s">
                                     <span id="vote-up-{{y.0.id}}">0</span>
                                     <i class="bi bi-arrow-up-circle"
@@ -107,6 +110,7 @@
             </form>
         </div>
     </div>
+    <!-- <div>{{ answers }}</div> -->
 
 </div>
 <script>
