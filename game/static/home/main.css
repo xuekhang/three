@@ -46,14 +46,14 @@ i{
 }
 
 .redacted {
-    color: black;
-    background-color: black;
-    white-space: nowrap;
+    color: white;
+    /* background-color: black; */
+    /* white-space: nowrap; */
     -moz-transform: rotate(.8deg) skewx(-12deg);
     -moz-box-shadow: 3px 0 2px #444;
-    border: 1px dotted #555;
+    /* border: 1px dotted #555; */
     background: -moz-linear-gradient(180deg, #000, #222);
-    transition: opacity 2s linear;
+    transition: width 2s;
     -webkit-touch-callout: none;
     /* iOS Safari */
     -webkit-user-select: none;
@@ -110,7 +110,12 @@ img {
     max-width: 400px;
 }
 
-
+.answer-input{
+    width: 100%; 
+    border-color: rgba(0, 0, 0, 0.2); 
+    border-radius: 5px; 
+    border-width: thin;
+}
 
 /* start timer styles */
 

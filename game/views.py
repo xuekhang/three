@@ -46,6 +46,11 @@ def home(request):
             game_code = get_random_string(length=6).upper()
             Game.objects.create(code=game_code)
             game = Game.objects.get(code=game_code)
+            # create game with defualt settings
+            Config.objects.create(game=game,
+                              num_of_players=6,
+                              num_of_rounds=4,
+                              num_of_cat_per_round=10)
             Player.objects.create(game=game, name=player_name, is_host=True)
 
             return redirect('config', game_code, player_name)
@@ -58,15 +63,19 @@ def home(request):
 
 def config(request, game_code='', player_name=''):
     if request.method == 'POST':
-        form = ConfigForm(request.POST)
+        
         game_code = request.POST.get('game_code')
+        
         game = Game.objects.get(code=game_code)
+        config = Config.objects.get(game=game)
+        form = ConfigForm(request.POST, instance=config)
 
         if form.is_valid():
             obj = form.save(commit=False)
             obj.game = game
             obj.save()
             messages.success(request, f'Game config saved')
+
         letters = list(
             Config.objects.values_list('letters', flat=True).filter(game=game))
 
@@ -106,6 +115,7 @@ def config(request, game_code='', player_name=''):
 def board(request, game_code='', player_name='', round_num=''):
     if request.method == 'POST':
         game = Game.objects.get(code=game_code)
+        
         round = Round.objects.get(game=game, number=round_num)
         player = Player.objects.get(game=game, name=player_name)
         for key, value in request.POST.items():
@@ -205,8 +215,7 @@ def review(request, game_code='', player_name='', round_num=''):
         for q in questions:
             answer = Answer.objects.filter(question=q)
             player_answers.append([answer])
-        answers.append([cat,player_answers])
-            
+        answers.append([cat, player_answers])
 
     # answers = [[['player1', 'apple'], ['player2', 'always'],
     #             ['player3', 'anything']],
@@ -218,10 +227,11 @@ def review(request, game_code='', player_name='', round_num=''):
     test = [[
         'cat_num_one',
         [['player1', 'apple'], ['player2', 'always'], ['player3', 'anything']]
-    ],[
-        'cat_num_two',
-        [['player1', 'aaaa'], ['player2', 'agape'], ['player3', 'ace']]
-    ]]
+    ],
+            [
+                'cat_num_two',
+                [['player1', 'aaaa'], ['player2', 'agape'], ['player3', 'ace']]
+            ]]
 
     # answers =['answers']
     context = {
@@ -231,8 +241,7 @@ def review(request, game_code='', player_name='', round_num=''):
         'rounds': rounds,
         'test': test,
         'answers': answers,
-        'player':Player.objects.get(game=game, name=player_name)
-        
+        'player': Player.objects.get(game=game, name=player_name)
     }
 
     return render(request, 'game/review.html', context)
@@ -254,8 +263,7 @@ def start_game(request, game_code, player_name):
 
     for round in rounds:
         # this should delete the ansewrs too
-        categories_in_round = CategoryInRound.objects.filter(
-            round=round)
+        categories_in_round = CategoryInRound.objects.filter(round=round)
         for cat in categories_in_round:
             Question.objects.filter(category_in_round=cat).delete()
 
@@ -269,7 +277,7 @@ def start_game(request, game_code, player_name):
 
 
 def result(request, game_code, player_name, round_num):
-    if request.method=='POST':
+    if request.method == 'POST':
         return redirect('board', game_code, player_name, int(round_num) + 1)
 
     game = Game.objects.get(code=game_code)
@@ -281,13 +289,15 @@ def result(request, game_code, player_name, round_num):
         for q in questions:
             try:
                 answer = Answer.objects.get(question=q)
-                votes_up = Vote.objects.filter(vote='up', answer=answer).count()
-                votes_down = Vote.objects.filter(vote='down', answer=answer).count()
+                votes_up = Vote.objects.filter(vote='up',
+                                               answer=answer).count()
+                votes_down = Vote.objects.filter(vote='down',
+                                                 answer=answer).count()
                 if votes_up >= votes_down and answer.answer != '':
                     points += 1
             except:
                 print('cannot find answer')
-        results.append([player,points])
+        results.append([player, points])
     # sort the list based on the points of the players
     def takeSecond(elem):
         return elem[1]
@@ -295,9 +305,9 @@ def result(request, game_code, player_name, round_num):
     results.sort(key=takeSecond, reverse=True)
 
     context = {
-        'title':'Results',
-        'player_name':player_name,
-        'game_code':game_code,
-        'results':results
+        'title': 'Results',
+        'player_name': player_name,
+        'game_code': game_code,
+        'results': results
     }
     return render(request, 'game/result.html', context)
