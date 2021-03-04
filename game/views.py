@@ -200,13 +200,6 @@ def review(request, game_code='', player_name='', round_num=''):
         rounds.append(x)
     round = Round.objects.get(game=game, number=round_num)
     categories_in_round = CategoryInRound.objects.filter(round=round)
-    # todo get all the questions in the round
-    # get all the answers to those questions
-    # question = []
-    # for cat in categories_in_round:
-    #     question.append(list(Question.objects.filter(category_in_round=cat)))
-
-    # build the answer list
 
     answers = []
     for cat in categories_in_round:
@@ -217,31 +210,14 @@ def review(request, game_code='', player_name='', round_num=''):
             player_answers.append([answer])
         answers.append([cat, player_answers])
 
-    # answers = [[['player1', 'apple'], ['player2', 'always'],
-    #             ['player3', 'anything']],
-    #            [['player1', 'answer2'], ['player2', 'answer2'],
-    #             ['player3', 'answer2']],
-    #            [['player1', 'answer3'], ['player2', 'answer3'],
-    #             ['player3', 'answer3']]]
-
-    test = [[
-        'cat_num_one',
-        [['player1', 'apple'], ['player2', 'always'], ['player3', 'anything']]
-    ],
-            [
-                'cat_num_two',
-                [['player1', 'aaaa'], ['player2', 'agape'], ['player3', 'ace']]
-            ]]
-
-    # answers =['answers']
     context = {
         'title': 'Review',
         'game_code': game_code,
         'cat_in_round': categories_in_round,
         'rounds': rounds,
-        'test': test,
         'answers': answers,
-        'player': Player.objects.get(game=game, name=player_name)
+        'player': Player.objects.get(game=game, name=player_name),
+        'letter': round.letter,
     }
 
     return render(request, 'game/review.html', context)

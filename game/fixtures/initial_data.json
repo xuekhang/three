@@ -1,5 +1,5 @@
 [
-    {
+	{
 		"model": "game.globalcategory",
 		"pk": 1,
 		"fields": {
@@ -38,7 +38,7 @@
 		"model": "game.globalcategory",
 		"pk": 6,
 		"fields": {
-			"name": " TV Shows"
+			"name": " Television shows"
 		}
 	},
 	{
@@ -52,1449 +52,2055 @@
 		"model": "game.globalcategory",
 		"pk": 8,
 		"fields": {
-			"name": " Fruits"
+			"name": " Things that are black"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 9,
 		"fields": {
-			"name": " Things that are black"
+			"name": " School subjects"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 10,
 		"fields": {
-			"name": " School subjects"
+			"name": " Movie titles"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 11,
 		"fields": {
-			"name": " Movie titles"
+			"name": " Musical Instruments"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 12,
 		"fields": {
-			"name": " Musical Instruments"
+			"name": " Authors"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 13,
 		"fields": {
-			"name": " Authors"
+			"name": " Bodies of water"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 14,
 		"fields": {
-			"name": " Bodies of water"
+			"name": "Countries"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 15,
 		"fields": {
-			"name": " A bird"
+			"name": " Cartoon characters"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 16,
 		"fields": {
-			"name": " Countries"
+			"name": " Holidays"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 17,
 		"fields": {
-			"name": " Cartoon characters"
+			"name": " Things that are square"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 18,
 		"fields": {
-			"name": " Holidays"
+			"name": " Clothing"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 19,
 		"fields": {
-			"name": " Things that are square"
+			"name": " Games"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 20,
 		"fields": {
-			"name": " In the NWT (Northwest Territories, Canada)"
+			"name": "Athletes"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 21,
 		"fields": {
-			"name": " Clothing"
+			"name": " School supplies"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 22,
 		"fields": {
-			"name": " A relative"
+			"name": " Things that are hot"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 23,
 		"fields": {
-			"name": " Games"
+			"name": " Heroes"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 24,
 		"fields": {
-			"name": " Sports Stars"
+			"name": " A girl’s name"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 25,
 		"fields": {
-			"name": " School supplies"
+			"name": " Fears"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 26,
 		"fields": {
-			"name": " Things that are hot"
+			"name": " Colors"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 27,
 		"fields": {
-			"name": " Heroes"
+			"name": " A fish"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 28,
 		"fields": {
-			"name": " A girl’s name"
+			"name": " Fruits"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 29,
 		"fields": {
-			"name": " Fears"
+			"name": " Provinces or States"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 30,
 		"fields": {
-			"name": " TV Stars"
+			"name": " Sports equipment"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 31,
 		"fields": {
-			"name": " Colors"
+			"name": " Tools"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 32,
 		"fields": {
-			"name": " A fish"
+			"name": " Breakfast foods"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 33,
 		"fields": {
-			"name": " Fruits"
+			"name": " Flowers"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 34,
 		"fields": {
-			"name": " Provinces or States"
+			"name": " Ice cream flavors"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 35,
 		"fields": {
-			"name": " Sports equipment"
+			"name": " Toys"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 36,
 		"fields": {
-			"name": " Tools"
+			"name": " US Cities"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 37,
 		"fields": {
-			"name": " Breakfast foods"
+			"name": " Things in the kitchen"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 38,
 		"fields": {
-			"name": " Gifts"
+			"name": "Things in the ocean"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 39,
 		"fields": {
-			"name": " Flowers"
+			"name": " Hobbies"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 40,
 		"fields": {
-			"name": " Ice cream flavors"
+			"name": " Parts of the body"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 41,
 		"fields": {
-			"name": " A drink"
+			"name": " Sandwiches"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 42,
 		"fields": {
-			"name": " Toys"
+			"name": " Items in a catalog"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 43,
 		"fields": {
-			"name": " Cities"
+			"name": " World leaders/Politicians"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 44,
 		"fields": {
-			"name": " Things in the kitchen"
+			"name": " Excuses for being late"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 45,
 		"fields": {
-			"name": " Ocean things"
+			"name": " Things that jump/bounce"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 46,
 		"fields": {
-			"name": " Nicknames"
+			"name": " Television stars"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 47,
 		"fields": {
-			"name": " Hobbies"
+			"name": " Things in a park"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 48,
 		"fields": {
-			"name": " Parts of the body"
+			"name": " Foriegn cities"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 49,
 		"fields": {
-			"name": " Sandwiches"
+			"name": " Stones/Gems"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 50,
 		"fields": {
-			"name": " Items in a catalog"
+			"name": " Things in the sky"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 51,
 		"fields": {
-			"name": " World leaders/Poloticians"
+			"name": " Pizza toppings"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 52,
 		"fields": {
-			"name": " School subjects"
+			"name": " Colleges/Universities"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 53,
 		"fields": {
-			"name": " Excuses for being late"
+			"name": " Things that have spots"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 54,
 		"fields": {
-			"name": " Ice cream flavors"
+			"name": " Historical Figures"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 55,
 		"fields": {
-			"name": " Things that jump/bounce"
+			"name": " Items in your room"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 56,
 		"fields": {
-			"name": " Television stars"
+			"name": " Fictional characters"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 57,
 		"fields": {
-			"name": " Things in a park"
+			"name": " Menu items"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 58,
 		"fields": {
-			"name": " Foriegn cities"
+			"name": "Magazines"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 59,
 		"fields": {
-			"name": " Stones/Gems"
+			"name": "A capital city"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 60,
 		"fields": {
-			"name": " Nicknames"
+			"name": "Types of candy"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 61,
 		"fields": {
-			"name": " Things in the sky"
+			"name": " Footware"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 62,
 		"fields": {
-			"name": " Pizza toppings"
+			"name": " Something you keep hidden"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 63,
 		"fields": {
-			"name": " Colleges/Universities"
+			"name": " Items in a suitcase"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 64,
 		"fields": {
-			"name": " Fish"
+			"name": " Things with tails"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 65,
 		"fields": {
-			"name": " Countries"
+			"name": " Crimes"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 66,
 		"fields": {
-			"name": " Things that have spots"
+			"name": " Things that are sticky"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 67,
 		"fields": {
-			"name": " Historical Figures"
+			"name": " Awards/ceremonies"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 68,
 		"fields": {
-			"name": " Something you’re afraid oF"
+			"name": " Cars"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 69,
 		"fields": {
-			"name": " Terms of endearment"
+			"name": " Spices/Herbs"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 70,
 		"fields": {
-			"name": " Items in this room"
+			"name": " Bad habits"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 71,
 		"fields": {
-			"name": " Drugs that are abused"
+			"name": " Cosmetics/Toiletries"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 72,
 		"fields": {
-			"name": " Fictional characters"
+			"name": " Celebrities"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 73,
 		"fields": {
-			"name": " Menu items"
+			"name": " Cooking utensils"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 74,
 		"fields": {
-			"name": " Magazines"
+			"name": " Reptiles/Amphibians"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 75,
 		"fields": {
-			"name": " Capitals"
+			"name": " Parks"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 76,
 		"fields": {
-			"name": " Kinds of candy"
+			"name": " Leisure activities"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 77,
 		"fields": {
-			"name": " Items you save up to buy"
+			"name": " Things you’re allergic to"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 78,
 		"fields": {
-			"name": " Footware"
+			"name": " Restaurants"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 79,
 		"fields": {
-			"name": " Something you keep hidden"
+			"name": " Things in a medicine cabinet"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 80,
 		"fields": {
-			"name": " Items in a suitcase"
+			"name": " Household chores"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 81,
 		"fields": {
-			"name": " Things with tails"
+			"name": " Halloween costumes"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 82,
 		"fields": {
-			"name": " Sports equiptment"
+			"name": " Weapons"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 83,
 		"fields": {
-			"name": " Crimes"
+			"name": " Things that are round"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 84,
 		"fields": {
-			"name": " Things that are sticky"
+			"name": " Words associated with exercise"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 85,
 		"fields": {
-			"name": " Awards/ceremonies"
+			"name": " Sports"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 86,
 		"fields": {
-			"name": " Cars"
+			"name": " Song titles"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 87,
 		"fields": {
-			"name": " Spices/Herbs"
+			"name": " Things you shout"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 88,
 		"fields": {
-			"name": " Bad habits"
+			"name": " Birds"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 89,
 		"fields": {
-			"name": " Cosmetics/Toiletries"
+			"name": " Ways to get from here to there"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 90,
 		"fields": {
-			"name": " Celebrities"
+			"name": " Villains"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 91,
 		"fields": {
-			"name": " Cooking utensils"
+			"name": " Things you replace"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 92,
 		"fields": {
-			"name": " Reptiles/Amphibians"
+			"name": " Famous duos and trios"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 93,
 		"fields": {
-			"name": " Parks"
+			"name": " Things found in a desk"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 94,
 		"fields": {
-			"name": " Leisure activities"
+			"name": " Vacation spots"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 95,
 		"fields": {
-			"name": " Things you’re allergic to"
+			"name": " Diseases"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 96,
 		"fields": {
-			"name": " Restaurants"
+			"name": " Words associated with money"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 97,
 		"fields": {
-			"name": " Notorious people"
+			"name": " Items in a vending machine"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 98,
 		"fields": {
-			"name": " Fruits"
+			"name": " Things you wear"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 99,
 		"fields": {
-			"name": " Things in a medicine cabinet"
+			"name": " Things at a circus"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 100,
 		"fields": {
-			"name": " Toys"
+			"name": " Vegetables"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 101,
 		"fields": {
-			"name": " Household chores"
+			"name": " Things you throw away"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 102,
 		"fields": {
-			"name": " Bodies of water"
+			"name": " Occupations"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 103,
 		"fields": {
-			"name": " Authors"
+			"name": " Appliances"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 104,
 		"fields": {
-			"name": " Halloween costumes"
+			"name": " Types of drinks"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 105,
 		"fields": {
-			"name": " Weapons"
+			"name": " Musical groups"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 106,
 		"fields": {
-			"name": " Things that are round"
+			"name": " Things at a football game"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 107,
 		"fields": {
-			"name": " Words associated with exercise"
+			"name": " Personality traits"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 108,
 		"fields": {
-			"name": " Sports"
+			"name": " Video games"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 109,
 		"fields": {
-			"name": " Song titles"
+			"name": " Electronic gadgets"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 110,
 		"fields": {
-			"name": " Parts of the body"
+			"name": " Board games"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 111,
 		"fields": {
-			"name": " Ethnic foods"
+			"name": " Things that use a remote"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 112,
 		"fields": {
-			"name": " Things you shout"
+			"name": " Card games"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 113,
 		"fields": {
-			"name": " Birds"
+			"name": " Internet lingo"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 114,
 		"fields": {
-			"name": " A girl’s name"
+			"name": " Offensive words"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 115,
 		"fields": {
-			"name": " Ways to get from here to there"
+			"name": " Wireless things"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 116,
 		"fields": {
-			"name": " Items in a kitchen"
+			"name": " Computer parts"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 117,
 		"fields": {
-			"name": " Villains"
+			"name": " Websites"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 118,
 		"fields": {
-			"name": " Flowers"
+			"name": " Game terms"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 119,
 		"fields": {
-			"name": " Things you replace"
+			"name": " Things in a grocery store"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 120,
 		"fields": {
-			"name": " Baby foods"
+			"name": " Reasons to quit your job"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 121,
 		"fields": {
-			"name": " Famous duos and trios"
+			"name": " Things that have stripes"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 122,
 		"fields": {
-			"name": " Things found in a desk"
+			"name": " Tourist attractions"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 123,
 		"fields": {
-			"name": " Vacation spots"
+			"name": " Things found in a hospital"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 124,
 		"fields": {
-			"name": " Diseases"
+			"name": " Food/Drink that is green"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 125,
 		"fields": {
-			"name": " Words associated with money"
+			"name": " Weekend Activities"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 126,
 		"fields": {
-			"name": " Items in a vending machine"
+			"name": " Acronyms"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 127,
 		"fields": {
-			"name": " Movie Titles"
+			"name": " Seafood"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 128,
 		"fields": {
-			"name": " Games"
+			"name": " Christmas songs"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 129,
 		"fields": {
-			"name": " Things you wear"
+			"name": " Words ending in “-n”"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 130,
 		"fields": {
-			"name": " Beers"
+			"name": " Words with double letters"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 131,
 		"fields": {
-			"name": " Things at a circus"
+			"name": " Children’s books"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 132,
 		"fields": {
-			"name": " Vegetables"
+			"name": " Things found at a bar"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 133,
 		"fields": {
-			"name": " States"
+			"name": " Names used in songs"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 134,
 		"fields": {
-			"name": " Things you throw away"
+			"name": " Foods you eat raw"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 135,
 		"fields": {
-			"name": " Occupations"
+			"name": " Places in Europe"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 136,
 		"fields": {
-			"name": " Appliances"
+			"name": " Olympic events"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 137,
 		"fields": {
-			"name": " Cartoon characters"
+			"name": " Things you see at the zoo"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 138,
 		"fields": {
-			"name": " Types of drinks"
+			"name": " Math terms"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 139,
 		"fields": {
-			"name": " Musical groups"
+			"name": " Animals in books or movies"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 140,
 		"fields": {
-			"name": " Store names"
+			"name": " Things to do at a party"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 141,
 		"fields": {
-			"name": " Things at a football game"
+			"name": "Type of soup"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 142,
 		"fields": {
-			"name": " Trees"
+			"name": " Things found in New York"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 143,
 		"fields": {
-			"name": " Personality traits"
+			"name": " Things you get tickets for"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 144,
 		"fields": {
-			"name": " Video games"
+			"name": " Things you do at work"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 145,
 		"fields": {
-			"name": " Electronic gadgets"
+			"name": " Foreign words used in English"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 146,
 		"fields": {
-			"name": " Board games"
+			"name": " Things you shouldn’t touch"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 147,
 		"fields": {
-			"name": " Things that use a remote"
+			"name": " Spicy foods"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 148,
 		"fields": {
-			"name": " Card games"
+			"name": " Things at a carnival"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 149,
 		"fields": {
-			"name": " Internet lingo"
+			"name": " Things you make"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 150,
 		"fields": {
-			"name": " Offensive words"
+			"name": " Places to hangout"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 151,
 		"fields": {
-			"name": " Wireless things"
+			"name": " Animal noises"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 152,
 		"fields": {
-			"name": " Computer parts"
+			"name": " Computer programs"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 153,
 		"fields": {
-			"name": " Software"
+			"name": " Honeymoon spots"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 154,
 		"fields": {
-			"name": " Websites"
+			"name": " Things you buy for kids"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 155,
 		"fields": {
-			"name": " Game terms"
+			"name": " Things that can kill you"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 156,
 		"fields": {
-			"name": " Things in a grocery store"
+			"name": " Reasons to take out a loan"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 157,
 		"fields": {
-			"name": " Reasons to quit your job"
+			"name": " Words associated with winter"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 158,
 		"fields": {
-			"name": " Things that have stripes"
+			"name": " Things to do on a date"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 159,
 		"fields": {
-			"name": " Tourist attractions"
+			"name": " Historic events"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 160,
 		"fields": {
-			"name": " Diet foods"
+			"name": " Things you store items in"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 161,
 		"fields": {
-			"name": " Things found in a hospital"
+			"name": " Things you do everyday"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 162,
 		"fields": {
-			"name": " Food/Drink that is green"
+			"name": " Things you get in the mail"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 163,
 		"fields": {
-			"name": " Weekend Activities"
+			"name": " Things you sit/on"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 164,
 		"fields": {
-			"name": " Acronyms"
+			"name": " Reasons to make a phone call"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 165,
 		"fields": {
-			"name": " Seafood"
+			"name": " Types of weather"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 166,
 		"fields": {
-			"name": " Christmas songs"
+			"name": " Titles people can have"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 167,
 		"fields": {
-			"name": " Words ending in “-n”"
+			"name": " Things that have buttons"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 168,
 		"fields": {
-			"name": " Words with double letters"
+			"name": " Items you take on a road trip"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 169,
 		"fields": {
-			"name": " Children’s books"
+			"name": " Reasons to call 911"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 170,
 		"fields": {
-			"name": " Things found at a bar"
+			"name": " Things that make you smile"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 171,
 		"fields": {
-			"name": " Sports played outdoors"
+			"name": " Ways to kill time"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 172,
 		"fields": {
-			"name": " Names used in songs"
+			"name": " Things that can get you fired"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 173,
 		"fields": {
-			"name": " Foods you eat raw"
+			"name": " Holiday Activities"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 174,
 		"fields": {
-			"name": " Places in Europe"
+			"name": "Things that are red"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 175,
 		"fields": {
-			"name": " Olympic events"
+			"name": "Things in your car"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 176,
 		"fields": {
-			"name": " Things you see at the zoo"
+			"name": "Word that ends with this letter"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 177,
 		"fields": {
-			"name": " Math terms"
+			"name": "Medical terms"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 178,
 		"fields": {
-			"name": " Animals in books or movies"
+			"name": "Movie title"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 179,
 		"fields": {
-			"name": " Things to do at a party"
+			"name": "Dessert"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 180,
 		"fields": {
-			"name": " Kinds of soup"
+			"name": "Countries in Asia"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 181,
 		"fields": {
-			"name": " Things found in New York"
+			"name": "Countries in Africa"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 182,
 		"fields": {
-			"name": " Things you get tickets for"
+			"name": "Country or city in South America"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 183,
 		"fields": {
-			"name": " Things you do at work"
+			"name": "Songs before 2000"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 184,
 		"fields": {
-			"name": " Foreign words used in English"
+			"name": "Songs after 2000"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 185,
 		"fields": {
-			"name": " Things you shouldn’t touch"
+			"name": "Things made of glass"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 186,
 		"fields": {
-			"name": " Spicy foods"
+			"name": "Things that can break"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 187,
 		"fields": {
-			"name": " Things at a carnival"
+			"name": "Things that are flat"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 188,
 		"fields": {
-			"name": " Things you make"
+			"name": "Things made of wood"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 189,
 		"fields": {
-			"name": " Places to hangout"
+			"name": "Brands"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 190,
 		"fields": {
-			"name": " Animal noises"
+			"name": "Mammal"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 191,
 		"fields": {
-			"name": " Computer programs"
+			"name": "Things that have wheels"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 192,
 		"fields": {
-			"name": " Honeymoon spots"
+			"name": "Things in a mall"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 193,
 		"fields": {
-			"name": " Things you buy for kids"
+			"name": "Things that use electricity"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 194,
 		"fields": {
-			"name": " Things that can kill you"
+			"name": "Science terms"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 195,
 		"fields": {
-			"name": " Reasons to take out a loan"
+			"name": "Something you see in Canada"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 196,
 		"fields": {
-			"name": " Words associated with winter"
+			"name": "Things at a sports game"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 197,
 		"fields": {
-			"name": " Things to do on a date"
+			"name": "Things that are slow"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 198,
 		"fields": {
-			"name": " Historic events"
+			"name": "Things that cost more than $1000 USD"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 199,
 		"fields": {
-			"name": " Things you store items in"
+			"name": "Things at the dollar store"
 		}
 	},
 	{
 		"model": "game.globalcategory",
 		"pk": 200,
 		"fields": {
-			"name": " Things you do everyday"
+			"name": "Things at a picnic"
 		}
 	},
 	{
-		"model": "game.globalcategory",
-		"pk": 201,
+		"model": "auth.permission",
+		"pk": 1,
 		"fields": {
-			"name": " Things you get in the mail"
+			"name": "Can add category in round",
+			"content_type": 1,
+			"codename": "add_categoryinround"
 		}
 	},
 	{
-		"model": "game.globalcategory",
-		"pk": 202,
+		"model": "auth.permission",
+		"pk": 2,
 		"fields": {
-			"name": " Things you save up to buy"
+			"name": "Can change category in round",
+			"content_type": 1,
+			"codename": "change_categoryinround"
 		}
 	},
 	{
-		"model": "game.globalcategory",
-		"pk": 203,
+		"model": "auth.permission",
+		"pk": 3,
 		"fields": {
-			"name": " Things you sit/on"
+			"name": "Can delete category in round",
+			"content_type": 1,
+			"codename": "delete_categoryinround"
 		}
 	},
 	{
-		"model": "game.globalcategory",
-		"pk": 204,
+		"model": "auth.permission",
+		"pk": 4,
 		"fields": {
-			"name": " Reasons to make a phone call"
+			"name": "Can view category in round",
+			"content_type": 1,
+			"codename": "view_categoryinround"
 		}
 	},
 	{
-		"model": "game.globalcategory",
-		"pk": 205,
+		"model": "auth.permission",
+		"pk": 5,
 		"fields": {
-			"name": " Types of weather"
+			"name": "Can add game",
+			"content_type": 2,
+			"codename": "add_game"
 		}
 	},
 	{
-		"model": "game.globalcategory",
-		"pk": 206,
+		"model": "auth.permission",
+		"pk": 6,
 		"fields": {
-			"name": " Titles people can have"
+			"name": "Can change game",
+			"content_type": 2,
+			"codename": "change_game"
 		}
 	},
 	{
-		"model": "game.globalcategory",
-		"pk": 207,
+		"model": "auth.permission",
+		"pk": 7,
 		"fields": {
-			"name": " Things that have buttons"
+			"name": "Can delete game",
+			"content_type": 2,
+			"codename": "delete_game"
 		}
 	},
 	{
-		"model": "game.globalcategory",
-		"pk": 208,
+		"model": "auth.permission",
+		"pk": 8,
 		"fields": {
-			"name": " Items you take on a road trip"
+			"name": "Can view game",
+			"content_type": 2,
+			"codename": "view_game"
 		}
 	},
 	{
-		"model": "game.globalcategory",
-		"pk": 209,
+		"model": "auth.permission",
+		"pk": 9,
 		"fields": {
-			"name": " Things that have wheels"
+			"name": "Can add global category",
+			"content_type": 3,
+			"codename": "add_globalcategory"
 		}
 	},
 	{
-		"model": "game.globalcategory",
-		"pk": 210,
+		"model": "auth.permission",
+		"pk": 10,
 		"fields": {
-			"name": " Reasons to call 911"
+			"name": "Can change global category",
+			"content_type": 3,
+			"codename": "change_globalcategory"
 		}
 	},
 	{
-		"model": "game.globalcategory",
-		"pk": 211,
+		"model": "auth.permission",
+		"pk": 11,
 		"fields": {
-			"name": " Things that make you smile"
+			"name": "Can delete global category",
+			"content_type": 3,
+			"codename": "delete_globalcategory"
 		}
 	},
 	{
-		"model": "game.globalcategory",
-		"pk": 212,
+		"model": "auth.permission",
+		"pk": 12,
 		"fields": {
-			"name": " Ways to kill time"
+			"name": "Can view global category",
+			"content_type": 3,
+			"codename": "view_globalcategory"
 		}
 	},
 	{
-		"model": "game.globalcategory",
-		"pk": 213,
+		"model": "auth.permission",
+		"pk": 13,
 		"fields": {
-			"name": " Things that can get you fired"
+			"name": "Can add player",
+			"content_type": 4,
+			"codename": "add_player"
 		}
 	},
 	{
-		"model": "game.globalcategory",
-		"pk": 214,
+		"model": "auth.permission",
+		"pk": 14,
 		"fields": {
-			"name": " Holiday Activities"
+			"name": "Can change player",
+			"content_type": 4,
+			"codename": "change_player"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 15,
+		"fields": {
+			"name": "Can delete player",
+			"content_type": 4,
+			"codename": "delete_player"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 16,
+		"fields": {
+			"name": "Can view player",
+			"content_type": 4,
+			"codename": "view_player"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 17,
+		"fields": {
+			"name": "Can add round",
+			"content_type": 5,
+			"codename": "add_round"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 18,
+		"fields": {
+			"name": "Can change round",
+			"content_type": 5,
+			"codename": "change_round"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 19,
+		"fields": {
+			"name": "Can delete round",
+			"content_type": 5,
+			"codename": "delete_round"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 20,
+		"fields": {
+			"name": "Can view round",
+			"content_type": 5,
+			"codename": "view_round"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 21,
+		"fields": {
+			"name": "Can add question",
+			"content_type": 6,
+			"codename": "add_question"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 22,
+		"fields": {
+			"name": "Can change question",
+			"content_type": 6,
+			"codename": "change_question"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 23,
+		"fields": {
+			"name": "Can delete question",
+			"content_type": 6,
+			"codename": "delete_question"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 24,
+		"fields": {
+			"name": "Can view question",
+			"content_type": 6,
+			"codename": "view_question"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 25,
+		"fields": {
+			"name": "Can add local category",
+			"content_type": 7,
+			"codename": "add_localcategory"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 26,
+		"fields": {
+			"name": "Can change local category",
+			"content_type": 7,
+			"codename": "change_localcategory"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 27,
+		"fields": {
+			"name": "Can delete local category",
+			"content_type": 7,
+			"codename": "delete_localcategory"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 28,
+		"fields": {
+			"name": "Can view local category",
+			"content_type": 7,
+			"codename": "view_localcategory"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 29,
+		"fields": {
+			"name": "Can add config",
+			"content_type": 8,
+			"codename": "add_config"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 30,
+		"fields": {
+			"name": "Can change config",
+			"content_type": 8,
+			"codename": "change_config"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 31,
+		"fields": {
+			"name": "Can delete config",
+			"content_type": 8,
+			"codename": "delete_config"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 32,
+		"fields": {
+			"name": "Can view config",
+			"content_type": 8,
+			"codename": "view_config"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 33,
+		"fields": {
+			"name": "Can add answer",
+			"content_type": 9,
+			"codename": "add_answer"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 34,
+		"fields": {
+			"name": "Can change answer",
+			"content_type": 9,
+			"codename": "change_answer"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 35,
+		"fields": {
+			"name": "Can delete answer",
+			"content_type": 9,
+			"codename": "delete_answer"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 36,
+		"fields": {
+			"name": "Can view answer",
+			"content_type": 9,
+			"codename": "view_answer"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 37,
+		"fields": {
+			"name": "Can add vote",
+			"content_type": 10,
+			"codename": "add_vote"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 38,
+		"fields": {
+			"name": "Can change vote",
+			"content_type": 10,
+			"codename": "change_vote"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 39,
+		"fields": {
+			"name": "Can delete vote",
+			"content_type": 10,
+			"codename": "delete_vote"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 40,
+		"fields": {
+			"name": "Can view vote",
+			"content_type": 10,
+			"codename": "view_vote"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 41,
+		"fields": {
+			"name": "Can add log entry",
+			"content_type": 11,
+			"codename": "add_logentry"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 42,
+		"fields": {
+			"name": "Can change log entry",
+			"content_type": 11,
+			"codename": "change_logentry"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 43,
+		"fields": {
+			"name": "Can delete log entry",
+			"content_type": 11,
+			"codename": "delete_logentry"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 44,
+		"fields": {
+			"name": "Can view log entry",
+			"content_type": 11,
+			"codename": "view_logentry"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 45,
+		"fields": {
+			"name": "Can add permission",
+			"content_type": 12,
+			"codename": "add_permission"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 46,
+		"fields": {
+			"name": "Can change permission",
+			"content_type": 12,
+			"codename": "change_permission"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 47,
+		"fields": {
+			"name": "Can delete permission",
+			"content_type": 12,
+			"codename": "delete_permission"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 48,
+		"fields": {
+			"name": "Can view permission",
+			"content_type": 12,
+			"codename": "view_permission"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 49,
+		"fields": {
+			"name": "Can add group",
+			"content_type": 13,
+			"codename": "add_group"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 50,
+		"fields": {
+			"name": "Can change group",
+			"content_type": 13,
+			"codename": "change_group"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 51,
+		"fields": {
+			"name": "Can delete group",
+			"content_type": 13,
+			"codename": "delete_group"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 52,
+		"fields": {
+			"name": "Can view group",
+			"content_type": 13,
+			"codename": "view_group"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 53,
+		"fields": {
+			"name": "Can add user",
+			"content_type": 14,
+			"codename": "add_user"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 54,
+		"fields": {
+			"name": "Can change user",
+			"content_type": 14,
+			"codename": "change_user"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 55,
+		"fields": {
+			"name": "Can delete user",
+			"content_type": 14,
+			"codename": "delete_user"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 56,
+		"fields": {
+			"name": "Can view user",
+			"content_type": 14,
+			"codename": "view_user"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 57,
+		"fields": {
+			"name": "Can add content type",
+			"content_type": 15,
+			"codename": "add_contenttype"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 58,
+		"fields": {
+			"name": "Can change content type",
+			"content_type": 15,
+			"codename": "change_contenttype"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 59,
+		"fields": {
+			"name": "Can delete content type",
+			"content_type": 15,
+			"codename": "delete_contenttype"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 60,
+		"fields": {
+			"name": "Can view content type",
+			"content_type": 15,
+			"codename": "view_contenttype"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 61,
+		"fields": {
+			"name": "Can add session",
+			"content_type": 16,
+			"codename": "add_session"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 62,
+		"fields": {
+			"name": "Can change session",
+			"content_type": 16,
+			"codename": "change_session"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 63,
+		"fields": {
+			"name": "Can delete session",
+			"content_type": 16,
+			"codename": "delete_session"
+		}
+	},
+	{
+		"model": "auth.permission",
+		"pk": 64,
+		"fields": {
+			"name": "Can view session",
+			"content_type": 16,
+			"codename": "view_session"
+		}
+	},
+	{
+		"model": "contenttypes.contenttype",
+		"pk": 1,
+		"fields": {
+			"app_label": "game",
+			"model": "categoryinround"
+		}
+	},
+	{
+		"model": "contenttypes.contenttype",
+		"pk": 2,
+		"fields": {
+			"app_label": "game",
+			"model": "game"
+		}
+	},
+	{
+		"model": "contenttypes.contenttype",
+		"pk": 3,
+		"fields": {
+			"app_label": "game",
+			"model": "globalcategory"
+		}
+	},
+	{
+		"model": "contenttypes.contenttype",
+		"pk": 4,
+		"fields": {
+			"app_label": "game",
+			"model": "player"
+		}
+	},
+	{
+		"model": "contenttypes.contenttype",
+		"pk": 5,
+		"fields": {
+			"app_label": "game",
+			"model": "round"
+		}
+	},
+	{
+		"model": "contenttypes.contenttype",
+		"pk": 6,
+		"fields": {
+			"app_label": "game",
+			"model": "question"
+		}
+	},
+	{
+		"model": "contenttypes.contenttype",
+		"pk": 7,
+		"fields": {
+			"app_label": "game",
+			"model": "localcategory"
+		}
+	},
+	{
+		"model": "contenttypes.contenttype",
+		"pk": 8,
+		"fields": {
+			"app_label": "game",
+			"model": "config"
+		}
+	},
+	{
+		"model": "contenttypes.contenttype",
+		"pk": 9,
+		"fields": {
+			"app_label": "game",
+			"model": "answer"
+		}
+	},
+	{
+		"model": "contenttypes.contenttype",
+		"pk": 10,
+		"fields": {
+			"app_label": "game",
+			"model": "vote"
+		}
+	},
+	{
+		"model": "contenttypes.contenttype",
+		"pk": 11,
+		"fields": {
+			"app_label": "admin",
+			"model": "logentry"
+		}
+	},
+	{
+		"model": "contenttypes.contenttype",
+		"pk": 12,
+		"fields": {
+			"app_label": "auth",
+			"model": "permission"
+		}
+	},
+	{
+		"model": "contenttypes.contenttype",
+		"pk": 13,
+		"fields": {
+			"app_label": "auth",
+			"model": "group"
+		}
+	},
+	{
+		"model": "contenttypes.contenttype",
+		"pk": 14,
+		"fields": {
+			"app_label": "auth",
+			"model": "user"
+		}
+	},
+	{
+		"model": "contenttypes.contenttype",
+		"pk": 15,
+		"fields": {
+			"app_label": "contenttypes",
+			"model": "contenttype"
+		}
+	},
+	{
+		"model": "contenttypes.contenttype",
+		"pk": 16,
+		"fields": {
+			"app_label": "sessions",
+			"model": "session"
 		}
 	}
 ]

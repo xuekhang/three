@@ -111,7 +111,7 @@ img {
 }
 
 .answer-input{
-    width: 100% !important; 
+    /* width: 100% !important;  */
     border-color: rgba(0, 0, 0, 0.2) !important; 
     border-radius: 5px !important; 
     border-width: thin !important;
