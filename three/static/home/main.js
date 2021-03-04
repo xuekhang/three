@@ -11,6 +11,6 @@ $(document).ready(function () {
     var categories = document.getElementsByClassName("redacted");
 
     while (categories.length > 0) {
-      categories[0].classList.remove("redacted");
+      categories[0].classList.remove("redacted");   
     }
   }

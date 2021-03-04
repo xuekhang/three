@@ -6,13 +6,13 @@ services:
       context: .
       dockerfile: ./nginx/Dockerfile
     ports:
-      - "80:80"
-      - "443:443"
+      - "83:80"
+      - "446:443"
     volumes:
       - .:/srv/web/three
     networks:
       three_network:
-        ipv4_address: 172.29.0.3
+        ipv4_address: 172.30.0.3
 
   three.python:
     container_name: three.python
@@ -27,15 +27,15 @@ services:
     environment:
       - ENV=DEV
     ports:
-      - "8000:8000"
-      - "3000:3000"
+      - "8030:8000"
+      - "3030:3000"
     expose:
-      - "8000"
+      - "8030"
     volumes:
       - .:/srv/web/three
     networks:
       three_network:
-        ipv4_address: 172.29.0.2
+        ipv4_address: 172.30.0.2
 
   three.daphne:
     container_name: three.daphne
@@ -52,7 +52,7 @@ services:
       - .:/srv/web/three
     networks:
       three_network:
-        ipv4_address: 172.29.0.8
+        ipv4_address: 172.30.0.8
 
   three.mysql:
     container_name: three.mysql
@@ -68,26 +68,26 @@ services:
       - MYSQL_DATABASE=three
       - MYSQL_ROOT_HOST=%
     ports:
-      - "3306:3306"
+      - "3309:3306"
     volumes:
       - datavolume:/var/run/mysqld
     networks:
       three_network:
-        ipv4_address: 172.29.0.4
+        ipv4_address: 172.30.0.4
 
   three.redis:
     hostname: three.redis
     container_name: three.redis
     image: redis:6.0.6
     expose:
-      - "6379"
+      - "6382"
     ports:
-      - "6379:6379"
+      - "6382:6379"
     volumes:
       - redis:/data
     networks:
       three_network:
-        ipv4_address: 172.29.0.6
+        ipv4_address: 172.30.0.6
 
 volumes:
   datavolume: {}
@@ -98,4 +98,4 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 172.29.0.0/16
+        - subnet: 172.30.0.0/16
