@@ -9,8 +9,8 @@
     </fieldset> -->
         <fieldset class="form-group">
             <div class="fieldWrapper">
-                <label for="game_code">Game Code</label>
-                <input type="text" id="game_code_id" name="game_code" readonly value="{{game_code}}" style="border-style: hidden;">
+                <label for="game_code">Game Code: </label>
+                <input type="text" id="game_code_id" name="game_code" readonly value="{{game_code}}" style="border-style: hidden; font-weight: bold;">
             </div>
             <!-- <div class="fieldWrapper">
         {{ form.game_code.errors }}
@@ -19,19 +19,20 @@
       </div> -->
             <div class="fieldWrapper">
                 {{ form.num_of_players.errors }}
-                <label for="{{form.num_of_players.id_for_label}}">Number of Players</label>
+                <label for="{{form.num_of_players.id_for_label}}" style="margin-top: 10px;"># of Players</label>
                 <div>{{ form.num_of_players }} </div>
             </div>
             <div class="fieldWrapper">
                 {{ form.num_of_rounds.errors }}
-                <label for="{{form.num_of_rounds.id_for_label}}">Number of Rounds</label>
+                <label for="{{form.num_of_rounds.id_for_label}}" style="margin-top: 10px;"># of Rounds</label>
                 <div>{{ form.num_of_rounds }} </div>
             </div>
             <div class="fieldWrapper">
                 {{ form.num_of_cat_per_round.errors }}
-                <label for="{{form.num_of_cat_per_round.id_for_label}}">Number of Categories</label>
+                <label for="{{form.num_of_cat_per_round.id_for_label}}" style="margin-top: 10px;"># of Categories Per Round</label>
                 <div>{{ form.num_of_cat_per_round }} </div>
             </div>
+            <br>
             <div>
                 <label for="">Letters to Include: </label> {% for value, text in form.letters.field.choices %}
 

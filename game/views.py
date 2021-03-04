@@ -269,7 +269,7 @@ def result(request, game_code, player_name, round_num):
                                                answer=answer).count()
                 votes_down = Vote.objects.filter(vote='down',
                                                  answer=answer).count()
-                if votes_up >= votes_down and answer.answer != '':
+                if votes_up > votes_down and answer.answer != '':
                     points += 1
             except:
                 print('cannot find answer')
