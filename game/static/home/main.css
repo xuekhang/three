@@ -239,3 +239,8 @@ img {
         display: none !important;
     }
 }
+
+::placeholder {    
+    opacity: .01;
+  }
+  

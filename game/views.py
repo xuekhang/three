@@ -188,7 +188,8 @@ def lobby(request, game_code='', player_name=''):
     context = {
         'title': 'Lobby',
         'players': Player.objects.filter(game=game),
-        'is_player_host': player.is_host
+        'is_player_host': player.is_host,
+        'game':game
     }
 
     return render(request, 'game/lobby.html', context)
