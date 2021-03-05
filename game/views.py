@@ -219,6 +219,7 @@ def review(request, game_code='', player_name='', round_num=''):
         'game_code': game_code,
         'cat_in_round': categories_in_round,
         'rounds': rounds,
+        'round': round_num,
         'answers': answers,
         'player': Player.objects.get(game=game, name=player_name),
         'letter': round.letter,

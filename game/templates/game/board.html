@@ -2,20 +2,9 @@
 
 <div class="width-400 mx-auto card" style="text-align: center;">
     <div>Hi {{ player_name }}, Lets Play!</div>
-    <div>Game Code: {{ game_code }}</div>
+    <div><span>Game Code: </span><span style="font-weight: bold;">{{ game_code }}</span></div>
+    
 </div>
-<!-- <div class="width-400 mx-auto card">
-    <div class="row">
-        <div class="col-6">
-            <div>timer</div>
-            <div>start</div>
-        </div>
-        <div class="col-6">
-            <div>edit time</div>
-            <div>reset time</div>
-        </div>
-    </div>
-</div> -->
 
 <div>
     <div class="width-400 mx-auto">
@@ -50,11 +39,13 @@
   </div> -->
         <!-- end testing -->
 
-        <div class="row mx-auto">
+        <!-- <div class="row mx-auto">
             {% for round in rounds %}
-            <a class="btn btn-primary" type="button" href="../{{ round }}" style="padding-left: 4px; padding-right: 4px;">Round 
+            <a class="btn btn-primary" type="button" href="../{{ round }}"
+                style="padding-left: 4px; padding-right: 4px;">Round
                 {{ round }}</a> {% endfor%}
-        </div>
+        </div> -->
+        <h4>Round {{ round }}</h4>
     </div>
     <div class="row">
         <div class="col-sm-3 card">
@@ -88,7 +79,8 @@
                             {{category}}
                         </div>
                         <div class="col-md-7">
-                            <input class="answer-input" type="text" name="answer{{ forloop.counter }}" {% if round_is_played %} readonly {% endif %}>
+                            <input class="answer-input" type="text" name="answer{{ forloop.counter }}" 
+                            {% if round_is_played %} readonly {% endif %}>
                         </div>
                     </div>
 
@@ -149,7 +141,7 @@
       </svg>
       <span id="base-timer-label" class="base-timer__label">${formatTime(
         timeLeft
-      )}</span>
+    )}</span>
     </div>
     `;
 
@@ -219,8 +211,8 @@
 
     function setCircleDasharray() {
         const circleDasharray = `${(
-        calculateTimeFraction() * FULL_DASH_ARRAY
-      ).toFixed(0)} 283`;
+            calculateTimeFraction() * FULL_DASH_ARRAY
+        ).toFixed(0)} 283`;
         document
             .getElementById("base-timer-path-remaining")
             .setAttribute("stroke-dasharray", circleDasharray);
@@ -229,8 +221,8 @@
 
 <script>
     var loc = window.location
-        // var formData = $("#startGameForm")
-        // var playerList = $('#playerList')
+    // var formData = $("#startGameForm")
+    // var playerList = $('#playerList')
     var startBtn = $('#startBtn')
 
     var wsStart = 'ws://'
@@ -240,15 +232,15 @@
     var endpoint = wsStart + loc.host + loc.pathname
     var socket = new WebSocket(endpoint)
 
-    socket.onmessage = function(e) {
+    socket.onmessage = function (e) {
         console.log('message', e)
 
         var response = JSON.parse(e.data)
-            // players = response.player_list
+        // players = response.player_list
         if (response.startTimer === true) {
             startTimer();
             removeRedacted();
-            
+
             // startGamePath = loc.pathname.replace('lobby', 'startgame')
 
             // $.ajax({
@@ -265,10 +257,10 @@
 
         // });
     }
-    socket.onopen = function(e) {
+    socket.onopen = function (e) {
         console.log('open', e)
-            // $("#startTimerBtn").submit(function(event) {
-            //     event.preventDefault()
+        // $("#startTimerBtn").submit(function(event) {
+        //     event.preventDefault()
 
         //     var request = {
         //         'start_timer': true
@@ -276,10 +268,10 @@
         //     socket.send(JSON.stringify(request))
         // })
     }
-    socket.onerror = function(e) {
+    socket.onerror = function (e) {
         console.log('error', e)
     }
-    socket.onclose = function(e) {
+    socket.onclose = function (e) {
         console.log('close', e)
     }
 

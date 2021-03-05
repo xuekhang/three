@@ -1,18 +1,20 @@
 {% extends "game/base.html" %} {% block content %}
 
-<div class="width-400 mx-auto card">
-    <div>Hi {{ player.name }}, Lets Play</div>
-    <div>Game Room Code: {{ game_code }}</div>
+<div class="width-400 mx-auto card" style="text-align: center;">
+    <div>Hi {{ player.name }}, Lets Play!</div>
+    <div><span>Game Code: </span><span style="font-weight: bold;">{{ game_code }}</span></div>
+    
 </div>
 
 <div>
     <div class="width-400 mx-auto">
-        <div class="row mx-auto">
+        <!-- <div class="row mx-auto">
             {% for round in rounds %}
             <a class="btn btn-primary" type="button" href="../{{ round }}"
                 style="padding-left: 4px; padding-right: 4px;">Round
                 {{ round }}</a> {% endfor%}
-        </div>
+        </div> -->
+        <h4>Round {{ round }}</h4>
     </div>
     <div class="row">
         <div class="col-sm-3 card">
