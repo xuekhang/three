@@ -223,6 +223,10 @@ class ReviewConsumer(AsyncConsumer):
 
     async def send_review_data(self, event):
         await self.send({'type': 'websocket.send', 'text': event['text']})
+    
+    async def websocket_disconnect(self, event):
+        print('disconnect', event)
+        # await self.send({"type": "websocket.disconnect"})
 
 
 class LoadingConsumer(AsyncConsumer):
@@ -232,4 +236,3 @@ class LoadingConsumer(AsyncConsumer):
         await self.channel_layer.group_add(self.game_code, self.channel_name)
         await self.send({"type": "websocket.accept"})
         # todo: once everyone is connected then send a message to start the review
-        
