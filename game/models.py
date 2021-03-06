@@ -26,6 +26,7 @@ class Config(models.Model):
     num_of_rounds = models.IntegerField()
     num_of_cat_per_round = models.IntegerField()
     letters = MultiSelectField(choices=letter_choices)
+    time_per_round = models.IntegerField(default=120)
 
     def __str__(self):
         return self.game.code + '   ' + str(self.num_of_players)
@@ -60,6 +61,7 @@ class Round(models.Model):
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
     letter = models.CharField(max_length=3)
     is_played = models.BooleanField(default=False)
+    
 
     def __str__(self):
         return str(self.game) + ' Round: ' + str(self.number)

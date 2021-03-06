@@ -145,12 +145,13 @@ def board(request, game_code='', player_name='', round_num=''):
     if game_code != '':
         if round_num != '':
             game = Game.objects.get(code=game_code)
+            config = Config.objects.get(game=game)
             round = Round.objects.get(game=game, number=round_num)
             all_letters = str(
                 Config.objects.values_list('letters', flat=True)[0])
             letters = list(all_letters.split(","))
 
-            max_rounds = Config.objects.get(game=game).num_of_rounds
+            max_rounds = config.num_of_rounds
             rounds = []
             for x in range(1, max_rounds + 1):
                 rounds.append(x)
@@ -172,6 +173,7 @@ def board(request, game_code='', player_name='', round_num=''):
                 'rounds': rounds,
                 'round': round_num,
                 'letter': round.letter,
+                'time': config.time_per_round,
                 'round_is_played': current_round.is_played,
                 'is_player_host': player.is_host
             }

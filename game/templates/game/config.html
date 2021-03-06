@@ -32,6 +32,11 @@
                 <label for="{{form.num_of_cat_per_round.id_for_label}}" style="margin-top: 10px;"># of Categories Per Round</label>
                 <div>{{ form.num_of_cat_per_round }} </div>
             </div>
+            <div class="fieldWrapper">
+                {{ form.time_per_round.errors }}
+                <label for="{{form.time_per_round.id_for_label}}" style="margin-top: 10px;">Timer (secs)</label>
+                <div>{{ form.time_per_round }} </div>
+            </div>
             <br>
             <div>
                 <label for="">Letters to Include: </label> {% for value, text in form.letters.field.choices %}

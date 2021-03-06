@@ -61,6 +61,7 @@
                 <button class="btn btn-primary" href="">
                     Edit Settings
                 </button> {% endif %}
+                <div id="time" hidden>{{time}}</div>
             </div>
             <div class="row mx-auto">
                 <div id="timer"></div>
@@ -96,7 +97,7 @@
 </div>
 
 <script>
-    var TIME_LIMIT = 4;
+    var TIME_LIMIT = document.getElementById("time").innerHTML;
     const FULL_DASH_ARRAY = 283;
     const WARNING_THRESHOLD = TIME_LIMIT * .4;
     const ALERT_THRESHOLD = TIME_LIMIT * .15;
