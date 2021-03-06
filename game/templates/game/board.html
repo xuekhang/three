@@ -48,7 +48,7 @@
         <h4>Round {{ round }}</h4>
     </div>
     <div class="row">
-        <div class="col-sm-3 card">
+        <div class="col-lg-3 card">
             <h2 style="text-align: center;"><u>Letter</u></h2>
             <div class="row">
                 <div class="col text-center" style="font-size:75px !important;">{{ letter }}</div>
@@ -66,7 +66,7 @@
                 <div id="timer"></div>
             </div>
         </div>
-        <div class="col-sm-8 card">
+        <div class="col-lg-8 card">
             <h4>Categories</h4>
             <form method="POST" id="answerForm">
                 {% csrf_token %}
@@ -96,7 +96,7 @@
 </div>
 
 <script>
-    var TIME_LIMIT = 120;
+    var TIME_LIMIT = 4;
     const FULL_DASH_ARRAY = 283;
     const WARNING_THRESHOLD = TIME_LIMIT * .4;
     const ALERT_THRESHOLD = TIME_LIMIT * .15;

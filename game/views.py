@@ -47,7 +47,7 @@ def home(request):
 
         # logic for creating a  game
         if 'create' in request.POST:
-            game_code = get_random_string(length=6).upper()
+            game_code = get_random_string(length=4).upper()
             Game.objects.create(code=game_code)
             game = Game.objects.get(code=game_code)
             # create game with defualt settings
