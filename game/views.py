@@ -259,10 +259,14 @@ def start_game(request, game_code, player_name):
 
 
 def result(request, game_code, player_name, round_num):
+    game = Game.objects.get(code=game_code)
+    config = Config.objects.get(game=game)
     if request.method == 'POST':
+        if int(round_num) >= config.num_of_rounds:
+            return redirect('home')
         return redirect('board', game_code, player_name, int(round_num) + 1)
 
-    game = Game.objects.get(code=game_code)
+    
     players = Player.objects.filter(game=game)
     results = []
     for player in players:
