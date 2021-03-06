@@ -85,7 +85,7 @@
                             {% if y.0.answer != ''%}
                             <div class="row" style="margin-left: 10px; margin-right: 10px;">
                                 <!-- <div class="col">{{y.0.question.player}}</div> -->
-                                <div class="col" style="display: flex; align-items: center;"><div style="font-size: 3vw;">{{y.0.answer}}</div></div>
+                                <div class="col" style="display: flex; align-items: center;"><div class="answer">{{y.0.answer}}</div></div>
                                 <div class="col-s"><h4><span id="vote-up-{{y.0.id}}">0</span>
                                     <i class="bi bi-arrow-up-circle"
                                         onclick="vote('up',{{ y.0.id }},{{ player.id }})"></i></h4>
