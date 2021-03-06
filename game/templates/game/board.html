@@ -55,7 +55,7 @@
             </div>
             <div class="row mx-auto">
                 {% if is_player_host%}
-                <button class="btn btn-primary" onclick="sendStartTimer()">
+                <button id="startBtn" class="btn btn-primary" onclick="sendStartTimer()">
                     Start
                 </button>
                 <button class="btn btn-primary" href="">
@@ -278,6 +278,7 @@
     }
 
     function sendStartTimer() {
+        document.getElementById("startBtn").disabled = true;
         var request = {
             'start_timer': true
         }
