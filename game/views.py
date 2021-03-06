@@ -135,7 +135,7 @@ def board(request, game_code='', player_name='', round_num=''):
 
                 Answer.objects.create(answer=value, question=question)
 
-        return redirect('review', game_code, player_name, round_num)
+        return redirect('loading', game_code, player_name, round_num)
 
     try:
         Game.objects.get(code=game_code)
@@ -296,6 +296,8 @@ def result(request, game_code, player_name, round_num):
 
 
 def loading(request, game_code, player_name, round_num):
+    if request.method == 'POST':
+        return redirect('review', game_code, player_name, round_num)
     context = {
         'title':'Loading',
         'player_name':player_name,

@@ -223,3 +223,13 @@ class ReviewConsumer(AsyncConsumer):
 
     async def send_review_data(self, event):
         await self.send({'type': 'websocket.send', 'text': event['text']})
+
+
+class LoadingConsumer(AsyncConsumer):
+    async def websocket_connect(self, event):
+        game_code = self.scope['url_route']['kwargs']['game_code']
+        self.game_code = str(game_code).upper()
+        await self.channel_layer.group_add(self.game_code, self.channel_name)
+        await self.send({"type": "websocket.accept"})
+        # todo: once everyone is connected then send a message to start the review
+        

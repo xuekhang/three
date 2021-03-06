@@ -2,7 +2,7 @@ from django.conf.urls import url
 from django.urls import path
 
 from .consumers import (TestConsumer, LobbyConsumer, BoardConsumer,
-                        ReviewConsumer)
+                        ReviewConsumer, LoadingConsumer)
 
 # routing for websockets
 ws_urlpatterns = [
@@ -12,4 +12,6 @@ ws_urlpatterns = [
          BoardConsumer.as_asgi()),
     path('review/<game_code>/<player_name>/<round_num>/',
          ReviewConsumer.as_asgi()),
+     path('loading/<game_code>/<player_name>/<round_num>/',
+         LoadingConsumer.as_asgi()),
 ]

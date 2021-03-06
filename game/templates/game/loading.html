@@ -12,15 +12,18 @@
     </div>
     <div class="width-400 mx-auto card" style="text-align: center;">
         <div class="mx-auto"><div>Loading</div><div class="loader"></div></div>
-        
+        <form method="POST" id="">
+            {% csrf_token %} 
+            <div class="col text-center">
+                <button class="btn btn-primary" type="submit">next page</button>
+            </div>
+        </form>
         
     </div>
 </div>
-<!-- 
+
 <script>
     var loc = window.location
-    // var formData = $("#startGameForm")
-    // var playerList = $('#playerList')
     var startBtn = $('#startBtn')
 
     var wsStart = 'ws://'
@@ -35,36 +38,15 @@
 
         var response = JSON.parse(e.data)
         // players = response.player_list
-        if (response.startTimer === true) {
-            startTimer();
-            removeRedacted();
+        // if (response.startTimer === true) {
 
-            // startGamePath = loc.pathname.replace('lobby', 'startgame')
+        // }
 
-            // $.ajax({
-            //     url: '../../..' + startGamePath
-            // })
 
-            // newPath = loc.pathname.replace('lobby', 'board')
-            // window.location.href = '../../..' + newPath + '1';
-        }
-
-        // playerList.empty()
-        // players.forEach(element => {
-        //     playerList.append('<li>' + element + '</li>')
-
-        // });
     }
     socket.onopen = function (e) {
         console.log('open', e)
-        // $("#startTimerBtn").submit(function(event) {
-        //     event.preventDefault()
 
-        //     var request = {
-        //         'start_timer': true
-        //     }
-        //     socket.send(JSON.stringify(request))
-        // })
     }
     socket.onerror = function (e) {
         console.log('error', e)
@@ -72,13 +54,6 @@
     socket.onclose = function (e) {
         console.log('close', e)
     }
-
-    function sendStartTimer() {
-        var request = {
-            'start_timer': true
-        }
-        socket.send(JSON.stringify(request))
-    }
-</script> -->
+</script>
 
 {% endblock content%}
