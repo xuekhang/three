@@ -1,0 +1,84 @@
+{% extends "game/base.html" %} {% block content %}
+
+<div class="width-400 mx-auto card" style="text-align: center;">
+    <div>Hi {{ player_name }}, Lets Play!</div>
+    <div><span>Game Code: </span><span style="font-weight: bold;">{{ game_code }}</span></div>
+    
+</div>
+
+<div>
+    <div class="width-400 mx-auto">
+        <h4>Round {{ round }}</h4>
+    </div>
+    <div class="width-400 mx-auto card" style="text-align: center;">
+        <div class="mx-auto"><div>Loading</div><div class="loader"></div></div>
+        
+        
+    </div>
+</div>
+<!-- 
+<script>
+    var loc = window.location
+    // var formData = $("#startGameForm")
+    // var playerList = $('#playerList')
+    var startBtn = $('#startBtn')
+
+    var wsStart = 'ws://'
+    if (loc.protocol == 'https:') {
+        wsStart = 'wss://'
+    }
+    var endpoint = wsStart + loc.host + loc.pathname
+    var socket = new WebSocket(endpoint)
+
+    socket.onmessage = function (e) {
+        console.log('message', e)
+
+        var response = JSON.parse(e.data)
+        // players = response.player_list
+        if (response.startTimer === true) {
+            startTimer();
+            removeRedacted();
+
+            // startGamePath = loc.pathname.replace('lobby', 'startgame')
+
+            // $.ajax({
+            //     url: '../../..' + startGamePath
+            // })
+
+            // newPath = loc.pathname.replace('lobby', 'board')
+            // window.location.href = '../../..' + newPath + '1';
+        }
+
+        // playerList.empty()
+        // players.forEach(element => {
+        //     playerList.append('<li>' + element + '</li>')
+
+        // });
+    }
+    socket.onopen = function (e) {
+        console.log('open', e)
+        // $("#startTimerBtn").submit(function(event) {
+        //     event.preventDefault()
+
+        //     var request = {
+        //         'start_timer': true
+        //     }
+        //     socket.send(JSON.stringify(request))
+        // })
+    }
+    socket.onerror = function (e) {
+        console.log('error', e)
+    }
+    socket.onclose = function (e) {
+        console.log('close', e)
+    }
+
+    function sendStartTimer() {
+        var request = {
+            'start_timer': true
+        }
+        socket.send(JSON.stringify(request))
+    }
+</script> -->
+
+{% endblock content%}

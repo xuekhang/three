@@ -293,3 +293,13 @@ def result(request, game_code, player_name, round_num):
         'results': results
     }
     return render(request, 'game/result.html', context)
+
+
+def loading(request, game_code, player_name, round_num):
+    context = {
+        'title':'Loading',
+        'player_name':player_name,
+        'game_code':game_code,
+        'round':round_num
+    }
+    return render(request, 'game/loading.html', context)

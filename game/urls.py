@@ -28,5 +28,8 @@ urlpatterns = [
          name='start_game'),
     path('result/<game_code>/<player_name>/<round_num>/',
          views.result,
-         name='result')
+         name='result'),
+     path('loading/<game_code>/<player_name>/<round_num>/',
+         views.loading,
+         name='loading')
 ]
