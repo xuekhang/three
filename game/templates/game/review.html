@@ -61,16 +61,18 @@
 
                     <div class="tab-content" id="v-pills-tabContent">
                         {% for answer in answers %}
+                        
+                        
 
                         <div class="category-header-{{ forloop.counter }}"></div>
                         <div class="tab-pane fade {% if forloop.counter == 1%} show active{% endif %}"
                             id="v-pills-{{ forloop.counter }}" role="tabpanel"
                             aria-labelledby="v-pills-{{ forloop.counter }}-tab">
-                            <span class="reivew-cat"> <h5 style="font-weight: bold;">{{ answer.0 }}</h5> </span> 
+                            <span class="reivew-cat"> <h5 style="font-weight: bold; text-align: center;">{{ answer.0 }}</h5> </span> 
                             <div class="row" style="margin-left: 10px; margin-right: 10px;">
-                                <div class="col">
+                                <!-- <div class="col">
                                     <div class="ans-header">Player</div>
-                                </div>
+                                </div> -->
                                 <div class="col">
                                     <div class="ans-header">Answer</div>
                                 </div>
@@ -80,8 +82,9 @@
                             </div>
                             {% for x in answer.1%}
                             {% for y in x%}
+                            {% if y.0.answer != ''%}
                             <div class="row" style="margin-left: 10px; margin-right: 10px;">
-                                <div class="col">{{y.0.question.player}}</div>
+                                <!-- <div class="col">{{y.0.question.player}}</div> -->
                                 <div class="col">{{y.0.answer}}</div>
                                 <div class="col-s">
                                     <span id="vote-up-{{y.0.id}}">0</span>
@@ -94,11 +97,12 @@
                                     <span id="vote-down-{{y.0.id}}">0</span>
                                 </div>
                             </div>
-
+                            {% endif %}
                             {% endfor%}
-
                             {% endfor %}
+
                         </div>
+                        
                         {% endfor %}
                     </div>
 

@@ -68,7 +68,7 @@
         </div>
         <div class="col-sm-8 card">
             <h4>Categories</h4>
-            <form method="POST">
+            <form method="POST" id="answerForm">
                 {% csrf_token %}
                 <ol>
                     {% for category in categories%}
@@ -88,7 +88,7 @@
                 </ol>
                 <div class="col-md-12 text-right">
                     <!-- <button type="button" class="btn btn-primary" onclick="removeRedacted()">Start(remove redacted)</button> -->
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary" hidden>Submit</button>
                 </div>
             </form>
         </div>
@@ -96,7 +96,7 @@
 </div>
 
 <script>
-    var TIME_LIMIT = 120;
+    var TIME_LIMIT = 4;
     const FULL_DASH_ARRAY = 283;
     const WARNING_THRESHOLD = TIME_LIMIT * .4;
     const ALERT_THRESHOLD = TIME_LIMIT * .15;
@@ -150,6 +150,7 @@
     function onTimesUp() {
         clearInterval(timerInterval);
         TIME_LIMIT = 60;
+        document.getElementById("answerForm").submit();
 
     }
 

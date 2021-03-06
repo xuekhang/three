@@ -12,10 +12,10 @@
     </div>
     <div class="width-400 mx-auto card" style="text-align: center;">
         <div class="mx-auto"><div>Loading</div><div class="loader"></div></div>
-        <form method="POST" id="">
+        <form method="POST" id="nextPageForm">
             {% csrf_token %} 
             <div class="col text-center">
-                <button class="btn btn-primary" type="submit">next page</button>
+                <button class="btn btn-primary" type="submit" hidden>next page</button>
             </div>
         </form>
         
@@ -23,37 +23,37 @@
 </div>
 
 <script>
-    var loc = window.location
-    var startBtn = $('#startBtn')
+    // var loc = window.location
+    // var startBtn = $('#startBtn')
 
-    var wsStart = 'ws://'
-    if (loc.protocol == 'https:') {
-        wsStart = 'wss://'
-    }
-    var endpoint = wsStart + loc.host + loc.pathname
-    var socket = new WebSocket(endpoint)
+    // var wsStart = 'ws://'
+    // if (loc.protocol == 'https:') {
+    //     wsStart = 'wss://'
+    // }
+    // var endpoint = wsStart + loc.host + loc.pathname
+    // var socket = new WebSocket(endpoint)
 
-    socket.onmessage = function (e) {
-        console.log('message', e)
+    // socket.onmessage = function (e) {
+    //     console.log('message', e)
+    //     var response = JSON.parse(e.data)
+    // }
+    // socket.onopen = function (e) {
+    //     console.log('open', e)
 
-        var response = JSON.parse(e.data)
-        // players = response.player_list
-        // if (response.startTimer === true) {
+    // }
+    // socket.onerror = function (e) {
+    //     console.log('error', e)
+    // }
+    // socket.onclose = function (e) {
+    //     console.log('close', e)
+    // }
 
-        // }
-
-
-    }
-    socket.onopen = function (e) {
-        console.log('open', e)
-
-    }
-    socket.onerror = function (e) {
-        console.log('error', e)
-    }
-    socket.onclose = function (e) {
-        console.log('close', e)
-    }
+    window.addEventListener('load', function(){
+        setTimeout(() => {
+            console.log('go to next page')
+            document.getElementById("nextPageForm").submit();
+        }, 2500);
+    })
 </script>
 
 {% endblock content%}
