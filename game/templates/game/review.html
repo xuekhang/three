@@ -3,7 +3,7 @@
 <div class="width-400 mx-auto card" style="text-align: center;">
     <div>Hi {{ player.name }}, Lets Play!</div>
     <div><span>Game Code: </span><span style="font-weight: bold;">{{ game_code }}</span></div>
-    
+
 </div>
 
 <div>
@@ -52,23 +52,19 @@
                             <span class="review-cat cat-tab-{{ forloop.counter }}">{{ answer.0.name }}</span>
                         </a>
                         {% endfor %}
-
                     </div>
                 </div>
                 <div class="col tab-area">
                     <br>
-
-
                     <div class="tab-content" id="v-pills-tabContent">
                         {% for answer in answers %}
-                        
-                        
-
                         <div class="category-header-{{ forloop.counter }}"></div>
                         <div class="tab-pane fade {% if forloop.counter == 1%} show active{% endif %}"
                             id="v-pills-{{ forloop.counter }}" role="tabpanel"
                             aria-labelledby="v-pills-{{ forloop.counter }}-tab">
-                            <span class="reivew-cat"> <h5 style="font-weight: bold; text-align: center; color: #D92681;">{{ answer.0 }}</h5> </span> 
+                            <span class="reivew-cat">
+                                <h5 style="font-weight: bold; text-align: center; color: #D92681;">{{ answer.0 }}</h5>
+                            </span>
                             <div class="row" style="margin-left: 10px; margin-right: 10px;">
                                 <!-- <div class="col">
                                     <div class="ans-header">Player</div>
@@ -85,24 +81,30 @@
                             {% if y.0.answer != ''%}
                             <div class="row" style="margin-left: 10px; margin-right: 10px;">
                                 <!-- <div class="col">{{y.0.question.player}}</div> -->
-                                <div class="col" style="display: flex; align-items: center;"><div class="answer">{{y.0.answer}}</div></div>
-                                <div class="col-s"><h4><span id="vote-up-{{y.0.id}}">0</span>
-                                    <i class="bi bi-arrow-up-circle"
-                                        onclick="vote('up',{{ y.0.id }},{{ player.id }})"></i></h4>
-                                    
+                                <div class="col" style="display: flex; align-items: center;">
+                                    <div class="answer">{{y.0.answer}}</div>
                                 </div>
-                                <div class="col-s"><h4><i class="bi bi-arrow-down-circle"
-                                        onclick="vote('down',{{ y.0.id }}, {{ player.id }})"></i>
-                                    <span id="vote-down-{{y.0.id}}">0</span></h4>
-                                    
+                                <div class="col-s">
+                                    <h4>
+                                        <span id="vote-up-{{y.0.id}}">0</span>
+                                        <!-- <i class="bi bi-arrow-up-circle-fill" style="color: green;"></i> -->
+                                        <i id="vote-up-btn" class="bi bi-arrow-up-circle"
+                                            onclick="vote('up',{{ y.0.id }},{{ player.id }})"></i>
+                                    </h4>
+                                </div>
+                                <div class="col-s">
+                                    <h4>
+                                        <i id="vote-down-btn" class="bi bi-arrow-down-circle"
+                                            onclick="vote('down',{{ y.0.id }}, {{ player.id }})"></i>
+                                        <!-- <i class="bi bi-arrow-down-circle-fill" style="color: red;"></i> -->
+                                        <span id="vote-down-{{y.0.id}}">0</span>
+                                    </h4>
                                 </div>
                             </div>
                             {% endif %}
                             {% endfor%}
                             {% endfor %}
-
                         </div>
-                        
                         {% endfor %}
                     </div>
 
@@ -117,11 +119,40 @@
         </div>
     </div>
     <!-- <div>{{ answers }}</div> -->
-
 </div>
 <script>
+    function resetVoteBtn(){
+        upBtn = document.getElementById("vote-up-btn");
+        upBtn.className = '';
+        upBtn.classList.add('bi');
+        upBtn.classList.add('bi-arrow-up-circle');
+        upBtn.style.color = '';
+        
+        downBtn = document.getElementById("vote-down-btn");
+        downBtn.className = '';
+        downBtn.classList.add('bi');
+        downBtn.classList.add('bi-arrow-down-circle');
+        downBtn.style.color = '';
+    }
+
+
     function vote(vote, answerId, playerId) {
         console.log(vote, answerId, playerId)
+        if (vote == 'up'){
+            resetVoteBtn();
+            upBtn = document.getElementById("vote-up-btn");
+            upBtn.classList.remove("bi-arrow-up-circle");
+            upBtn.classList.add("bi-arrow-up-circle-fill");
+            upBtn.style.color = "green";
+        }
+        if (vote == 'down'){
+            resetVoteBtn();
+            downBtn = document.getElementById("vote-down-btn");
+            downBtn.classList.remove("bi-arrow-down-circle");
+            downBtn.classList.add("bi-arrow-down-circle-fill");
+            downBtn.style.color = "red";
+        }
+            
         // todo: add websocket send here
         var request = {
             'vote': vote,
