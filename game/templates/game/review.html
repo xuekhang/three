@@ -88,13 +88,13 @@
                                     <h4>
                                         <span id="vote-up-{{y.0.id}}">0</span>
                                         <!-- <i class="bi bi-arrow-up-circle-fill" style="color: green;"></i> -->
-                                        <i id="vote-up-btn" class="bi bi-arrow-up-circle"
+                                        <i id="vote-up-btn-{{y.0.id}}" class="bi bi-arrow-up-circle"
                                             onclick="vote('up',{{ y.0.id }},{{ player.id }})"></i>
                                     </h4>
                                 </div>
                                 <div class="col-s">
                                     <h4>
-                                        <i id="vote-down-btn" class="bi bi-arrow-down-circle"
+                                        <i id="vote-down-btn-{{y.0.id}}" class="bi bi-arrow-down-circle"
                                             onclick="vote('down',{{ y.0.id }}, {{ player.id }})"></i>
                                         <!-- <i class="bi bi-arrow-down-circle-fill" style="color: red;"></i> -->
                                         <span id="vote-down-{{y.0.id}}">0</span>
@@ -121,14 +121,14 @@
     <!-- <div>{{ answers }}</div> -->
 </div>
 <script>
-    function resetVoteBtn(){
-        upBtn = document.getElementById("vote-up-btn");
+    function resetVoteBtn(answerId){
+        upBtn = document.getElementById("vote-up-btn-" + answerId.toString());
         upBtn.className = '';
         upBtn.classList.add('bi');
         upBtn.classList.add('bi-arrow-up-circle');
         upBtn.style.color = '';
         
-        downBtn = document.getElementById("vote-down-btn");
+        downBtn = document.getElementById("vote-down-btn-" + answerId.toString());
         downBtn.className = '';
         downBtn.classList.add('bi');
         downBtn.classList.add('bi-arrow-down-circle');
@@ -139,15 +139,15 @@
     function vote(vote, answerId, playerId) {
         console.log(vote, answerId, playerId)
         if (vote == 'up'){
-            resetVoteBtn();
-            upBtn = document.getElementById("vote-up-btn");
+            resetVoteBtn(answerId);
+            upBtn = document.getElementById("vote-up-btn-" + answerId.toString());
             upBtn.classList.remove("bi-arrow-up-circle");
             upBtn.classList.add("bi-arrow-up-circle-fill");
             upBtn.style.color = "green";
         }
         if (vote == 'down'){
-            resetVoteBtn();
-            downBtn = document.getElementById("vote-down-btn");
+            resetVoteBtn(answerId);
+            downBtn = document.getElementById("vote-down-btn-" + answerId.toString());
             downBtn.classList.remove("bi-arrow-down-circle");
             downBtn.classList.add("bi-arrow-down-circle-fill");
             downBtn.style.color = "red";
