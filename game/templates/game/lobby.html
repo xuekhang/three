@@ -1,10 +1,5 @@
 {% extends "game/base.html" %} {% load crispy_forms_tags %} {% block content %}
 
-<!-- <div class="width-400 mx-auto card" style="text-align: center;">
-    <div>Hi {{ player_name }}, Lets Play!</div>
-    <div><span>Game Code: </span><span style="font-weight: bold;">{{ game_code }}</span></div>
-    
-</div> -->
 <div class="width-400 mx-auto card">
     <div style="text-align: center;"><span>Game Code: </span><span style="font-weight: bold;">{{ game.code }}</span></div>
     <div class="width-400">
@@ -49,11 +44,6 @@
         players = response.player_list
         if (response.start_game === true) {
             startGamePath = loc.pathname.replace('lobby', 'startgame')
-
-            // $.ajax({
-            //     url: '../../..' + startGamePath
-            // })
-
             newPath = loc.pathname.replace('lobby', 'board')
             window.location.href = '../../..' + newPath + '1';
         }
@@ -65,20 +55,13 @@
         });
     }
     socket.onopen = function(e) {
-        // formData.submit(function(event) {
-        //     event.preventDefault()
-
-        //     var request = {
-        //         'start_game': true
-        //     }
-        //     socket.send(JSON.stringify(request))
-        // })
+        //console.log('open', e)
     }
     socket.onerror = function(e) {
-        console.log('error', e)
+        //console.log('error', e)
     }
     socket.onclose = function(e) {
-        console.log('close', e)
+        //console.log('close', e)
     }
 
     function startGame() {
@@ -88,15 +71,6 @@
         socket.send(JSON.stringify(request))
     }
 </script>
-<!-- 
-<script>
-  $(document).ready(function () {
-    setInterval(function () {
-      window.location.reload(); 
-    }, 2000);
-  });
-
-</script> -->
 
 <script>
     var dots = window.setInterval(function() {

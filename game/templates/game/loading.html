@@ -2,10 +2,12 @@
 
 <div class="width-400 mx-auto card" style="text-align: center;">
     <div>Hi {{ player_name }}, Lets Play!</div>
-    <div><span>Game Code: </span><span style="font-weight: bold;">{{ game_code }}</span></div>
-    
+    <div>
+        <span>Game Code: </span><span style="font-weight: bold;">
+            {{ game_code }}
+        </span>
+    </div>    
 </div>
-
 <div>
     <div class="width-400 mx-auto">
         <h4>Round {{ round }}</h4>
@@ -23,31 +25,6 @@
 </div>
 
 <script>
-    // var loc = window.location
-    // var startBtn = $('#startBtn')
-
-    // var wsStart = 'ws://'
-    // if (loc.protocol == 'https:') {
-    //     wsStart = 'wss://'
-    // }
-    // var endpoint = wsStart + loc.host + loc.pathname
-    // var socket = new WebSocket(endpoint)
-
-    // socket.onmessage = function (e) {
-    //     console.log('message', e)
-    //     var response = JSON.parse(e.data)
-    // }
-    // socket.onopen = function (e) {
-    //     console.log('open', e)
-
-    // }
-    // socket.onerror = function (e) {
-    //     console.log('error', e)
-    // }
-    // socket.onclose = function (e) {
-    //     console.log('close', e)
-    // }
-
     window.addEventListener('load', function(){
         setTimeout(() => {
             console.log('go to next page')

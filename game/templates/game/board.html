@@ -223,60 +223,30 @@
 
 <script>
     var loc = window.location
-    // var formData = $("#startGameForm")
-    // var playerList = $('#playerList')
     var startBtn = $('#startBtn')
-
     var wsStart = 'ws://'
     if (loc.protocol == 'https:') {
         wsStart = 'wss://'
     }
     var endpoint = wsStart + loc.host + loc.pathname
     var socket = new WebSocket(endpoint)
-
     socket.onmessage = function (e) {
-        console.log('message', e)
-
+        //console.log('message', e)
         var response = JSON.parse(e.data)
-        // players = response.player_list
         if (response.startTimer === true) {
             startTimer();
             removeRedacted();
-
-            // startGamePath = loc.pathname.replace('lobby', 'startgame')
-
-            // $.ajax({
-            //     url: '../../..' + startGamePath
-            // })
-
-            // newPath = loc.pathname.replace('lobby', 'board')
-            // window.location.href = '../../..' + newPath + '1';
         }
-
-        // playerList.empty()
-        // players.forEach(element => {
-        //     playerList.append('<li>' + element + '</li>')
-
-        // });
     }
     socket.onopen = function (e) {
-        console.log('open', e)
-        // $("#startTimerBtn").submit(function(event) {
-        //     event.preventDefault()
-
-        //     var request = {
-        //         'start_timer': true
-        //     }
-        //     socket.send(JSON.stringify(request))
-        // })
+        //console.log('open', e)
     }
     socket.onerror = function (e) {
-        console.log('error', e)
+        //console.log('error', e)
     }
     socket.onclose = function (e) {
-        console.log('close', e)
+        //console.log('close', e)
     }
-
     function sendStartTimer() {
         document.getElementById("startBtn").disabled = true;
         var request = {
