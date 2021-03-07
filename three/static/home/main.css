@@ -211,7 +211,8 @@ img {
     margin-right: 10px;
     border-top-right-radius: .25rem;
     border-bottom-right-radius: .25rem;
-    border-bottom-left-radius: .25rem;
+    border: 1px solid transparent !important;
+    border-color: #dee2e6 #dee2e6 #dee2e6 #e4fdfd !important;
 }
 /* end left nav styles */
 
