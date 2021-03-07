@@ -2,7 +2,10 @@
 
 <div class="width-400 mx-auto card" style="text-align: center;">
     <div>Hi {{ player.name }}, Lets Play!</div>
-    <div><span>Game Code: </span><span style="font-weight: bold;">{{ game_code }}</span></div>
+    <div>
+        <span>Game Code: </span>
+        <span style="font-weight: bold;">{{ game_code }}</span>
+    </div>
 
 </div>
 
@@ -106,7 +109,6 @@
             </form>
         </div>
     </div>
-    <!-- <div>{{ answers }}</div> -->
 </div>
 <script>
     function resetVoteBtn(answerId){
@@ -122,7 +124,6 @@
         downBtn.classList.add('bi-arrow-down-circle');
         downBtn.style.color = '';
     }
-
 
     function vote(vote, answerId, playerId) {
         console.log(vote, answerId, playerId)
