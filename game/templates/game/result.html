@@ -2,10 +2,11 @@
 
 <div class="width-400 mx-auto card" style="text-align: center;">
     <div>Hi {{ player_name }}, Lets Play!</div>
-    <div><span>Game Code: </span><span style="font-weight: bold;">{{ game_code }}</span></div>
-    
+    <div>
+        <span>Game Code: </span>
+        <span style="font-weight: bold;">{{ game_code }}</span>
+    </div>
 </div>
-
 <div>
     <div class="width-400 mx-auto">
 
@@ -20,14 +21,13 @@
         <h4>Results</h4>
         <div class="row">
             <div class="col ans-header">Player</div>
-            <div class="col ans-header">Score</div>             
+            <div class="col ans-header">Score</div>
         </div>
         {% for result in results %}
         <div class="row">
             <div class="col">{{ result.0.name }}</div>
-            <div class="col">{{ result.1}}</div>             
+            <div class="col">{{ result.1}}</div>
         </div>
-
         {% endfor %}
         <br>
         <form method="POST">
