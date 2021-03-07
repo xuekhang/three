@@ -78,7 +78,7 @@ def config(request, game_code='', player_name=''):
             obj = form.save(commit=False)
             obj.game = game
             obj.save()
-            messages.success(request, f'Game config saved')
+            messages.success(request, f'Game settings saved')
 
         letters = list(
             Config.objects.values_list('letters', flat=True).filter(game=game))

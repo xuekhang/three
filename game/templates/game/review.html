@@ -126,7 +126,7 @@
     }
 
     function vote(vote, answerId, playerId) {
-        console.log(vote, answerId, playerId)
+        //console.log(vote, answerId, playerId)
         if (vote == 'up'){
             resetVoteBtn(answerId);
             upBtn = document.getElementById("vote-up-btn-" + answerId.toString());
@@ -162,9 +162,9 @@
     var socket = new WebSocket(endpoint);
 
     socket.onmessage = function (e) {
-        console.log('message', e);
+        //console.log('message', e);
         var response = JSON.parse(e.data);
-        console.log(response.answerId, response.voteUpCount, response.voteDownCount);
+        //console.log(response.answerId, response.voteUpCount, response.voteDownCount);
         var answerId = response.answerId;
         var voteUpCount = response.voteUpCount;
         var voteDownCount = response.voteDownCount;
