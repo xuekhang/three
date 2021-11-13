@@ -87,7 +87,7 @@ CHANNEL_LAYERS = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': 'localhost',
+        'HOST': '172.30.0.4',
         'NAME': 'three_db',
         'USER': 'three',
         'PASSWORD': 'three',

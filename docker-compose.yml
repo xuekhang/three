@@ -21,16 +21,18 @@ services:
   three.postgresql:
     container_name: three.postgresql
     image: postgres:12.2
+    restart: always
+    volumes:
+      - datavolume:/var/run/postgresqld
+    ports:
+      - "5432:5432"
     environment:
       POSTGRES_PASSWORD: three
       POSTGRES_USER: three
       POSTGRES_DB:  three_db
-    ports:
-      - "5432:5432"
     expose:
       - "5432"
-    volumes:
-      - datavolume:/var/run/postgresqld
+
     networks:
       three_network:
         ipv4_address: 172.30.0.4
