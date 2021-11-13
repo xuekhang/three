@@ -1,18 +1,5 @@
 version: "3.5"
 services:
-  three.nginx:
-    container_name: three.nginx
-    build:
-      context: .
-      dockerfile: ./nginx/Dockerfile
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - .:/srv/web/three
-    networks:
-      three_network:
-        ipv4_address: 172.30.0.3
 
   three.daphne:
     container_name: three.daphne
@@ -31,23 +18,19 @@ services:
       three_network:
         ipv4_address: 172.30.0.8
 
-  three.mysql:
-    container_name: three.mysql
-    image: mysql:5.7
-    command:
-      [
-        mysqld,
-        --character-set-server=utf8mb4,
-        --collation-server=utf8mb4_unicode_ci,
-      ]
+  three.postgresql:
+    container_name: three.postgresql
+    image: postgres:12.2
     environment:
-      - MYSQL_ROOT_PASSWORD=three
-      - MYSQL_DATABASE=three
-      - MYSQL_ROOT_HOST=%
+      POSTGRES_PASSWORD: three
+      POSTGRES_USER: three
+      POSTGRES_DB:  three_db
     ports:
-      - "3306:3306"
+      - "5432:5432"
+    expose:
+      - "5432"
     volumes:
-      - datavolume:/var/run/mysqld
+      - datavolume:/var/run/postgresqld
     networks:
       three_network:
         ipv4_address: 172.30.0.4
