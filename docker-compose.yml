@@ -1,41 +1,5 @@
 version: "3.5"
 services:
-  three.nginx:
-    container_name: three.nginx
-    build:
-      context: .
-      dockerfile: ./nginx/Dockerfile
-    ports:
-      - "83:80"
-      - "446:443"
-    volumes:
-      - .:/srv/web/three
-    networks:
-      three_network:
-        ipv4_address: 172.30.0.3
-
-  three.python:
-    container_name: three.python
-    build:
-      context: .
-      dockerfile: ./Dockerfile
-    command: bash -c "python manage.py makemigrations &&
-      python manage.py migrate &&
-      python manage.py runserver 0.0.0.0:8000"
-    # command: python manage.py runserver 0.0.0.0:8000
-    tty: true
-    environment:
-      - ENV=DEV
-    ports:
-      - "8030:8000"
-      - "3030:3000"
-    expose:
-      - "8030"
-    volumes:
-      - .:/srv/web/three
-    networks:
-      three_network:
-        ipv4_address: 172.30.0.2
 
   three.daphne:
     container_name: three.daphne
@@ -45,32 +9,30 @@ services:
     command: bash -c "
       daphne -b 0.0.0.0 -p 8000 three.asgi:application"
     ports:
-      - "8080:8000"
+      - "8000:8000"
     expose:
-      - "8080"
+      - "8000"
     volumes:
       - .:/srv/web/three
     networks:
       three_network:
         ipv4_address: 172.30.0.8
 
-  three.mysql:
-    container_name: three.mysql
-    image: mysql:5.7
-    command:
-      [
-        mysqld,
-        --character-set-server=utf8mb4,
-        --collation-server=utf8mb4_unicode_ci,
-      ]
-    environment:
-      - MYSQL_ROOT_PASSWORD=three
-      - MYSQL_DATABASE=three
-      - MYSQL_ROOT_HOST=%
-    ports:
-      - "3309:3306"
+  three.postgresql:
+    container_name: three.postgresql
+    image: postgres:12.2
+    restart: always
     volumes:
-      - datavolume:/var/run/mysqld
+      - datavolume:/var/run/postgresqld
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: three
+      POSTGRES_USER: three
+      POSTGRES_DB:  three_db
+    expose:
+      - "5432"
+
     networks:
       three_network:
         ipv4_address: 172.30.0.4
@@ -80,9 +42,9 @@ services:
     container_name: three.redis
     image: redis:6.0.6
     expose:
-      - "6382"
+      - "6379"
     ports:
-      - "6382:6379"
+      - "6379:6379"
     volumes:
       - redis:/data
     networks:
