@@ -116,8 +116,6 @@ GitHub.sublime-settings
 !.vscode/extensions.json 
 .history
 
-db.sqlite3
-
 env
 node_modules
 **/*.pyc
