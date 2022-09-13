@@ -1,28 +1,28 @@
 version: "3.5"
 services:
-
-  three.daphne:
-    container_name: three.daphne
-    build:
-      context: .
-      dockerfile: ./Dockerfile
-    command: bash -c "
-      daphne -b 0.0.0.0 -p 8000 three.asgi:application"
-    ports:
-      - "8000:8000"
-    environment:
-      - POSTGRES_NAME=three_db
-      - POSTGRES_USER=three
-      - POSTGRES_PASSWORD=three
-    depends_on:
-      - three.postgresql
-    expose:
-      - "8000"
-    volumes:
-      - .:/srv/web/three
-    networks:
-      three_network:
-        ipv4_address: 172.30.0.8
+#
+#  three.daphne:
+#    container_name: three.daphne
+#    build:
+#      context: .
+#      dockerfile: ./Dockerfile
+#    command: bash -c "
+#      daphne -b 0.0.0.0 -p 8000 three.asgi:application -v2"
+#    ports:
+#      - "8000:8000"
+#    environment:
+#      - POSTGRES_NAME=three_db
+#      - POSTGRES_USER=three
+#      - POSTGRES_PASSWORD=three
+#    depends_on:
+#      - three.postgresql
+#    expose:
+#      - "8000"
+#    volumes:
+#      - .:/srv/web/three
+#    networks:
+#      three_network:
+#        ipv4_address: 172.30.0.8
 
   three.postgresql:
     container_name: three.postgresql
