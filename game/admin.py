@@ -23,7 +23,7 @@ class GameAdmin(admin.ModelAdmin):
 
 class PlayerAdmin(admin.ModelAdmin):
     # list_display = [field.name for field in Player._meta.get_fields()]
-    list_display = ['id','name','game','is_host']
+    list_display = ['id', 'name', 'game', 'is_host']
 
 
 class GlobalCategoryAdmin(admin.ModelAdmin):
@@ -36,16 +36,17 @@ class LocalCategoryAdmin(admin.ModelAdmin):
 
 class RoundAdmin(admin.ModelAdmin):
     # list_display = [field.name for field in Round._meta.get_fields()]
-    list_display = ['id','number','game','letter','is_played']
+    list_display = ['id', 'number', 'game', 'letter', 'is_played']
 
 
 class CategoryInRoundAdmin(admin.ModelAdmin):
     # list_display = [field.name for field in CategoryInRound._meta.get_fields()]
-    list_display = ['id','name','round','number']
+    list_display = ['id', 'name', 'round', 'number']
+
 
 class QuestionAdmin(admin.ModelAdmin):
     # list_display = [field.name for field in Question._meta.get_fields()]
-    list_display = ['id','player','category_in_round']
+    list_display = ['id', 'player', 'category_in_round']
 
 
 class AnswerAdmin(admin.ModelAdmin):
@@ -53,7 +54,8 @@ class AnswerAdmin(admin.ModelAdmin):
 
 
 class VoteAdmin(admin.ModelAdmin):
-    list_display = ['id','vote', 'player','answer']
+    list_display = ['id', 'vote', 'player', 'answer']
+
 
 # Register your models here.
 admin.site.register(Config, ConfigAdmin)

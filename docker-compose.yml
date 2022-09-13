@@ -10,6 +10,12 @@ services:
       daphne -b 0.0.0.0 -p 8000 three.asgi:application"
     ports:
       - "8000:8000"
+    environment:
+      - POSTGRES_NAME=three_db
+      - POSTGRES_USER=three
+      - POSTGRES_PASSWORD=three
+    depends_on:
+      - three.postgresql
     expose:
       - "8000"
     volumes:
