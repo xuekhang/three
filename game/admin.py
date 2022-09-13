@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.db import models
 from .models import (
     Config,
     Game,
@@ -18,7 +19,7 @@ class ConfigAdmin(admin.ModelAdmin):
 
 
 class GameAdmin(admin.ModelAdmin):
-    list_display = [field.name for field in Game._meta.get_fields()]
+    list_display = ['code']
 
 
 class PlayerAdmin(admin.ModelAdmin):
@@ -50,7 +51,9 @@ class QuestionAdmin(admin.ModelAdmin):
 
 
 class AnswerAdmin(admin.ModelAdmin):
-    list_display = [field.name for field in Answer._meta.get_fields()]
+    list_display = [field.name for field in Answer._meta.fields
+                    if field.name != 'id' and
+                    not isinstance(field, models.ForeignKey)]
 
 
 class VoteAdmin(admin.ModelAdmin):
