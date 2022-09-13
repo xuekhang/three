@@ -19,7 +19,9 @@ class ConfigAdmin(admin.ModelAdmin):
 
 
 class GameAdmin(admin.ModelAdmin):
-    list_display = ['code']
+    list_display = [field.name for field in Game._meta.fields
+                    if field.name != 'id' and
+                    not isinstance(field, models.ForeignKey)]
 
 
 class PlayerAdmin(admin.ModelAdmin):
