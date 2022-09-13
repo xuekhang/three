@@ -86,13 +86,26 @@ CHANNEL_LAYERS = {
         },
     },
 }
+# use below if running daphne server from docker compose containers
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': os.environ.get('POSTGRES_NAME'),
+#         'USER': os.environ.get('POSTGRES_USER'),
+#         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+#         'HOST': 'three.postgresql',
+#         'PORT': 5432,
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': 'localhost',
         'NAME': 'three_db',
         'USER': 'three',
         'PASSWORD': 'three',
+        'HOST': 'localhost',
+        'PORT': 5432,
     }
 }
 db_from_env = dj_database_url.config(conn_max_age=600)
