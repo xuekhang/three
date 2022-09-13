@@ -62,7 +62,6 @@ class Round(models.Model):
     letter = models.CharField(max_length=3)
     is_played = models.BooleanField(default=False)
     
-
     def __str__(self):
         return str(self.game) + ' Round: ' + str(self.number)
 
