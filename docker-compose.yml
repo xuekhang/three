@@ -1,3 +1,72 @@
+# version: "3.5"
+# services:
+
+#   three.daphne:
+#     container_name: three.daphne
+#     build:
+#       context: .
+#       dockerfile: ./Dockerfile
+#     command: bash -c "
+#       daphne -b 0.0.0.0 -p 8000 three.asgi:application -v2"
+#     ports:
+#       - "8000:8000"
+#     environment:
+#       - POSTGRES_NAME=three_db
+#       - POSTGRES_USER=three
+#       - POSTGRES_PASSWORD=three
+#     depends_on:
+#       - three.postgresql
+#     expose:
+#       - "8000"
+#     volumes:
+#       - .:/srv/web/three
+#     networks:
+#       three_network:
+#         ipv4_address: 172.30.0.8
+
+#   three.postgresql:
+#     container_name: three.postgresql
+#     image: postgres:12.2
+#     restart: always
+#     volumes:
+#       - datavolume:/var/run/postgresqld
+#     ports:
+#       - "5432:5432"
+#     environment:
+#       POSTGRES_PASSWORD: three
+#       POSTGRES_USER: three
+#       POSTGRES_DB:  three_db
+#     expose:
+#       - "5432"
+
+#     networks:
+#       three_network:
+#         ipv4_address: 172.30.0.4
+
+#   three.redis:
+#     hostname: three.redis
+#     container_name: three.redis
+#     image: redis:6.0.6
+#     expose:
+#       - "6379"
+#     ports:
+#       - "6379:6379"
+#     volumes:
+#       - redis:/data
+#     networks:
+#       three_network:
+#         ipv4_address: 172.30.0.6
+
+# volumes:
+#   datavolume: {}
+#   redis: {}
+
+# networks:
+#   three_network:
+#     ipam:
+#       driver: default
+#       config:
+#         - subnet: 172.30.0.0/16
 version: "3.5"
 services:
 
@@ -6,18 +75,17 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
-    command: bash -c "
-      daphne -b 0.0.0.0 -p 8000 three.asgi:application -v2"
+    command: bash -c "daphne -b 0.0.0.0 -p 8000 three.asgi:application -v2"
     ports:
       - "8000:8000"
     environment:
       - POSTGRES_NAME=three_db
       - POSTGRES_USER=three
       - POSTGRES_PASSWORD=three
+      - REDIS_HOST=three.redis  # Added for Redis connection
     depends_on:
       - three.postgresql
-    expose:
-      - "8000"
+      - three.redis  # Ensure Redis starts before Daphne
     volumes:
       - .:/srv/web/three
     networks:
@@ -29,22 +97,18 @@ services:
     image: postgres:12.2
     restart: always
     volumes:
-      - datavolume:/var/run/postgresqld
+      - datavolume:/var/lib/postgresql/data  # Corrected volume path for PostgreSQL data
     ports:
       - "5432:5432"
     environment:
       POSTGRES_PASSWORD: three
       POSTGRES_USER: three
-      POSTGRES_DB:  three_db
-    expose:
-      - "5432"
-
+      POSTGRES_DB: three_db
     networks:
       three_network:
         ipv4_address: 172.30.0.4
 
   three.redis:
-    hostname: three.redis
     container_name: three.redis
     image: redis:6.0.6
     expose:
