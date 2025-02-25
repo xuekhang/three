@@ -10,7 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-from pathlib import Path, os
+from pathlib import Path
+import os
 from django.contrib.messages import constants as messages
 import dj_database_url
 
@@ -87,29 +88,29 @@ CHANNEL_LAYERS = {
     },
 }
 # use below if running daphne server from docker compose containers
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': os.environ.get('POSTGRES_NAME'),
-#         'USER': os.environ.get('POSTGRES_USER'),
-#         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-#         'HOST': 'three.postgresql',
-#         'PORT': 5432,
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'three_db',
-        'USER': 'three',
-        'PASSWORD': 'three',
-        'HOST': 'localhost',
+        'NAME': os.environ.get('POSTGRES_NAME'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': 'three.postgresql',
         'PORT': 5432,
     }
 }
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'three_db',
+#         'USER': 'three',
+#         'PASSWORD': 'three',
+#         'HOST': 'localhost',
+#         'PORT': 5432,
+#     }
+# }
+# db_from_env = dj_database_url.config(conn_max_age=600)
+# DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
