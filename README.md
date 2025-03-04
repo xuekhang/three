@@ -1,4 +1,4 @@
 # three
 
-# Getting Started
+## Getting Started
 1. Run `docker compose up`
