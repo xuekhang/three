@@ -10,3 +10,5 @@ need to update redis and postgres local settings to run locally. current setting
 2. Run `python manage.py migrate`
 3. Run `python manage.py loaddata game/fixtures/initial_data.json`
 4. Run `daphne three.asgi:application`
+
+## Seed inital categories data
