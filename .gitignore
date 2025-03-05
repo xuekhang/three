@@ -133,3 +133,5 @@ styleguide/build
 static/*
 media/*
 *.cypthon-39.pyc
+
+.log
