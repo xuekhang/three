@@ -1,5 +1,9 @@
 # three
 
+## Prereqs
+* python
+* docker
+
 ## Getting Started
 1. Run: `docker compose up`
 2. On a different terminal run:
