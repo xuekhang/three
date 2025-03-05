@@ -2,7 +2,7 @@
 
 ## Prereqs
 * python
-* docker
+* docker (desktop)
 
 ## Getting Started
 1. Run: `docker compose up`
