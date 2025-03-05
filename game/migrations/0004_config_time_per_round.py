@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='config',
             name='time_per_round',
-            field=models.IntegerField(default=120),
+            field=models.IntegerField(default=60),
         ),
     ]

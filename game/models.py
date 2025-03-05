@@ -33,7 +33,7 @@ class Config(BaseModel):
     num_of_rounds = models.IntegerField()
     num_of_cat_per_round = models.IntegerField()
     letters = MultiSelectField(choices=letter_choices)
-    time_per_round = models.IntegerField(default=120)
+    time_per_round = models.IntegerField(default=60)
 
     def __str__(self):
         return self.game.code + '   ' + str(self.num_of_players)
